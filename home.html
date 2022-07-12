@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Categorias | Whatabook</title>
+    <title>Home | Whatabook</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="./images/logopreta.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -31,7 +31,7 @@
                         <a class="nav-link active text-light fw-light fs-6" aria-current="page" href="#">Home</a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link text-light fw-light fs-6" href="#">Categorias</a>
+                        <a class="nav-link text-light fw-light fs-6" href="./categoria.html">Categorias</a>
                     </li>
                     <li class="nav-item ">
                         <a class="nav-link text-light fw-light fs-6" href="#">Minha lista</a>
@@ -73,7 +73,7 @@
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item" href="#">Configurações</a></li>
+                        <li><a class="dropdown-item" href="#">Sair</a></li>
                     </ul>
                 </div>
             </div>
@@ -81,6 +81,16 @@
     </nav>
     <!-- fim -->
     <!-- conteudo -->
+    <div id="capa" class="d-flex justify-content-around align-items-center mt-4" style="height: 30rem; margin-right: 15%; margin-left: 15%;" >
+        <img id="imgcapa" class="" src="./images/emalta.png" alt="1984" style="height: 25rem;">
+        <div id="txt2" class="">
+            <h3 class="text-center mb-4" style="color: #fff; text-align: center;"> <b>A revolução dos bichos: Um conto de fadas</b> </h3>
+            <p class="" style="text-align: justify; font-size: large; color: #fff; width: 50rem;">A revolução dos bichos
+             Escrita em plena Segunda Guerra Mundial e publicada em 1945 depois de ter sido rejeitada por várias editoras, essa pequena narrativa causou desconforto ao satirizar ferozmente a ditadura stalinista numa época em que os soviéticos ainda eram aliados do Ocidente na luta contra o eixo nazifascista. De fato, são claras as referências: o despótico Napoleão seria Stálin, o banido Bola-de-Neve seria Trotsky, e os eventos políticos - expurgos, instituição de um estado policial, deturpação tendenciosa da História - mimetizam os que estavam em curso na União Soviética. Com o acirramento da Guerra Fria, as mesmas razões que causaram constrangimento na época de sua publicação levaram A revolução dos bichos a ser amplamente usada pelo Ocidente nas décadas seguintes como arma ideológica contra o comunismo.</p>
+             <p class="text-center" style="font-size: large; color: #fff;"> <b> Editora | Autor</b></p>
+            <p class="text-center text-decoration-underline" style="font-size: large; color: #fff; cursor: pointer;"><b> + MAIS</b></p>
+        </div>    
+    </div>
 
     <!-- fim -->
     <!-- footer -->
@@ -118,11 +128,20 @@
         margin-bottom: 2px;
         color: #fff;
     }
-
+    
     body {
         background: linear-gradient(0deg, #fff 0%, #114B5F 100%);
         width: 100%;
         height: 100vh;
+    }
+
+    #img {
+        height: 200px;
+        cursor: pointer;
+        transition: .2s;
+    }
+    #img:hover {
+        transform: scale(1.1);
     }
 </style>
 

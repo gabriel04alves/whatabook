@@ -28,10 +28,10 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item ">
-                        <a class="nav-link active text-light fw-light fs-6" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active text-light fw-light fs-6" aria-current="page" href="./home.html">Home</a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link text-light fw-light fs-6" href="#">Categorias</a>
+                        <a class="nav-link text-light fw-light fs-6" href="./categoria.html">Categorias</a>
                     </li>
                     <li class="nav-item ">
                         <a class="nav-link text-light fw-light fs-6" href="#">Minha lista</a>
@@ -116,13 +116,40 @@
         </button>
     </div>
     <h3 class="ms-3 fw-light" style="color: #114B5F;">OS MELHORES ROMANCES</h3>
-    <div id="col1" class="mb-5" style="height: 15rem; width: 100%; background-color: rgb(175, 175, 175);">
+    <div id="col1" class="mb-5 d-flex justify-content-around align-items-center" style="height: 15rem; width: 100%; ">
+        <h1 style="cursor: pointer; color: #114B5F;"> < </h1>
+        <img id="img" src="./images/1984.png" alt="1984" srcset="">
+        <img id="img" src="./images/buraco-negro.png" alt="" srcset="">
+        <img id="img" src="./images/casca-noz.png" alt="" srcset="">
+        <img id="img" src="./images/emalta.png" alt="" srcset="">
+        <img id="img" src="./images/historia-ciencia.png" alt="" srcset="">
+        <img id="img" src="./images/homo-sapiens.png" alt="" srcset="">
+        <img id="img" src="./images/brascubas.png" alt="" srcset="">
+        <h1 style="cursor: pointer; color: #114B5F;"> > </h1>
     </div>
     <h3 class="ms-3 fw-light" style="color: #114B5F;">FICÇÕES PARA LER EM UM DIA</h3>
-    <div id="col1" class="mb-5" style="height: 15rem; width: 100%; background-color: rgb(175, 175, 175);">
+    <div id="col1" class="mb-5 d-flex justify-content-around align-items-center" style="height: 15rem; width: 100%; " style="height: 15rem; width: 100%; ">
+        <h1 style="cursor: pointer; color: #114B5F;"> < </h1>
+        <img id="img" src="./images/1984.png" alt="1984" srcset="">
+        <img id="img" src="./images/buraco-negro.png" alt="" srcset="">
+        <img id="img" src="./images/casca-noz.png" alt="" srcset="">
+        <img id="img" src="./images/emalta.png" alt="" srcset="">
+        <img id="img" src="./images/historia-ciencia.png" alt="" srcset="">
+        <img id="img" src="./images/homo-sapiens.png" alt="" srcset="">
+        <img id="img" src="./images/brascubas.png" alt="" srcset="">
+        <h1 style="cursor: pointer; color: #114B5F;"> > </h1>
     </div>
     <h3 class="ms-3 fw-light" style="color: #114B5F;">ROMANCES SUGERIDOS</h3>
-    <div id="col1" class="mb-5" style="height: 15rem; width: 100%; background-color: rgb(175, 175, 175);">
+    <div id="col1" class="mb-5 d-flex justify-content-around align-items-center" style="height: 15rem; width: 100%;  " style="height: 15rem; width: 100%; ">
+        <h1 style="cursor: pointer; color: #114B5F;"> < </h1>
+        <img id="img" src="./images/1984.png" alt="1984" srcset="">
+        <img id="img" src="./images/buraco-negro.png" alt="" srcset="">
+        <img id="img" src="./images/casca-noz.png" alt="" srcset="">
+        <img id="img" src="./images/emalta.png" alt="" srcset="">
+        <img id="img" src="./images/historia-ciencia.png" alt="" srcset="">
+        <img id="img" src="./images/homo-sapiens.png" alt="" srcset="">
+        <img id="img" src="./images/brascubas.png" alt="" srcset="">
+        <h1 style="cursor: pointer; color: #114B5F;"> > </h1>
     </div>
 
     <!-- fim -->
@@ -160,6 +187,14 @@
         font-size: smaller;
         margin-bottom: 2px;
         color: #fff;
+    }
+    #img {
+        height: 200px;
+        cursor: pointer;
+        transition: .2s;
+    }
+    #img:hover {
+        transform: scale(1.1);
     }
 </style>
 

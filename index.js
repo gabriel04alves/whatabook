@@ -1,3 +1,3 @@
 function login() {
-    window.location.href = 'http://github.com/'
+    window.location.href = './home.html'
 };
