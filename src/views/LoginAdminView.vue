@@ -5,8 +5,8 @@
         </div>
         <div class="d-flex justify-center align-center" style="width: 55%;">
           <v-card class="d-flex flex-column justify-start align-center" style="background-color: #BCEEFF; width: 40%; height: 55%;">
-            <h2 class="text-decoration-underline mt-10 font-weight-light text-uppercase">BEM VINDO, Administrador</h2> 
-            <p class="font-weight-bold mt-2">Faça seu login</p>
+            <h2 class="text-decoration-underline mt-10 font-weight-light text-uppercase" style="color: #114B5F">BEM VINDO, Administrador</h2> 
+            <p class="font-weight-bold mt-2" style="color: #114B5F">Faça seu login</p>
             <v-form class="">
               <v-text-field label="Email" v-model="user.email" style=""></v-text-field>
               <v-text-field
@@ -21,7 +21,7 @@
                 <v-btn class="rounded-lg" color="#FFF" style="color: #114B5F;" @click="login">Entrar</v-btn>
               </v-row>
               <v-row class="d-flex justify-center mt-6">
-                <v-btn text small><h5 class="text-decoration-underline text-uppercase">esqueceu sua senha?</h5></v-btn> 
+                <v-btn text small><h5 class="text-decoration-underline text-uppercase" style="color: #114B5F">esqueceu sua senha?</h5></v-btn> 
               </v-row>
               <!-- <v-row class="d-flex justify-center mt-6 " style="gap: 5%;">
                 <v-btn color="#114B5F" icon small><v-icon>mdi-google</v-icon></v-btn>
@@ -61,5 +61,16 @@ export default {
 </script>
 
 <style>
-
+  /* STYLE DEFAULT */
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;700;800&display=swap');
+  
+  ::-webkit-scrollbar{
+    display: none;
+  }
+  * {
+      padding: 0;
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+  }
+  /* ............. */
 </style>
