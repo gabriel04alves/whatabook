@@ -2,11 +2,11 @@
   <v-div style="">
     <v-row style="background: linear-gradient(180deg, #114B5F 0%, rgba(217, 217, 217, 0) 100%);" class="pa-16 pt-8 d-flex justify-center" >
       <v-col> 
-        <v-div class=" d-flex justify-end pt-5 pr-16">
+        <v-div class=" d-flex justify-end pt-5 pr-16" style="cursor: pointer;">
           <v-img src="./images/1984.png" max-width="270px"></v-img>
         </v-div>
       </v-col>
-      <v-col class="col-8 d-flex align-self-center" color="primary" style="color: #FFF; ">
+      <v-col class="col-8 d-flex align-self-center " color="primary" style="color: #FFF; cursor: pointer;">
         <v-div style="padding-right: 10%;">
           <v-row>
             <v-main class="text-center font-weight-black pt-2" style="color: #FFF; ">A revolução dos bichos: Um conto de fadas</v-main>
@@ -28,6 +28,22 @@
         </v-div>
       </v-col>
     </v-row>
+    <v-row>
+      <v-row v-for="item in categorias" :key="item" class="pt-5 pb-5">
+        <v-sheet elevation="9" max-width="11.4%" dark color="#114B5F">
+          <h3 class="pt-5 text-uppercase font-weight-light" style="padding-left: 5%;">{{ item.slogan }}</h3>
+          <v-slide-group v-model="model" class="pt-2 pb-4 pr-4 pl-4" show-arrows >
+            <v-slide-item v-for="n in 105" :key="n"  >
+              <v-card  class="ma-4" height="200" width="130" >
+                <v-row class="fill-height" align="center" justify="center" >
+                  <img src="item.url" style="width: 100%;">
+                </v-row>
+              </v-card>
+            </v-slide-item>
+          </v-slide-group>
+        </v-sheet>        
+      </v-row>
+    </v-row>
   </v-div>
 </template>
 
@@ -35,8 +51,14 @@
   export default {
     data: () => ({
       items: [
-        { }
+        {name: "1984", url: " "},
       ],
+      categorias: [
+        {title: "Sugestoes", slogan: "Para você", desc: "genero textual que tem como caracteristica..."},
+        {title: "Romance", slogan: "Os melhores romances", desc: "genero textual que tem como caracteristica..."},
+        {title: "Ficção", slogan: "FICÇÕES PARA LER EM UM DIA", desc: "genero textual que tem como caracteristica..."},
+        {title: "Drama", slogan: "Dramas SUGERIDOS", desc: "genero textual que tem como caracteristica..."},
+      ]
     }),
   }
 </script>

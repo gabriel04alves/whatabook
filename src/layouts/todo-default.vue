@@ -66,7 +66,7 @@
     </v-app-bar>
       <v-main><router-view></router-view> </v-main>
 
-    <v-footer app dark color="#114B5F"><span class="caption">Whatabook &copy; | 2022</span></v-footer>
+    <v-footer app dark color="#114B5F" style="position: absolute;" class=""><span class="caption">Whatabook &copy; | 2022</span></v-footer>
   </v-app>
 </template>
 
