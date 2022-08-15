@@ -1,7 +1,7 @@
 <template>
-  <v-app>
-      <router-view></router-view>
-  </v-app>
+  <v-container>
+    <h1>Whaatabook Configurações</h1>
+  </v-container>
 </template>
 
 <script>

@@ -1,7 +1,7 @@
 <template>
-  <v-app>
-      <router-view></router-view>
-  </v-app>
+  <v-container>
+    <h1>Whaatabook minha lista</h1>
+  </v-container>
 </template>
 
 <script>
