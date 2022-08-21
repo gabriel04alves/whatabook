@@ -20,7 +20,7 @@
             <v-col class="text-start">Editora</v-col>
           </v-row>
           <v-row class="mt-5" style="display: flex; justify-content: center;"> 
-            <v-btn plain small dark>
+            <v-btn plain small dark></v-btn>
               <v-icon>mdi-information-outline</v-icon>
               mais
             </v-btn>
@@ -29,17 +29,17 @@
       </v-col>
     </v-row>
     <v-row>
-      <v-row v-for="item in categorias" :key="item" class="pt-5 pb-5">
-        <v-sheet elevation="9" max-width="11.4%" dark color="#114B5F">
+      <v-row  v-for="item in categorias" :key="item" class="pt-5 pb-5">
+        <v-sheet elevation="9" width="calc(110.5vh - 200px)" dark color="#114B5F">
           <h3 class="pt-5 text-uppercase font-weight-light" style="padding-left: 5%;">{{ item.slogan }}</h3>
-          <v-slide-group v-model="model" class="pt-2 pb-4 pr-4 pl-4" show-arrows >
-            <v-slide-item v-for="n in 105" :key="n"  >
-              <v-card  class="ma-4" height="200" width="130" >
-                <v-row class="fill-height" align="center" justify="center" >
-                  <img src="item.url" style="width: 100%;">
-                </v-row>
-              </v-card>
-            </v-slide-item>
+          <v-slide-group class="pt-2 pb-4 pr-4 pl-4" show-arrows color="#114B5F">
+              <v-slide-item v-for="imagem in items" :key="imagem" v-show="imagem.categoria == item.title">
+                <v-div  class="ma-4" style="height: 100%; width: 8.1rem;" >
+                  <v-row class="fill-height" justify="center" >
+                    <img id="img" class="ma-2" :src="imagem.url" height="200" width="140">
+                  </v-row>
+                </v-div>
+              </v-slide-item>
           </v-slide-group>
         </v-sheet>        
       </v-row>
@@ -51,7 +51,203 @@
   export default {
     data: () => ({
       items: [
-        {name: "1984", url: " "},
+        {name: "buraco", url: require("../assets/images/buraco-negro.png"), categoria: "Romance"},
+        {name: "1984", url: require("../assets/images/1984.png"), categoria: "Romance"},
+        {name: "1984", url: require("../assets/images/1984.png"), categoria: "Sugestoes"},
+        {name: "brascubas", url: require("../assets/images/brascubas.png"), categoria: "Ficção"},
+        {name: "1984", url: require("../assets/images/1984.png"), categoria: "Ficção"},
+        {name: "emalta", url: require("../assets/images/emalta.png"), categoria: "Drama"},
+        {name: "emalta", url: require("../assets/images/emalta.png"), categoria: "Ficção"},
+        {name: "emalta", url: require("../assets/images/emalta.png"), categoria: "Romance"},
+        {name: "emalta", url: require("../assets/images/emalta.png"), categoria: "Sugestoes"},
+        {name: "casca-noz", url: require("../assets/images/casca-noz.png"), categoria: "Romance"},
+        {name: "casca-noz", url: require("../assets/images/casca-noz.png"), categoria: "Sugestoes"},
+        {name: "historia-ciencia", url: require("../assets/images/historia-ciencia.png"), categoria: "Romance"},
+        {name: "historia-ciencia", url: require("../assets/images/historia-ciencia.png"), categoria: "Sugestoes"},
+        {name: "homo-spiens", url: require("../assets/images/homo-sapiens.png"), categoria: "Sugestoes"}, 
+        {name: "buraco", url: require("../assets/images/buraco-negro.png"), categoria: "Drama"},
+        {name: "buraco", url: require("../assets/images/buraco-negro.png"), categoria: "Romance"},
+        {name: "1984", url: require("../assets/images/1984.png"), categoria: "Romance"},
+        {name: "1984", url: require("../assets/images/1984.png"), categoria: "Sugestoes"},
+        {name: "brascubas", url: require("../assets/images/brascubas.png"), categoria: "Ficção"},
+        {name: "1984", url: require("../assets/images/1984.png"), categoria: "Ficção"},
+        {name: "emalta", url: require("../assets/images/emalta.png"), categoria: "Drama"},
+        {name: "emalta", url: require("../assets/images/emalta.png"), categoria: "Ficção"},
+        {name: "emalta", url: require("../assets/images/emalta.png"), categoria: "Romance"},
+        {name: "emalta", url: require("../assets/images/emalta.png"), categoria: "Sugestoes"},
+        {name: "casca-noz", url: require("../assets/images/casca-noz.png"), categoria: "Romance"},
+        {name: "casca-noz", url: require("../assets/images/casca-noz.png"), categoria: "Sugestoes"},
+        {name: "historia-ciencia", url: require("../assets/images/historia-ciencia.png"), categoria: "Romance"},
+        {name: "historia-ciencia", url: require("../assets/images/historia-ciencia.png"), categoria: "Sugestoes"},
+        {name: "homo-spiens", url: require("../assets/images/homo-sapiens.png"), categoria: "Sugestoes"}, 
+        {name: "buraco", url: require("../assets/images/buraco-negro.png"), categoria: "Drama"},
+        {name: "buraco", url: require("../assets/images/buraco-negro.png"), categoria: "Romance"},
+        {name: "1984", url: require("../assets/images/1984.png"), categoria: "Romance"},
+        {name: "1984", url: require("../assets/images/1984.png"), categoria: "Sugestoes"},
+        {name: "brascubas", url: require("../assets/images/brascubas.png"), categoria: "Ficção"},
+        {name: "1984", url: require("../assets/images/1984.png"), categoria: "Ficção"},
+        {name: "emalta", url: require("../assets/images/emalta.png"), categoria: "Drama"},
+        {name: "emalta", url: require("../assets/images/emalta.png"), categoria: "Ficção"},
+        {name: "emalta", url: require("../assets/images/emalta.png"), categoria: "Romance"},
+        {name: "emalta", url: require("../assets/images/emalta.png"), categoria: "Sugestoes"},
+        {name: "casca-noz", url: require("../assets/images/casca-noz.png"), categoria: "Romance"},
+        {name: "casca-noz", url: require("../assets/images/casca-noz.png"), categoria: "Sugestoes"},
+        {name: "historia-ciencia", url: require("../assets/images/historia-ciencia.png"), categoria: "Romance"},
+        {name: "historia-ciencia", url: require("../assets/images/historia-ciencia.png"), categoria: "Sugestoes"},
+        {name: "homo-spiens", url: require("../assets/images/homo-sapiens.png"), categoria: "Sugestoes"}, 
+        {name: "buraco", url: require("../assets/images/buraco-negro.png"), categoria: "Drama"},
+        {name: "buraco", url: require("../assets/images/buraco-negro.png"), categoria: "Romance"},
+        {name: "1984", url: require("../assets/images/1984.png"), categoria: "Romance"},
+        {name: "1984", url: require("../assets/images/1984.png"), categoria: "Sugestoes"},
+        {name: "brascubas", url: require("../assets/images/brascubas.png"), categoria: "Ficção"},
+        {name: "1984", url: require("../assets/images/1984.png"), categoria: "Ficção"},
+        {name: "emalta", url: require("../assets/images/emalta.png"), categoria: "Drama"},
+        {name: "emalta", url: require("../assets/images/emalta.png"), categoria: "Ficção"},
+        {name: "emalta", url: require("../assets/images/emalta.png"), categoria: "Romance"},
+        {name: "emalta", url: require("../assets/images/emalta.png"), categoria: "Sugestoes"},
+        {name: "casca-noz", url: require("../assets/images/casca-noz.png"), categoria: "Romance"},
+        {name: "casca-noz", url: require("../assets/images/casca-noz.png"), categoria: "Sugestoes"},
+        {name: "historia-ciencia", url: require("../assets/images/historia-ciencia.png"), categoria: "Romance"},
+        {name: "historia-ciencia", url: require("../assets/images/historia-ciencia.png"), categoria: "Sugestoes"},
+        {name: "homo-spiens", url: require("../assets/images/homo-sapiens.png"), categoria: "Sugestoes"}, 
+        {name: "buraco", url: require("../assets/images/buraco-negro.png"), categoria: "Drama"},
+        {name: "buraco", url: require("../assets/images/buraco-negro.png"), categoria: "Romance"},
+        {name: "1984", url: require("../assets/images/1984.png"), categoria: "Romance"},
+        {name: "1984", url: require("../assets/images/1984.png"), categoria: "Sugestoes"},
+        {name: "brascubas", url: require("../assets/images/brascubas.png"), categoria: "Ficção"},
+        {name: "1984", url: require("../assets/images/1984.png"), categoria: "Ficção"},
+        {name: "emalta", url: require("../assets/images/emalta.png"), categoria: "Drama"},
+        {name: "emalta", url: require("../assets/images/emalta.png"), categoria: "Ficção"},
+        {name: "emalta", url: require("../assets/images/emalta.png"), categoria: "Romance"},
+        {name: "emalta", url: require("../assets/images/emalta.png"), categoria: "Sugestoes"},
+        {name: "casca-noz", url: require("../assets/images/casca-noz.png"), categoria: "Romance"},
+        {name: "casca-noz", url: require("../assets/images/casca-noz.png"), categoria: "Sugestoes"},
+        {name: "historia-ciencia", url: require("../assets/images/historia-ciencia.png"), categoria: "Romance"},
+        {name: "historia-ciencia", url: require("../assets/images/historia-ciencia.png"), categoria: "Sugestoes"},
+        {name: "homo-spiens", url: require("../assets/images/homo-sapiens.png"), categoria: "Sugestoes"}, 
+        {name: "buraco", url: require("../assets/images/buraco-negro.png"), categoria: "Drama"},
+        {name: "buraco", url: require("../assets/images/buraco-negro.png"), categoria: "Romance"},
+        {name: "1984", url: require("../assets/images/1984.png"), categoria: "Romance"},
+        {name: "1984", url: require("../assets/images/1984.png"), categoria: "Sugestoes"},
+        {name: "brascubas", url: require("../assets/images/brascubas.png"), categoria: "Ficção"},
+        {name: "1984", url: require("../assets/images/1984.png"), categoria: "Ficção"},
+        {name: "emalta", url: require("../assets/images/emalta.png"), categoria: "Drama"},
+        {name: "emalta", url: require("../assets/images/emalta.png"), categoria: "Ficção"},
+        {name: "emalta", url: require("../assets/images/emalta.png"), categoria: "Romance"},
+        {name: "emalta", url: require("../assets/images/emalta.png"), categoria: "Sugestoes"},
+        {name: "casca-noz", url: require("../assets/images/casca-noz.png"), categoria: "Romance"},
+        {name: "casca-noz", url: require("../assets/images/casca-noz.png"), categoria: "Sugestoes"},
+        {name: "historia-ciencia", url: require("../assets/images/historia-ciencia.png"), categoria: "Romance"},
+        {name: "historia-ciencia", url: require("../assets/images/historia-ciencia.png"), categoria: "Sugestoes"},
+        {name: "homo-spiens", url: require("../assets/images/homo-sapiens.png"), categoria: "Sugestoes"}, 
+        {name: "buraco", url: require("../assets/images/buraco-negro.png"), categoria: "Drama"},
+        {name: "buraco", url: require("../assets/images/buraco-negro.png"), categoria: "Romance"},
+        {name: "1984", url: require("../assets/images/1984.png"), categoria: "Romance"},
+        {name: "1984", url: require("../assets/images/1984.png"), categoria: "Sugestoes"},
+        {name: "brascubas", url: require("../assets/images/brascubas.png"), categoria: "Ficção"},
+        {name: "1984", url: require("../assets/images/1984.png"), categoria: "Ficção"},
+        {name: "emalta", url: require("../assets/images/emalta.png"), categoria: "Drama"},
+        {name: "emalta", url: require("../assets/images/emalta.png"), categoria: "Ficção"},
+        {name: "emalta", url: require("../assets/images/emalta.png"), categoria: "Romance"},
+        {name: "emalta", url: require("../assets/images/emalta.png"), categoria: "Sugestoes"},
+        {name: "casca-noz", url: require("../assets/images/casca-noz.png"), categoria: "Romance"},
+        {name: "casca-noz", url: require("../assets/images/casca-noz.png"), categoria: "Sugestoes"},
+        {name: "historia-ciencia", url: require("../assets/images/historia-ciencia.png"), categoria: "Romance"},
+        {name: "historia-ciencia", url: require("../assets/images/historia-ciencia.png"), categoria: "Sugestoes"},
+        {name: "homo-spiens", url: require("../assets/images/homo-sapiens.png"), categoria: "Sugestoes"}, 
+        {name: "buraco", url: require("../assets/images/buraco-negro.png"), categoria: "Drama"},
+        {name: "buraco", url: require("../assets/images/buraco-negro.png"), categoria: "Romance"},
+        {name: "1984", url: require("../assets/images/1984.png"), categoria: "Romance"},
+        {name: "1984", url: require("../assets/images/1984.png"), categoria: "Sugestoes"},
+        {name: "brascubas", url: require("../assets/images/brascubas.png"), categoria: "Ficção"},
+        {name: "1984", url: require("../assets/images/1984.png"), categoria: "Ficção"},
+        {name: "emalta", url: require("../assets/images/emalta.png"), categoria: "Drama"},
+        {name: "emalta", url: require("../assets/images/emalta.png"), categoria: "Ficção"},
+        {name: "emalta", url: require("../assets/images/emalta.png"), categoria: "Romance"},
+        {name: "emalta", url: require("../assets/images/emalta.png"), categoria: "Sugestoes"},
+        {name: "casca-noz", url: require("../assets/images/casca-noz.png"), categoria: "Romance"},
+        {name: "casca-noz", url: require("../assets/images/casca-noz.png"), categoria: "Sugestoes"},
+        {name: "historia-ciencia", url: require("../assets/images/historia-ciencia.png"), categoria: "Romance"},
+        {name: "historia-ciencia", url: require("../assets/images/historia-ciencia.png"), categoria: "Sugestoes"},
+        {name: "homo-spiens", url: require("../assets/images/homo-sapiens.png"), categoria: "Sugestoes"}, 
+        {name: "buraco", url: require("../assets/images/buraco-negro.png"), categoria: "Drama"},
+        {name: "buraco", url: require("../assets/images/buraco-negro.png"), categoria: "Romance"},
+        {name: "1984", url: require("../assets/images/1984.png"), categoria: "Romance"},
+        {name: "1984", url: require("../assets/images/1984.png"), categoria: "Sugestoes"},
+        {name: "brascubas", url: require("../assets/images/brascubas.png"), categoria: "Ficção"},
+        {name: "1984", url: require("../assets/images/1984.png"), categoria: "Ficção"},
+        {name: "emalta", url: require("../assets/images/emalta.png"), categoria: "Drama"},
+        {name: "emalta", url: require("../assets/images/emalta.png"), categoria: "Ficção"},
+        {name: "emalta", url: require("../assets/images/emalta.png"), categoria: "Romance"},
+        {name: "emalta", url: require("../assets/images/emalta.png"), categoria: "Sugestoes"},
+        {name: "casca-noz", url: require("../assets/images/casca-noz.png"), categoria: "Romance"},
+        {name: "casca-noz", url: require("../assets/images/casca-noz.png"), categoria: "Sugestoes"},
+        {name: "historia-ciencia", url: require("../assets/images/historia-ciencia.png"), categoria: "Romance"},
+        {name: "historia-ciencia", url: require("../assets/images/historia-ciencia.png"), categoria: "Sugestoes"},
+        {name: "homo-spiens", url: require("../assets/images/homo-sapiens.png"), categoria: "Sugestoes"}, 
+        {name: "buraco", url: require("../assets/images/buraco-negro.png"), categoria: "Drama"},
+        {name: "buraco", url: require("../assets/images/buraco-negro.png"), categoria: "Romance"},
+        {name: "1984", url: require("../assets/images/1984.png"), categoria: "Romance"},
+        {name: "1984", url: require("../assets/images/1984.png"), categoria: "Sugestoes"},
+        {name: "brascubas", url: require("../assets/images/brascubas.png"), categoria: "Ficção"},
+        {name: "1984", url: require("../assets/images/1984.png"), categoria: "Ficção"},
+        {name: "emalta", url: require("../assets/images/emalta.png"), categoria: "Drama"},
+        {name: "emalta", url: require("../assets/images/emalta.png"), categoria: "Ficção"},
+        {name: "emalta", url: require("../assets/images/emalta.png"), categoria: "Romance"},
+        {name: "emalta", url: require("../assets/images/emalta.png"), categoria: "Sugestoes"},
+        {name: "casca-noz", url: require("../assets/images/casca-noz.png"), categoria: "Romance"},
+        {name: "casca-noz", url: require("../assets/images/casca-noz.png"), categoria: "Sugestoes"},
+        {name: "historia-ciencia", url: require("../assets/images/historia-ciencia.png"), categoria: "Romance"},
+        {name: "historia-ciencia", url: require("../assets/images/historia-ciencia.png"), categoria: "Sugestoes"},
+        {name: "homo-spiens", url: require("../assets/images/homo-sapiens.png"), categoria: "Sugestoes"}, 
+        {name: "buraco", url: require("../assets/images/buraco-negro.png"), categoria: "Drama"},
+        {name: "buraco", url: require("../assets/images/buraco-negro.png"), categoria: "Romance"},
+        {name: "1984", url: require("../assets/images/1984.png"), categoria: "Romance"},
+        {name: "1984", url: require("../assets/images/1984.png"), categoria: "Sugestoes"},
+        {name: "brascubas", url: require("../assets/images/brascubas.png"), categoria: "Ficção"},
+        {name: "1984", url: require("../assets/images/1984.png"), categoria: "Ficção"},
+        {name: "emalta", url: require("../assets/images/emalta.png"), categoria: "Drama"},
+        {name: "emalta", url: require("../assets/images/emalta.png"), categoria: "Ficção"},
+        {name: "emalta", url: require("../assets/images/emalta.png"), categoria: "Romance"},
+        {name: "emalta", url: require("../assets/images/emalta.png"), categoria: "Sugestoes"},
+        {name: "casca-noz", url: require("../assets/images/casca-noz.png"), categoria: "Romance"},
+        {name: "casca-noz", url: require("../assets/images/casca-noz.png"), categoria: "Sugestoes"},
+        {name: "historia-ciencia", url: require("../assets/images/historia-ciencia.png"), categoria: "Romance"},
+        {name: "historia-ciencia", url: require("../assets/images/historia-ciencia.png"), categoria: "Sugestoes"},
+        {name: "homo-spiens", url: require("../assets/images/homo-sapiens.png"), categoria: "Sugestoes"}, 
+        {name: "buraco", url: require("../assets/images/buraco-negro.png"), categoria: "Drama"},
+        {name: "buraco", url: require("../assets/images/buraco-negro.png"), categoria: "Romance"},
+        {name: "1984", url: require("../assets/images/1984.png"), categoria: "Romance"},
+        {name: "1984", url: require("../assets/images/1984.png"), categoria: "Sugestoes"},
+        {name: "brascubas", url: require("../assets/images/brascubas.png"), categoria: "Ficção"},
+        {name: "1984", url: require("../assets/images/1984.png"), categoria: "Ficção"},
+        {name: "emalta", url: require("../assets/images/emalta.png"), categoria: "Drama"},
+        {name: "emalta", url: require("../assets/images/emalta.png"), categoria: "Ficção"},
+        {name: "emalta", url: require("../assets/images/emalta.png"), categoria: "Romance"},
+        {name: "emalta", url: require("../assets/images/emalta.png"), categoria: "Sugestoes"},
+        {name: "casca-noz", url: require("../assets/images/casca-noz.png"), categoria: "Romance"},
+        {name: "casca-noz", url: require("../assets/images/casca-noz.png"), categoria: "Sugestoes"},
+        {name: "historia-ciencia", url: require("../assets/images/historia-ciencia.png"), categoria: "Romance"},
+        {name: "historia-ciencia", url: require("../assets/images/historia-ciencia.png"), categoria: "Sugestoes"},
+        {name: "homo-spiens", url: require("../assets/images/homo-sapiens.png"), categoria: "Sugestoes"}, 
+        {name: "buraco", url: require("../assets/images/buraco-negro.png"), categoria: "Drama"},
+        {name: "buraco", url: require("../assets/images/buraco-negro.png"), categoria: "Romance"},
+        {name: "1984", url: require("../assets/images/1984.png"), categoria: "Romance"},
+        {name: "1984", url: require("../assets/images/1984.png"), categoria: "Sugestoes"},
+        {name: "brascubas", url: require("../assets/images/brascubas.png"), categoria: "Ficção"},
+        {name: "1984", url: require("../assets/images/1984.png"), categoria: "Ficção"},
+        {name: "emalta", url: require("../assets/images/emalta.png"), categoria: "Drama"},
+        {name: "emalta", url: require("../assets/images/emalta.png"), categoria: "Ficção"},
+        {name: "emalta", url: require("../assets/images/emalta.png"), categoria: "Romance"},
+        {name: "emalta", url: require("../assets/images/emalta.png"), categoria: "Sugestoes"},
+        {name: "casca-noz", url: require("../assets/images/casca-noz.png"), categoria: "Romance"},
+        {name: "casca-noz", url: require("../assets/images/casca-noz.png"), categoria: "Sugestoes"},
+        {name: "historia-ciencia", url: require("../assets/images/historia-ciencia.png"), categoria: "Romance"},
+        {name: "historia-ciencia", url: require("../assets/images/historia-ciencia.png"), categoria: "Sugestoes"},
+        {name: "homo-spiens", url: require("../assets/images/homo-sapiens.png"), categoria: "Sugestoes"}, 
+        {name: "buraco", url: require("../assets/images/buraco-negro.png"), categoria: "Drama"},
+        
+
       ],
       categorias: [
         {title: "Sugestoes", slogan: "Para você", desc: "genero textual que tem como caracteristica..."},
@@ -76,5 +272,11 @@
       font-family: 'Inter', sans-serif;
   }
   /* ............. */
-  
+      #img {
+        cursor: pointer;
+        transition: .2s;
+    }
+    #img:hover {
+        transform: scale(1.05);
+    }
 </style>
