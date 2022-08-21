@@ -51,12 +51,12 @@
   export default {
     data: () => ({
       items: [
-        {name: "buraco", url: require("../assets/images/buraco-negro.png"), categoria: "Romance"},
-        {name: "1984", url: require("../assets/images/1984.png"), categoria: "Romance"},
-        {name: "1984", url: require("../assets/images/1984.png"), categoria: "Sugestoes"},
-        {name: "brascubas", url: require("../assets/images/brascubas.png"), categoria: "Ficção"},
-        {name: "1984", url: require("../assets/images/1984.png"), categoria: "Ficção"},
-        {name: "emalta", url: require("../assets/images/emalta.png"), categoria: "Drama"},
+        {name: "buraco", url: require("../assets/images/buraco-negro.png"), categoria: "Romance", to: "/livro"},
+        {name: "1984", url: require("../assets/images/1984.png"), categoria: "Romance", to: "/livro"},
+        {name: "1984", url: require("../assets/images/1984.png"), categoria: "Sugestoes", to: "/livro"},
+        {name: "brascubas", url: require("../assets/images/brascubas.png"), categoria: "Ficção", to: "/livro"},
+        {name: "1984", url: require("../assets/images/1984.png"), categoria: "Ficção", to: "/livro"},
+        {name: "emalta", url: require("../assets/images/emalta.png"), categoria: "Drama", to: "/livro"},
         {name: "emalta", url: require("../assets/images/emalta.png"), categoria: "Ficção"},
         {name: "emalta", url: require("../assets/images/emalta.png"), categoria: "Romance"},
         {name: "emalta", url: require("../assets/images/emalta.png"), categoria: "Sugestoes"},
