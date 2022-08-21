@@ -3,7 +3,7 @@
     <v-row style="background: linear-gradient(180deg, #114B5F 0%, rgba(217, 217, 217, 0) 100%);" class="pa-16 pt-8 d-flex justify-center" >
       <v-col> 
         <v-div class=" d-flex justify-end pt-5 pr-16" style="cursor: pointer;">
-          <v-img src="./images/1984.png" max-width="270px"></v-img>
+          <v-img src="../assets/images/emalta.png" max-width="270px"></v-img>
         </v-div>
       </v-col>
       <v-col class="col-8 d-flex align-self-center " color="primary" style="color: #FFF; cursor: pointer;">
