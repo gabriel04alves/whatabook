@@ -50,8 +50,8 @@ export default {
       this.user = {};
     },
     login() {
-      if (this.user.email === "gabriel" && this.user.password === "gabriel") {
-        this.$router.push({ name: "categorias" });
+      if (this.user.email === "gabriel52.alves@gmail.com" && this.user.password === "gabriel") {
+        this.$router.push({ name: "home" });
       } else {
         this.errorLogin = true;
       }
