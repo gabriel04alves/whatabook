@@ -20,7 +20,7 @@
             <v-col class="text-start">Editora</v-col>
           </v-row>
           <v-row class="mt-5" style="display: flex; justify-content: center;"> 
-            <v-btn plain small dark></v-btn>
+            <v-btn plain small dark>
               <v-icon>mdi-information-outline</v-icon>
               mais
             </v-btn>
@@ -30,7 +30,7 @@
     </v-row>
     <v-row>
       <v-row  v-for="item in categorias" :key="item" class="pt-5 pb-5">
-        <v-sheet elevation="9" width="calc(110.5vh - 200px)" dark color="#114B5F">
+        <v-sheet elevation="9" width="calc(135rem - 200px)" dark color="#114B5F">
           <h3 class="pt-5 text-uppercase font-weight-light" style="padding-left: 5%;">{{ item.slogan }}</h3>
           <v-slide-group class="pt-2 pb-4 pr-4 pl-4" show-arrows color="#114B5F">
               <v-slide-item v-for="imagem in items" :key="imagem" v-show="imagem.categoria == item.title">

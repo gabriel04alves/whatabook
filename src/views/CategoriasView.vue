@@ -17,7 +17,7 @@
     </v-carousel>
     <v-row class="pt-8">
       <v-row v-for="item in categorias" :key="item" class="pt-0 pb-3">
-        <v-sheet  width="calc(95vh - 200px)" dark color="#FFF" style="color: #114B5F">
+        <v-sheet width="calc(135rem - 200px)" dark color="#FFF" style="color: #114B5F">
           <h3 class="pt-5 text-uppercase font-weight-light" style="padding-left: 5%;">{{ item.slogan }}</h3>
           <v-slide-group  class="pt-2 pb-4 pr-4 pl-4" show-arrows>
               <v-slide-item v-for="imagem in items" :key="imagem" v-show="imagem.categoria == item.title">
