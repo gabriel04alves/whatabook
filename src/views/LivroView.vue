@@ -27,8 +27,11 @@
                         <h3 class="text-uppercase text-center text-decoration-underline pt-3 pb-3" style="color: #114B5F;"> Publique uma resenha:</h3>
                         <div class="ma-5">
                             <v-text-field label="Título" outlined color="#114B5F"></v-text-field>
-                                    <v-textarea color="#114B5F" outlined name="input-7-4" label="Resenha"></v-textarea>
+                            <v-textarea color="#114B5F" outlined name="input-7-4" label="Resenha"></v-textarea>
+                            <v-rating class="" style="" background-color="#F1C40F" color="#F1C40F" empty-icon="mdi-star-outline" full-icon="mdi-star" half-icon="mdi-star-half-full" 
+                            hover length="5" size="25" value="1.5"></v-rating>
                         </div>
+                         
                         <v-card-actions>
                         <v-spacer></v-spacer>
                         <v-btn color="#FF0000" text @click="dialog = false"> Cancelar </v-btn>

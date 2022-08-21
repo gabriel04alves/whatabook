@@ -20,7 +20,7 @@
             <v-col class="text-start">Editora</v-col>
           </v-row>
           <v-row class="mt-5" style="display: flex; justify-content: center;"> 
-            <v-btn plain small dark>
+            <v-btn plain small dark link to="/livro">
               <v-icon>mdi-information-outline</v-icon>
               mais
             </v-btn>
@@ -36,7 +36,7 @@
               <v-slide-item v-for="imagem in items" :key="imagem" v-show="imagem.categoria == item.title">
                 <v-div  class="ma-4" style="height: 100%; width: 8.1rem;" >
                   <v-row class="fill-height" justify="center" >
-                    <img id="img" class="ma-2" :src="imagem.url" height="200" width="140">
+                    <img id="img" class="ma-2" :src="imagem.url" height="200" width="140" to="/livro">
                   </v-row>
                 </v-div>
               </v-slide-item>
