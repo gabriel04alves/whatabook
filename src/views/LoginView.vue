@@ -1,7 +1,8 @@
 <template>
-    <v-html class="d-flex justify-space-between">
+    <div class="d-flex justify-space-between">
         <div class="d-flex justify-center align-center" id="conteudo" style="background-color: #114B5F; height: 62rem; width: 45%">
           <v-img src="./images/logobranco.png" max-width="70%"></v-img>
+          <div><p class="text-uppercase" style="color:#114B5F; ">Editora? Acesse aqui.</p></div>
         </div>
         <div class="d-flex justify-center align-center" style="width: 55%;">
           <v-card class="d-flex flex-column justify-start align-center" style="background-color: #BCEEFF; width: 40%; height: 55%;">
@@ -33,7 +34,7 @@
             </v-form>
           </v-card>
         </div>        
-    </v-html>
+    </div>
 </template>
 
 <script>
