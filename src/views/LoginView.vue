@@ -10,14 +10,7 @@
             <p class="font-weight-bold mt-2" style="color: #114B5F">Faça seu login</p>
             <v-form class="">
               <v-text-field label="Email" v-model="user.email" style=""></v-text-field>
-              <v-text-field
-                class="mt-0"
-                label="Senha"
-                v-model="user.password"
-                :type="show ? 'text' : 'password'"
-                :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
-                @click:append="show = !show"
-              ></v-text-field>  
+              <v-text-field class="mt-0" label="Senha" v-model="user.password" :type="show ? 'text' : 'password'" :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'" @click:append="show = !show" ></v-text-field>  
               <v-row class="d-flex justify-center mt-5">
                 <v-btn class="rounded-lg" color="#FFF" style="color: #114B5F;" @click="login">Entrar</v-btn>
               </v-row>
