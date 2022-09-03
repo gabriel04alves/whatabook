@@ -54,7 +54,7 @@
                         </svg>                        
                     </div>
                     <div class="mt-4 d-flex justify-center">
-                        <v-btn style="color:#114B5F">
+                        <v-btn link to="/" style="color:#114B5F">
                                 Inicio
                         </v-btn>                        
                     </div>
