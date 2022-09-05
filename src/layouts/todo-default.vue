@@ -1,10 +1,10 @@
 <template>
   <v-app>
     <v-app-bar app color="#114B5F" dark elevation="1" class="">
-      <v-div class="d-flex" style="">
-        <v-img class="" src="./images/logobranco.png" max-width="100"></v-img>
+      <div class="d-flex" style="">
+        <v-img class="" src="./images/logobranco.png" max-width="100"></v-img> 
         <v-divider class="mt-9 mb-9" color="#FFF" vertical inset></v-divider>
-        <v-div class="d-flex flex-row justify-space-around ml-9 align-self-center" style=" margin-top: -12%; font-size: 7px;">
+        <div class="d-flex flex-row justify-space-around ml-9 align-self-center" style=" margin-top: -12%; font-size: 7px;">
           <v-row>
             <v-col 
               v-for="item in textos"
@@ -17,11 +17,11 @@
               </v-item>
             </v-col>
           </v-row>
-        </v-div>
+        </div>
         <v-spacer></v-spacer>
-      </v-div>
+      </div>
       <v-spacer></v-spacer>
-      <v-div class="pa-2 mr-auto d-flex" >
+      <div class="pa-2 mr-auto d-flex" >
         <v-row>
         <v-menu
           v-for="([text, rounded], index) in btns"
@@ -46,7 +46,8 @@
               :key="item.title"
               link :to= "item.to"
             >
-              <v-list-item-title> {{ item.title}} </v-list-item-title>
+              
+              <v-list-item-title> <v-icon> {{item.icon}} </v-icon> {{ item.title}} </v-list-item-title>
             </v-list-item>
           </v-list>
           <v-divider></v-divider>
@@ -56,12 +57,12 @@
               :key="item.title"
               link :to = "item.to"
             >
-              <v-list-item-title> {{item.title}}</v-list-item-title>
+              <v-list-item-title> <v-icon> {{item.icon}} </v-icon> {{item.title}}</v-list-item-title>
             </v-list-item>
           </v-list>
         </v-menu>
       </v-row>
-      </v-div>
+      </div>
       
     </v-app-bar>
       <v-main><router-view></router-view> </v-main>
@@ -78,10 +79,10 @@
       ],
       colors: [''],
       items: [
-        { title: 'Meu Perfil', to:"/perfil"}, 
-        { title: 'Configurações', to:"/configuracoes"},
+        { title: 'Meu Perfil', to:"/perfil", icon:"mdi-account-edit"}, 
+        { title: 'Configurações', to:"/configuracoes", icon:"mdi-cog"},
         ],
-      itemsz: [{ title:'Sair', to:"/login" },],
+      itemsz: [{ title:'Sair', to:"/login", icon: "mdi-logout" },],
       textos: [
         { title:'Inicio', to:"/" }, 
         { title:'Categorias', to:"/categorias"}, 
