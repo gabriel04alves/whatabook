@@ -88,6 +88,7 @@
             password: '',
             passwordConfirm: '',
             step: 1,
+            show: false,
         }
     },
     computed: {

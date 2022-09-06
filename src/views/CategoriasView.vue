@@ -5,7 +5,7 @@
       </v-main>
     </div>
     <v-carousel class="" style="width: 100%;" v-model="model" cycle hide-delimiter-background :show-arrows="false">
-      <v-carousel-item v-for="(color, i) in colors" :key="color" height="110%" width="100%" >
+      <v-carousel-item v-for="(color, i) in colors" :key="i" height="110%" width="100%" >
         <v-sheet :color="color" height="110%" width="100%" tile >
           <v-row class="fill-height" align="center" justify="center" >
             <div class="text-h2">

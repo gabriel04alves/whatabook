@@ -29,7 +29,7 @@
       </v-col>
     </v-row>
     <v-row>
-      <v-row  v-for="(item,index) in categorias" :key="index" class="pt-5 pb-5">
+      <v-row v-for="(item,index) in categorias" :key="index" class="pt-5 pb-5">
         <v-sheet elevation="9" width="calc(135rem - 200px)" dark color="#114B5F">
           <h3 class="pt-5 text-uppercase font-weight-light" style="padding-left: 5%;">{{ item.slogan }}</h3>
           <v-slide-group class="pt-2 pb-4 pr-4 pl-4" show-arrows color="#114B5F">
