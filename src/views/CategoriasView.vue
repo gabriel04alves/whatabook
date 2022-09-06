@@ -1,9 +1,7 @@
 <template>
   <div>
-    <div>
-      <v-main class="text-center" style="color: #114B5F; font-size: 150%;">CONHEÇA TÍTULOS POR <b>CATEGORIAS</b> 
-      </v-main>
-    </div>
+    <v-main class="text-center" style="color: #114B5F; font-size: 150%;">CONHEÇA TÍTULOS POR <b>CATEGORIAS</b> 
+    </v-main>
     <v-carousel class="" style="width: 100%;" v-model="model" cycle hide-delimiter-background :show-arrows="false">
       <v-carousel-item v-for="(color, i) in colors" :key="i" height="110%" width="100%" >
         <v-sheet :color="color" height="110%" width="100%" tile >

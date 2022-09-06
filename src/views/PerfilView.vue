@@ -6,6 +6,7 @@
         <h3 class="text-center font-weight-light" style="color: #114B5F;">@user.name</h3>
         <p class="mt-4">Aqui uma pequena biografia</p>
         <div class="d-flex justify-center align-center"><v-icon color="#114B5F">mdi-cake-variant-outline</v-icon> 11/12/2004</div>
+        <div class="d-flex justify-center align-center mt-1"><v-icon color="#114B5F">mdi-map-marker</v-icon> Joinville, SC</div>
         <v-row class="d-flex justify-center mt-5">
             <v-btn link to="/editarperfil" dark color="#114B5F"><v-icon>mdi-pencil</v-icon>Editar perfil</v-btn>
         </v-row>

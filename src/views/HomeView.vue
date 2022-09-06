@@ -14,12 +14,12 @@
           <v-row class="text-justify">
             Escrita em plena Segunda Guerra Mundial e publicada em 1945 depois de ter sido rejeitada por várias editoras, essa pequena narrativa causou desconforto ao satirizar ferozmente a ditadura stalinista numa época em que os soviéticos ainda eram aliados do Ocidente na luta contra o eixo nazifascista. De fato, são claras as referências: o despótico Napoleão seria Stálin, o banido Bola-de-Neve seria Trotsky, e os eventos políticos - expurgos, instituição de um estado policial, deturpação tendenciosa da História - mimetizam os que estavam em curso na União Soviética. Com o acirramento da Guerra Fria, as mesmas razões que causaram constrangimento na época de sua publicação levaram A revolução dos bichos a ser amplamente usada pelo Ocidente nas décadas seguintes como arma ideológica contra o comunismo. 
           </v-row>
-          <v-row style="display: flex; justify-content: center;">
-            <v-col class="text-end">Autor</v-col>
-            <v-divider vertical color="#FFF"></v-divider>
-            <v-col class="text-start">Editora</v-col>
+          <v-row class="ma-5" style="display: flex; justify-content: center;">
+            <a href="/" class="" style="color: #FFF; text-decoration: none;"><h3 class="text-end">Autor</h3></a>
+            <v-divider class="ma-2" vertical color="#FFF"></v-divider>
+            <a href="/" class="" style="color: #FFF; text-decoration: none;"><h3 class="text-end">Editora</h3></a>
           </v-row>
-          <v-row class="mt-5" style="display: flex; justify-content: center;"> 
+          <v-row class="" style="display: flex; justify-content: center;"> 
             <v-btn plain small dark link to="/livro">
               <v-icon>mdi-information-outline</v-icon>
               mais
