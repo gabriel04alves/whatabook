@@ -33,6 +33,11 @@ const routes = [{
         component: () => import( /* webpackChunkName: "about" */ '../views/PerfilView.vue')
       },
       {
+        path: '/EditarPerfil',
+        name: 'editar-perfil',
+        component: () => import( /* webpackChunkName: "about" */ '../views/EditarPerfilView.vue')
+      },
+      {
         path: '/Configuracoes',
         name: 'configuracoes',
         component: () => import( /* webpackChunkName: "about" */ '../views/ConfigView.vue')
@@ -51,7 +56,7 @@ const routes = [{
         path: '/Editora',
         name: 'editora',
         component: () => import( /* webpackChunkName: "about" */ '../views/LoginEditView.vue')
-      },      {
+      }, {
         path: '/Cadastro',
         name: 'cadastro',
         component: () => import( /* webpackChunkName: "about" */ '../views/CadastroView.vue')
