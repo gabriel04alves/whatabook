@@ -1,5 +1,5 @@
 <template>
-  <v-div>
+  <div>
     <v-row class="ma-10" >
       <v-icon x-large color="#114B5F">mdi-book-heart</v-icon>
       <h1 class="ml-5 text-uppercase" style="color:#114B5F;">Minha lista</h1>
@@ -25,7 +25,7 @@
         </v-sheet>        
       </v-row>
     </v-row>
-  </v-div>
+  </div>
 </template>
 
 <script>

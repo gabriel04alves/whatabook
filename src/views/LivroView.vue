@@ -81,7 +81,7 @@
             <div class="justify-center" style="">
                 <h3 class="text-center text-uppercase text-decoration-undersline mb-0" style="color: #114B5F;">Resenhas da comunidade</h3>
                 <div class="d-flex justify-center" >
-                    <div class="d-flex justify-center flex-column ">
+                    <div data-aos="fade-right"  class="d-flex justify-center flex-column ">
                         <v-card class="rounded-lg ma-5" elevation="4" color="#114B5F" style="width: 35rem;" 
                             v-for="(comentario, index) in resenha" :key="index">
                             <v-col class=" d-flex align-center">
@@ -109,7 +109,6 @@
 export default {
     props: ['items'],
     data: () => ({ 
-      
       power: 75,
       dialog: false,
       novoTitulo: "",

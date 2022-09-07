@@ -1,5 +1,5 @@
 <template>
-    <v-html class="d-flex justify-space-between">
+    <div class="d-flex justify-space-between">
         <div class="d-flex justify-center align-center" id="conteudo" style="background-color: #114B5F; height: 62rem; width: 45%">
           <v-img src="./images/logobranco.png" max-width="70%"></v-img>
         </div>
@@ -33,7 +33,7 @@
             </v-form>
           </v-card>
         </div>        
-    </v-html>
+    </div>
 </template>
 
 <script>
