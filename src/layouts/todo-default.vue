@@ -60,8 +60,18 @@
       
     </v-app-bar>
       <v-main><router-view></router-view> </v-main>
-
-    <v-footer app dark color="#114B5F" style="position: absolute;" class=""><span class="caption">Whatabook &copy; | 2022</span></v-footer>
+    
+    <div style="margin-top: 3%">
+      <v-footer app dark color="#114B5F" style="position: absolute;" class="">
+        <h5 class="font-weight-regular"> <a class="h5 font-weight-regular" style="color: #FFF; text-decoration: none;" href="/">Whatabook</a>  &copy; | 2022</h5>
+        <v-spacer></v-spacer>
+        <div class="d-flex ma-2" style="gap: 15px;">
+          <p class="d-flex" style=""><v-icon>mdi-github</v-icon><a class="text-weight-light" style="color: #FFF; text-decoration: none;" href="https://github.com/gabriel04alves">Gabriel Alves</a></p>
+          <p class="d-flex" style=""><v-icon>mdi-github</v-icon><a class="text-weight-light" style="color: #FFF; text-decoration: none;" href="https://github.com/EuAlmeida">João Almeida</a></p>
+          <p class="d-flex" style=""><v-icon>mdi-github</v-icon><a class="text-weight-light" style="color: #FFF; text-decoration: none;" href="https://github.com/yasmarcelino">Yas Marcelino</a></p>
+        </div>
+      </v-footer>
+    </div>
   </v-app>
 </template>
 
