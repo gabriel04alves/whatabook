@@ -46,7 +46,7 @@ export default {
     login() {
       if (this.user.email === "gabriel52.alves@gmail.com" && this.user.password === "gabriel") {
         this.$router.push({ name: "home" });
-      } else {
+      } else {s
         this.errorLogin = true;
       }
     },
