@@ -17,7 +17,7 @@
           <v-row class="ma-5" style="display: flex; justify-content: center;">
             <a href="/autor" class="" style="color: #FFF; text-decoration: none;"><h4 class="text-end">Autor</h4></a>
             <v-divider class="ma-2" vertical color="#FFF"></v-divider>
-            <a href="/" class="" style="color: #FFF; text-decoration: none;"><h4 class="text-end">Editora</h4></a>
+            <a href="/editora" class="" style="color: #FFF; text-decoration: none;"><h4 class="text-end">Editora</h4></a>
           </v-row>
           <v-row class="" style="display: flex; justify-content: center;"> 
             <v-btn plain small dark link to="/livro">

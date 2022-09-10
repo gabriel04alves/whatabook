@@ -43,6 +43,11 @@ const routes = [{
         component: () => import( /* webpackChunkName: "about" */ '../views/AutorView.vue')
       },
       {
+        path: '/Editora',
+        name: 'editora',
+        component: () => import( /* webpackChunkName: "about" */ '../views/EditoraView.vue')
+      },
+      {
         path: '/Configuracoes',
         name: 'configuracoes',
         component: () => import( /* webpackChunkName: "about" */ '../views/ConfigView.vue')
@@ -58,10 +63,11 @@ const routes = [{
         component: () => import( /* webpackChunkName: "about" */ '../views/LoginView.vue')
       },
       {
-        path: '/Editora',
-        name: 'editora',
+        path: '/LoginEditora',
+        name: 'logineditora',
         component: () => import( /* webpackChunkName: "about" */ '../views/LoginEditView.vue')
-      }, {
+      },
+      {
         path: '/Cadastro',
         name: 'cadastro',
         component: () => import( /* webpackChunkName: "about" */ '../views/CadastroView.vue')
