@@ -5,7 +5,7 @@
       <h1 class="ml-5 text-uppercase" style="color:#114B5F;">Minha lista</h1>
     </v-row>
     <v-row class="">
-      <v-row v-for="item in categorias" :key="item" class="pt-0 pb-3">
+      <v-row data-aos="flip-up" v-for="item in categorias" :key="item" class="pt-0 pb-3">
         <v-sheet width="calc(135rem - 200px)" color="#FFF" style="color: #114B5F">
           <h3 class="pt-5 text-uppercase font-weight-light" style="padding-left: 5%;">{{ item.slogan }}</h3>
           <v-slide-group  class="pt-2 pb-4 pr-4 pl-4" show-arrows>
