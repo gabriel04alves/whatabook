@@ -2,7 +2,7 @@
   <v-app>
     <v-app-bar app color="#114B5F" dark elevation="1" class="">
       <div class="d-flex" style="">
-        <router-link to="/" tag="button"><v-img class="" src="./images/logobranco.png" max-width="100"></v-img> </router-link> 
+        <router-link to="/" tag="button"><v-img data-aos="zoom-in" class="" src="./images/logobranco.png" max-width="100"></v-img> </router-link> 
         <v-divider class="mt-9 mb-9" color="#FFF" vertical inset></v-divider>
         <div class="d-flex flex-row justify-space-around ml-9 align-self-center" style=" margin-top: -12%; font-size: 7px;">
           <v-row>

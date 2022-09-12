@@ -1,16 +1,15 @@
 <template>
     <div class="d-flex justify-space-between">
         <div class="d-flex justify-center align-center" id="conteudo" style="background-color: #114B5F; height: 62rem; width: 45%">
-          <v-img src="./images/logobranco.png" max-width="70%"></v-img>
-          <div><p class="text-uppercase" style="color:#114B5F; ">Editora? Acesse aqui.</p></div>
+          <v-img data-aos="zoom-in" src="./images/logobranco.png" max-width="70%"></v-img>
         </div>
-        <div class="d-flex justify-center align-center" style="width: 55%;">
+        <div data-aos="flip-up" class="d-flex justify-center align-center" style="width: 55%;">
           <v-card class="d-flex flex-column justify-start align-center" style="background-color: #BCEEFF; width: 40%; height: 55%;">
             <h2 class="text-decoration-underline mt-10 font-weight-light" style="color: #114B5F">BEM VINDO</h2> 
             <p class="font-weight-bold mt-2" style="color: #114B5F">Faça seu login</p>
             <v-form class="">
-              <v-text-field label="Email" v-model="user.email" style=""></v-text-field>
-              <v-text-field class="mt-0" label="Senha" v-model="user.password" :type="show ? 'text' : 'password'" :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'" @click:append="show = !show" ></v-text-field>  
+              <v-text-field color="#114B5F" label="Email" v-model="user.email" style=""></v-text-field>
+              <v-text-field color="#114B5F" class="mt-0" label="Senha" v-model="user.password" :type="show ? 'text' : 'password'" :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'" @click:append="show = !show" ></v-text-field>  
               <v-row class="d-flex justify-center mt-5">
                 <v-btn class="rounded-lg" color="#FFF" style="color: #114B5F;" @click="login">Entrar</v-btn>
               </v-row>

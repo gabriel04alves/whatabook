@@ -1,11 +1,11 @@
 <template>
     <div class="d-flex justify-space-between">
         <div class="d-flex justify-center align-center" id="conteudo" style="background-color: #114B5F; height: 62rem; width: 45%">
-          <v-img src="./images/logobranco.png" max-width="70%"></v-img>
+          <v-img data-aos="zoom-in" src="./images/logobranco.png" max-width="70%"></v-img>
         </div>
         <div class="d-flex justify-center align-center" style="width: 55%;">
           <!-- <v-card class="d-flex flex-column justify-start align-center" style="background-color: #BCEEFF; width: 40%; height: 55%;"></v-card> -->
-            <v-card max-width="500" class="mx-auto pa-4" style="background-color: #BCEEFF; width: 40%; height: 55%;">
+            <v-card data-aos="zoom-in-up" max-width="500" class="mx-auto pa-4" style="background-color: #BCEEFF; width: 40%; height: 55%;">
                 <v-card-title class=" justify-space-between">
                     <span class="text-h6 font-weight-bold text-decoration-underline" style="color:#114B5F;">{{ currentTitle }}</span>
                     <v-avatar color="#114B5F" class="subheading white--text" size="24" v-text="step" style=""></v-avatar>
