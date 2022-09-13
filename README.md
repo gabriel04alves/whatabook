@@ -1,4 +1,4 @@
-# whatbook
+# whatabook
 
 ## Project setup
 ```
