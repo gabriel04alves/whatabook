@@ -1,7 +1,9 @@
 <template>
     <div class="d-flex justify-space-between">
         <div class="d-flex justify-center align-center" id="conteudo" style="background-color: #114B5F; height: 62rem; width: 45%">
-          <v-img data-aos="zoom-in" src="./images/logobranco.png" max-width="70%"></v-img>
+          <div class="d-flex justify-center" style="width: 100%;">
+            <v-img data-aos="zoom-in" src="./images/logobranco.png" max-width="40rem"></v-img>
+          </div>
         </div>
         <div data-aos="flip-up" class="d-flex justify-center align-center" style="width: 55%;">
           <v-card class="d-flex flex-column justify-start align-center" style="background-color: #BCEEFF; width: 40%; height: 55%;">
@@ -9,14 +11,14 @@
             <p class="font-weight-bold mt-2" style="color: #114B5F">Faça seu login</p>
             <v-form class="">
               <v-text-field color="#114B5F" label="Email" v-model="user.email" style="" required outlined></v-text-field>
-              <v-text-field color="#114B5F" class="mt-0" label="Senha" v-model="user.password" :type="show ? 'text' : 'password'" :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'" @click:append="show = !show" required outlined></v-text-field>  
-              <v-row class="d-flex justify-center mt-5">
+              <v-text-field color="#114B5F" class="" label="Senha" v-model="user.password" :type="show ? 'text' : 'password'" :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'" @click:append="show = !show" required outlined></v-text-field>  
+              <v-row class="d-flex justify-center">
                 <v-btn class="rounded-lg" color="#FFF" style="color: #114B5F;" @click="login">Entrar</v-btn>
               </v-row>
               <v-row class="d-flex justify-center mt-6">
                 <v-btn text small><h5 class="text-decoration-underline text-uppercase" style="color: #114B5F">esqueceu sua senha?</h5></v-btn> 
               </v-row>
-              <v-row class="d-flex justify-center mt-6 " style="gap: 5%;">
+              <v-row class="d-flex justify-center mt-5 " style="gap: 5%;">
                 <v-btn color="#114B5F" icon small><v-icon>mdi-google</v-icon></v-btn>
                 <v-btn color="#114B5F" icon small><v-icon>mdi-facebook</v-icon></v-btn>
               </v-row>
@@ -25,7 +27,7 @@
               </v-row>       
             </v-form>
           </v-card>
-        </div>        
+        </div>
     </div>
 </template>
 
