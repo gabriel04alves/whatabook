@@ -24,7 +24,12 @@
               </v-row>
               <v-row class="d-flex justify-center mt-16">
                 <v-btn class="text-uppercase rounded-lg font-weight-medium" color="#FFF" style="color: #114B5F;" link to="/cadastro">cadastre-se</v-btn>
-              </v-row>       
+              </v-row>
+              <div class="d-flex justify-center mt-6">
+                <router-link to="/cadastroeditora" tag="button">
+                  <p class="font-italic text-center text-decoration-underline" style="color: #114B5F;">Editora? Acesse aqui</p>
+                </router-link>                  
+              </div>
             </v-form>
           </v-card>
         </div>

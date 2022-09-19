@@ -73,6 +73,11 @@ const routes = [{
         component: () => import( /* webpackChunkName: "about" */ '../views/CadastroView.vue')
       },
       {
+        path: '/CadastroEditora',
+        name: 'cadastroedit',
+        component: () => import( /* webpackChunkName: "about" */ '../views/CadastroeditoraView.vue')
+        },
+      {
         path: '/Admin',
         name: 'admin',
         component: () => import( /* webpackChunkName: "about" */ '../views/LoginAdminView.vue')
