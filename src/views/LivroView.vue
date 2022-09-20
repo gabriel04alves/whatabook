@@ -9,7 +9,7 @@
         <v-col class="" cols="8">
             <div class="ma-16" style="color: #114B5F;">
                 <h2 class="text-center font-weight-bold">A revolução dos bichos: Um conto de fadas</h2>
-                <a href="/" class="" style="color: #114B5F; text-decoration: none;"><h2 class="text-center font-weight-light">por George Orwell</h2></a> 
+                <div class="d-flex justify-center"><router-link to="/autor" tag="button"><h3 class="text-center font-weight-light">por George Orwell</h3></router-link></div>
                 <h3 class="text-justify font-weight-regular ma-10" >Escrita em plena Segunda Guerra Mundial e publicada em 1945 depois de ter sido rejeitada por várias editoras, essa pequena narrativa causou desconforto ao satirizar ferozmente a ditadura stalinista numa época em que os soviéticos ainda eram aliados do Ocidente na luta contra o eixo nazifascista. De fato, são claras as referências: o despótico Napoleão seria Stálin, o banido Bola-de-Neve seria Trostsky, e os eventos políticos - expurgos, instituição de um estado policial, deturpação tendenciosa da História - mimetizam os que estavam em curso na União Soviética. Com o acirramento da Guerra Fria, as mesmas razões que causaram constrangimento na época de sua publicação levaram A revolução dos bichos a ser amplamente usada pelo Ocidente nas décadas seguintes como arma ideológica contra o comunismo.</h3>
             </div>
             <div class="d-flex justify-center align-end" style="gap: 5%;">
@@ -44,7 +44,21 @@
     </v-row>
     <v-row>
         <v-col cols="4">
-            <div elevation="10" class="d-flex justify-center" style=" color: #114B5F;">
+            <div elevation="10" class="d-flex justify-center" style="color: #114B5F;">
+                <v-card class="" style="width: 30rem; height: 23rem; color: #114B5F;" color="#CAF1FF" >
+                        <h3 class="text-center text-uppercase text-decoration-underline pa-6">Detalhes</h3>
+                        <div class="d-flex justify-center">   
+                            <div class="d-flex flex-column " style="gap: 0.7rem;">
+                                <div class="d-flex flex-row align-center" style="gap: 1rem"><v-icon large color="#114B5F">mdi-account-edit-outline</v-icon> <router-link to="/autor" tag="button"><h3 class="font-weight-regular" style="color: #114B5F">George Orwell</h3></router-link> </div>
+                                <div class="d-flex flex-row align-center" style="gap: 1rem"><v-icon large color="#114B5F">mdi-book-open-page-variant-outline</v-icon><h3 class="font-weight-regular" style="color: #114B5F">156 páginas</h3></div>
+                                <div class="d-flex flex-row align-center" style="gap: 1rem"><v-icon large color="#114B5F">mdi-barcode</v-icon><h3 class="font-weight-regular" style="color: #114B5F">978-853590955</h3></div>
+                                <div class="d-flex flex-row align-center" style="gap: 1rem"><v-icon large color="#114B5F">mdi-calendar</v-icon><h3 class="font-weight-regular" style="color: #114B5F">1ª edição (10 janeiro 2007)</h3></div>
+                                <div class="d-flex flex-row align-center" style="gap: 1rem"><v-icon large color="#114B5F">mdi-translate</v-icon><h3 class="font-weight-regular" style="color: #114B5F">Português</h3></div>
+                            </div>
+                        </div> 
+                </v-card>
+            </div>
+            <div elevation="10" class="d-flex justify-center mt-10" style=" color: #114B5F;">
                 <v-card class="" style="width: 30rem; height: 20rem; color: #114B5F;" color="#CAF1FF" >
                     <h3 class="text-center text-uppercase text-decoration-underline pa-6">Avaliações</h3>
                     <div class="pa-5">
