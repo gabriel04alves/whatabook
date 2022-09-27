@@ -61,7 +61,7 @@
     </v-app-bar>
       <v-main><router-view></router-view> </v-main>
     
-    <div style="margin-top: 3%">
+    <div style="margin-top: 7%">
       <v-footer app dark color="#114B5F" style="position: absolute;" class="">
         <h5 class="font-weight-regular"> <a class="h5 font-weight-regular" style="color: #FFF; text-decoration: none;" href="/">Whatabook</a>  &copy; | 2022</h5>
         <v-spacer></v-spacer>
