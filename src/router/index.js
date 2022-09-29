@@ -18,8 +18,9 @@ const routes = [{
         component: () => import( /* webpackChunkName: "about" */ '../views/CategoriasView.vue')
       },
       {
-        path: '/Livro',
+        path: `/livro/:id`,
         name: 'livro',
+        props: true,
         component: () => import( /* webpackChunkName: "about" */ '../views/LivroView.vue')
       },
       {
@@ -81,7 +82,7 @@ const routes = [{
         path: '/CadastroEditora',
         name: 'cadastroedit',
         component: () => import( /* webpackChunkName: "about" */ '../views/CadastroeditoraView.vue')
-        },
+      },
       {
         path: '/Admin',
         name: 'admin',
