@@ -20,12 +20,12 @@
         <v-sheet width="calc(135rem - 200px)" color="#FFF" style="color: #114B5F">
           <h3 class="pt-5 text-uppercase font-weight-light" style="padding-left: 5%;">{{ item.slogan }}</h3>
           <v-slide-group  class="pt-2 pb-4 pr-4 pl-4" show-arrows>
-              <v-slide-item v-for="imagem in items" :key="imagem" v-show="imagem.categoria == item.title">
-                <div  class="ma-4" style="height: 100%; width: 8.1rem;" >
-                  <v-row class="fill-height" justify="center" >
-                    <router-link :to="imagem.link" tag="button"><img id="img" class="ma-2" :src="imagem.url" height="200" width="140"></router-link>
-                  </v-row>
-                </div>
+              <v-slide-item v-for="imagem in livro" :key="imagem" v-show="imagem.categoria == livro.nomeLivro">
+                <div class="ma-4" style="height: 100%; width: 8.1rem">
+                <v-row class="fill-height" justify="center">
+                  <img @click="irParaLivro(imagem)" id="img" class="ma-2" :src="imagem.imagemLivro" height="200" width="140" />
+                </v-row>
+              </div>
               </v-slide-item>
           </v-slide-group>
         </v-sheet>        
@@ -37,6 +37,7 @@
 <script>
   export default {
     data: () => ({
+      props: [ "livro"],
       model: 0,
       colors: [
         'primary',
@@ -45,103 +46,6 @@
         'red',
         'orange',
       ],
-      items: [
-        {name: "buraco", url: require("../assets/images/buraco-negro.png"), categoria: "Ficção", link: "/livro"},
-        {name: "1984", url: require("../assets/images/1984.png"), categoria: "Ficção", link: "/livro"},
-        {name: "brascubas", url: require("../assets/images/brascubas.png"), categoria: "Ficção", link: "/livro"},
-        {name: "casca-noz", url: require("../assets/images/casca-noz.png"), categoria: "Ficção", link: "/livro"},
-        {name: "emalta", url: require("../assets/images/emalta.png"), categoria: "Ficção", link: "/livro"},
-        {name: "historia-ciencia", url: require("../assets/images/historia-ciencia.png"), categoria: "Ficção", link: "/livro"},
-        {name: "homo-sapiens", url: require("../assets/images/homo-sapiens.png"), categoria: "Ficção", link: "/livro"},        {name: "buraco", url: require("../assets/images/buraco-negro.png"), categoria: "Ficção", link: "/livro"},
-        {name: "1984", url: require("../assets/images/1984.png"), categoria: "Ficção", link: "/livro"},
-        {name: "brascubas", url: require("../assets/images/brascubas.png"), categoria: "Ficção", link: "/livro"},
-        {name: "casca-noz", url: require("../assets/images/casca-noz.png"), categoria: "Ficção", link: "/livro"},
-        {name: "emalta", url: require("../assets/images/emalta.png"), categoria: "Ficção", link: "/livro"},
-        {name: "historia-ciencia", url: require("../assets/images/historia-ciencia.png"), categoria: "Ficção", link: "/livro"},
-        {name: "homo-sapiens", url: require("../assets/images/homo-sapiens.png"), categoria: "Ficção", link: "/livro"},        {name: "buraco", url: require("../assets/images/buraco-negro.png"), categoria: "Ficção", link: "/livro"},
-        {name: "1984", url: require("../assets/images/1984.png"), categoria: "Ficção", link: "/livro"},
-        {name: "brascubas", url: require("../assets/images/brascubas.png"), categoria: "Ficção", link: "/livro"},
-        {name: "casca-noz", url: require("../assets/images/casca-noz.png"), categoria: "Ficção", link: "/livro"},
-        {name: "emalta", url: require("../assets/images/emalta.png"), categoria: "Ficção", link: "/livro"},
-        {name: "historia-ciencia", url: require("../assets/images/historia-ciencia.png"), categoria: "Ficção", link: "/livro"},
-        {name: "homo-sapiens", url: require("../assets/images/homo-sapiens.png"), categoria: "Ficção", link: "/livro"},        {name: "buraco", url: require("../assets/images/buraco-negro.png"), categoria: "Ficção", link: "/livro"},
-        {name: "1984", url: require("../assets/images/1984.png"), categoria: "Ficção", link: "/livro"},
-        {name: "brascubas", url: require("../assets/images/brascubas.png"), categoria: "Ficção", link: "/livro"},
-        {name: "casca-noz", url: require("../assets/images/casca-noz.png"), categoria: "Ficção", link: "/livro"},
-        {name: "emalta", url: require("../assets/images/emalta.png"), categoria: "Ficção", link: "/livro"},
-        {name: "historia-ciencia", url: require("../assets/images/historia-ciencia.png"), categoria: "Ficção", link: "/livro"},
-        {name: "homo-sapiens", url: require("../assets/images/homo-sapiens.png"), categoria: "Ficção", link: "/livro"},
-        {name: "buraco", url: require("../assets/images/buraco-negro.png"), categoria: "Drama", link: "/livro"},
-        {name: "1984", url: require("../assets/images/1984.png"), categoria: "Drama", link: "/livro"},
-        {name: "brascubas", url: require("../assets/images/brascubas.png"), categoria: "Drama", link: "/livro"},
-        {name: "casca-noz", url: require("../assets/images/casca-noz.png"), categoria: "Drama", link: "/livro"},
-        {name: "emalta", url: require("../assets/images/emalta.png"), categoria: "Drama", link: "/livro"},
-        {name: "historia-ciencia", url: require("../assets/images/historia-ciencia.png"), categoria: "Drama", link: "/livro"},
-        {name: "homo-sapiens", url: require("../assets/images/homo-sapiens.png"), categoria: "Drama", link: "/livro"},        {name: "buraco", url: require("../assets/images/buraco-negro.png"), categoria: "Drama", link: "/livro"},
-        {name: "1984", url: require("../assets/images/1984.png"), categoria: "Drama", link: "/livro"},
-        {name: "brascubas", url: require("../assets/images/brascubas.png"), categoria: "Drama", link: "/livro"},
-        {name: "casca-noz", url: require("../assets/images/casca-noz.png"), categoria: "Drama", link: "/livro"},
-        {name: "emalta", url: require("../assets/images/emalta.png"), categoria: "Drama", link: "/livro"},
-        {name: "historia-ciencia", url: require("../assets/images/historia-ciencia.png"), categoria: "Drama", link: "/livro"},
-        {name: "homo-sapiens", url: require("../assets/images/homo-sapiens.png"), categoria: "Drama", link: "/livro"},        {name: "buraco", url: require("../assets/images/buraco-negro.png"), categoria: "Drama", link: "/livro"},
-        {name: "1984", url: require("../assets/images/1984.png"), categoria: "Drama", link: "/livro"},
-        {name: "brascubas", url: require("../assets/images/brascubas.png"), categoria: "Drama", link: "/livro"},
-        {name: "casca-noz", url: require("../assets/images/casca-noz.png"), categoria: "Drama", link: "/livro"},
-        {name: "emalta", url: require("../assets/images/emalta.png"), categoria: "Drama", link: "/livro"},
-        {name: "historia-ciencia", url: require("../assets/images/historia-ciencia.png"), categoria: "Drama", link: "/livro"},
-        {name: "homo-sapiens", url: require("../assets/images/homo-sapiens.png"), categoria: "Drama", link: "/livro"},
-        {name: "buraco", url: require("../assets/images/buraco-negro.png"), categoria: "Drama", link: "/livro"},
-        {name: "1984", url: require("../assets/images/1984.png"), categoria: "Drama", link: "/livro"},
-        {name: "brascubas", url: require("../assets/images/brascubas.png"), categoria: "Drama", link: "/livro"},
-        {name: "casca-noz", url: require("../assets/images/casca-noz.png"), categoria: "Drama", link: "/livro"},
-        {name: "emalta", url: require("../assets/images/emalta.png"), categoria: "Drama", link: "/livro"},
-        {name: "historia-ciencia", url: require("../assets/images/historia-ciencia.png"), categoria: "Drama", link: "/livro"},
-        {name: "homo-sapiens", url: require("../assets/images/homo-sapiens.png"), categoria: "Drama", link: "/livro"},
-        {name: "buraco", url: require("../assets/images/buraco-negro.png"), categoria: "Suspense", link: "/livro"},
-        {name: "1984", url: require("../assets/images/1984.png"), categoria: "Suspense", link: "/livro"},
-        {name: "brascubas", url: require("../assets/images/brascubas.png"), categoria: "Suspense", link: "/livro"},
-        {name: "casca-noz", url: require("../assets/images/casca-noz.png"), categoria: "Suspense", link: "/livro"},
-        {name: "emalta", url: require("../assets/images/emalta.png"), categoria: "Suspense", link: "/livro"},
-        {name: "historia-ciencia", url: require("../assets/images/historia-ciencia.png"), categoria: "Suspense", link: "/livro"},
-        {name: "homo-sapiens", url: require("../assets/images/homo-sapiens.png"), categoria: "Suspense", link: "/livro"},        {name: "buraco", url: require("../assets/images/buraco-negro.png"), categoria: "Suspense", link: "/livro"},
-        {name: "1984", url: require("../assets/images/1984.png"), categoria: "Suspense", link: "/livro"},
-        {name: "brascubas", url: require("../assets/images/brascubas.png"), categoria: "Suspense", link: "/livro"},
-        {name: "casca-noz", url: require("../assets/images/casca-noz.png"), categoria: "Suspense", link: "/livro"},
-        {name: "emalta", url: require("../assets/images/emalta.png"), categoria: "Suspense", link: "/livro"},
-        {name: "historia-ciencia", url: require("../assets/images/historia-ciencia.png"), categoria: "Suspense", link: "/livro"},
-        {name: "homo-sapiens", url: require("../assets/images/homo-sapiens.png"), categoria: "Suspense", link: "/livro"},        {name: "buraco", url: require("../assets/images/buraco-negro.png"), categoria: "Suspense", link: "/livro"},
-        {name: "1984", url: require("../assets/images/1984.png"), categoria: "Suspense", link: "/livro"},
-        {name: "brascubas", url: require("../assets/images/brascubas.png"), categoria: "Suspense", link: "/livro"},
-        {name: "casca-noz", url: require("../assets/images/casca-noz.png"), categoria: "Suspense", link: "/livro"},
-        {name: "emalta", url: require("../assets/images/emalta.png"), categoria: "Suspense", link: "/livro"},
-        {name: "historia-ciencia", url: require("../assets/images/historia-ciencia.png"), categoria: "Suspense", link: "/livro"},
-        {name: "homo-sapiens", url: require("../assets/images/homo-sapiens.png"), categoria: "Suspense", link: "/livro"},        {name: "buraco", url: require("../assets/images/buraco-negro.png"), categoria: "Suspense", link: "/livro"},
-        {name: "1984", url: require("../assets/images/1984.png"), categoria: "Suspense", link: "/livro"},
-        {name: "brascubas", url: require("../assets/images/brascubas.png"), categoria: "Suspense", link: "/livro"},
-        {name: "casca-noz", url: require("../assets/images/casca-noz.png"), categoria: "Suspense", link: "/livro"},
-        {name: "emalta", url: require("../assets/images/emalta.png"), categoria: "Suspense", link: "/livro"},
-        {name: "historia-ciencia", url: require("../assets/images/historia-ciencia.png"), categoria: "Suspense", link: "/livro"},
-        {name: "homo-sapiens", url: require("../assets/images/homo-sapiens.png"), categoria: "Suspense", link: "/livro"},
-        {name: "buraco", url: require("../assets/images/buraco-negro.png"), categoria: "Contos", link: "/livro"},
-        {name: "1984", url: require("../assets/images/1984.png"), categoria: "Contos", link: "/livro"},
-        {name: "brascubas", url: require("../assets/images/brascubas.png"), categoria: "Contos", link: "/livro"},
-        {name: "casca-noz", url: require("../assets/images/casca-noz.png"), categoria: "Contos", link: "/livro"},
-        {name: "emalta", url: require("../assets/images/emalta.png"), categoria: "Contos", link: "/livro"},
-        {name: "historia-ciencia", url: require("../assets/images/historia-ciencia.png"), categoria: "Contos", link: "/livro"},
-        {name: "homo-sapiens", url: require("../assets/images/homo-sapiens.png"), categoria: "Contos", link: "/livro"},        {name: "buraco", url: require("../assets/images/buraco-negro.png"), categoria: "Contos", link: "/livro"},
-        {name: "1984", url: require("../assets/images/1984.png"), categoria: "Contos", link: "/livro"},
-        {name: "brascubas", url: require("../assets/images/brascubas.png"), categoria: "Contos", link: "/livro"},
-        {name: "casca-noz", url: require("../assets/images/casca-noz.png"), categoria: "Contos", link: "/livro"},
-        {name: "emalta", url: require("../assets/images/emalta.png"), categoria: "Contos", link: "/livro"},
-        {name: "historia-ciencia", url: require("../assets/images/historia-ciencia.png"), categoria: "Contos", link: "/livro"},
-        {name: "homo-sapiens", url: require("../assets/images/homo-sapiens.png"), categoria: "Contos", link: "/livro"},        {name: "buraco", url: require("../assets/images/buraco-negro.png"), categoria: "Contos", link: "/livro"},
-        {name: "1984", url: require("../assets/images/1984.png"), categoria: "Contos", link: "/livro"},
-        {name: "brascubas", url: require("../assets/images/brascubas.png"), categoria: "Contos", link: "/livro"},
-        {name: "casca-noz", url: require("../assets/images/casca-noz.png"), categoria: "Contos", link: "/livro"},
-        {name: "emalta", url: require("../assets/images/emalta.png"), categoria: "Contos", link: "/livro"},
-        {name: "historia-ciencia", url: require("../assets/images/historia-ciencia.png"), categoria: "Contos", link: "/livro"},
-        {name: "homo-sapiens", url: require("../assets/images/homo-sapiens.png"), categoria: "Contos", link: "/livro"},
-      ],
       categorias: [
         {title: "Ficção", slogan: "FICÇÕES PARA LER EM UM DIA", desc: "genero textual que tem como caracteristica..."},
         {title: "Drama", slogan: "Dramas SUGERIDOS", desc: "genero textual que tem como caracteristica..."},
@@ -149,6 +53,14 @@
         {title: "Contos", slogan: "os melhores contos", desc: "genero textual que tem como caracteristica..."},
       ],
     }),
+    methods: {
+    irParaLivro(imagem) {
+      this.$router.push({
+        name: `livro`,
+        params: { livro: imagem, id: imagem.nomeLivro },
+      });
+    },
+  },
   }
 </script>
 

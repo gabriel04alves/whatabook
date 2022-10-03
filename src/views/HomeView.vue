@@ -1,26 +1,12 @@
 <template>
   <div style="">
-    <v-row style="background: linear-gradient( 180deg, #114b5f 25%, rgba(217, 217, 217, 0) 100% );"
-      class="pa-16 pt-8 d-flex justify-center"
-    >
+    <v-row style="background: linear-gradient( 180deg, #114b5f 25%, rgba(217, 217, 217, 0) 100% );" class="pa-16 pt-8 d-flex justify-center">
       <v-col>
-        <div
-          data-aos="zoom-in-up"
-          class="d-flex justify-end pt-5 pr-16"
-          style=""
-        >
-          <v-img
-            src="../assets/images/emalta.png"
-            @click="irParaLivro(items[4])"
-            max-width="270px"
-          ></v-img>
+        <div data-aos="zoom-in-up" class="d-flex justify-end pt-5 pr-16" style="">
+          <v-img src="../assets/images/emalta.png" @click="irParaLivro(items[4])" max-width="270px"></v-img>
         </div>
       </v-col>
-      <v-col
-        class="col-8 d-flex align-self-center"
-        color="primary"
-        style="color: #fff"
-      >
+      <v-col class="col-8 d-flex align-self-center" color="primary" style="color: #fff">
         <div style="padding-right: 10%">
           <v-row data-aos="fade-down" class="d-flex justify-center mb-3">
             <h3 class="text-center font-weight-black pt-2" style="color: #fff">
@@ -43,27 +29,11 @@
             comunismo.
           </v-row>
           <v-row class="ma-5" style="display: flex; justify-content: center">
-            <a
-              data-aos="fade-right"
-              href="/autor"
-              class=""
-              style="color: #fff; text-decoration: none"
-              ><h4 class="text-end">Autor</h4></a
-            >
+            <a data-aos="fade-right" href="/autor" class="" style="color: #fff; text-decoration: none" ><h4 class="text-end">Autor</h4></a>
             <v-divider class="ma-2" vertical color="#FFF"></v-divider>
-            <a
-              data-aos="fade-left"
-              href="/editora"
-              class=""
-              style="color: #fff; text-decoration: none"
-              ><h4 class="text-end">Editora</h4></a
-            >
+            <a data-aos="fade-left" href="/editora" class="" style="color: #fff; text-decoration: none"><h4 class="text-end">Editora</h4></a>
           </v-row>
-          <v-row
-            data-aos="fade-up"
-            class=""
-            style="display: flex; justify-content: center"
-          >
+          <v-row data-aos="fade-up" class="" style="display: flex; justify-content: center">
             <v-btn plain small dark link to="/livro">
               <v-icon>mdi-information-outline</v-icon>
               mais
@@ -73,44 +43,16 @@
       </v-col>
     </v-row>
     <v-row>
-      <v-row
-        data-aos="zoom-in-up"
-        v-for="(item, index) in categorias"
-        :key="index"
-        class="pt-5 pb-5"
-      >
-        <v-sheet
-          elevation="9"
-          width="calc(135rem - 200px)"
-          dark
-          color="#114B5F"
-        >
-          <h3
-            class="pt-5 text-uppercase font-weight-light"
-            style="padding-left: 5%"
-          >
+      <v-row data-aos="zoom-in-up" v-for="(item, index) in categorias" :key="index" class="pt-5 pb-5" >
+        <v-sheet elevation="9" width="calc(135rem - 200px)" dark color="#114B5F">
+          <h3 class="pt-5 text-uppercase font-weight-light" style="padding-left: 5%">
             {{ item.sloganCategoria }}
           </h3>
-          <v-slide-group
-            class="pt-2 pb-4 pr-4 pl-4"
-            show-arrows
-            color="#114B5F"
-          >
-            <v-slide-item
-              v-for="(imagem, index) in livros"
-              :key="index"
-              v-show="imagem.categoria == item.nomeCategoria"
-            >
+          <v-slide-group class="pt-2 pb-4 pr-4 pl-4" show-arrows color="#114B5F" >
+            <v-slide-item v-for="(imagem, index) in livros" :key="index" v-show="imagem. categoria == item.nomeCategoria">
               <div class="ma-4" style="height: 100%; width: 8.1rem">
                 <v-row class="fill-height" justify="center">
-                  <img
-                    @click="irParaLivro(imagem)"
-                    id="img"
-                    class="ma-2"
-                    :src="imagem.imagemLivro"
-                    height="200"
-                    width="140"
-                  />
+                  <img @click="irParaLivro(imagem)" id="img" class="ma-2" :src="imagem.imagemLivro" height="200" width="140" />
                 </v-row>
               </div>
             </v-slide-item>
@@ -149,7 +91,7 @@ export default {
         nomeLivro: "1984",
         imagemLivro: require("../assets/images/1984.png"),
         urlCompra: "https://www.amazon.com.br/Buracos-Negros-Stephen-Hawking/dp/8551000985/ref=sr_1_1_sspa?keywords=buracos+negros&qid=1664816964&qu=eyJxc2MiOiIyLjY0IiwicXNhIjoiMS44MCIsInFzcCI6IjEuMzUifQ%3D%3D&sprefix=buracos%2Caps%2C390&sr=8-1-spons&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUEyWElXSEFDVUpFMkM1JmVuY3J5cHRlZElkPUEwNDcwMzMwMktCWktVNjFHV1E1RSZlbmNyeXB0ZWRBZElkPUEwMzM1MDEwMVQ2RFVPOURWVUIySiZ3aWRnZXROYW1lPXNwX2F0ZiZhY3Rpb249Y2xpY2tSZWRpcmVjdCZkb05vdExvZ0NsaWNrPXRydWU=",
-        categoria: "Sugestoes",
+        categoria: "Ficção",
         link: "/livro",
         autor: "George Orwell",
         numPaginas: 170,
