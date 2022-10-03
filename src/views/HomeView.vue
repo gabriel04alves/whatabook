@@ -96,7 +96,7 @@
             class="pt-5 text-uppercase font-weight-light"
             style="padding-left: 5%"
           >
-            {{ item.slogan }}
+            {{ item.sloganCategoria }}
           </h3>
           <v-slide-group
             class="pt-2 pb-4 pr-4 pl-4"
@@ -104,9 +104,9 @@
             color="#114B5F"
           >
             <v-slide-item
-              v-for="(imagem, index) in items"
+              v-for="(imagem, index) in livros"
               :key="index"
-              v-show="imagem.categoria == item.title"
+              v-show="imagem.categoria == item.nomeCategoria"
             >
               <div class="ma-4" style="height: 100%; width: 8.1rem">
                 <v-row class="fill-height" justify="center">
@@ -114,7 +114,7 @@
                     @click="irParaLivro(imagem)"
                     id="img"
                     class="ma-2"
-                    :src="imagem.url"
+                    :src="imagem.urlLivro"
                     height="200"
                     width="140"
                   />
@@ -131,124 +131,50 @@
 <script>
 export default {
   data: () => ({
-    items: [
+    livros: [
       {
-        name: "buraco",
-        url: require("../assets/images/buraco-negro.png"),
-        categoria: "Ficção",
+        nomeLivro: "Buracos Negros",
+        urlLivro: require("../assets/images/buraco-negro.png"),
+        categoria: "Sugestoes",
         link: "/livro",
-        desc: "1 CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO",
-      },
-      {
-        name: "1984",
-        url: require("../assets/images/1984.png"),
-        categoria: "Ficção",
-        link: "/livro",
-        desc: "2 CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO",
-      },
-      {
-        name: "brascubas",
-        url: require("../assets/images/brascubas.png"),
-        categoria: "Ficção",
-        link: "/livro",
-        desc: "3 CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO",
-      },
-      {
-        name: "casca-noz",
-        url: require("../assets/images/casca-noz.png"),
-        categoria: "Ficção",
-        link: "/livro",
-        desc: "4 CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO",
-      },
-      {
-        name: "emalta",
-        url: require("../assets/images/emalta.png"),
-        categoria: "Ficção",
-        link: "/livro",
-        desc: "5 CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO",
-      },
-      {
-        name: "historia-ciencia",
-        url: require("../assets/images/historia-ciencia.png"),
-        categoria: "Ficção",
-        link: "/livro",
-        desc: "6 CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO",
-      },
-      {
-        name: "homo-sapiens",
-        url: require("../assets/images/homo-sapiens.png"),
-        categoria: "Ficção",
-        link: "/livro",
-        desc: "CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO",
-      },
-      {
-        name: "buraco",
-        url: require("../assets/images/buraco-negro.png"),
-        categoria: "Ficção",
-        link: "/livro",
-        desc: "CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO",
-      },
-      {
-        name: "1984",
-        url: require("../assets/images/1984.png"),
-        categoria: "Ficção",
-        link: "/livro",
-        desc: "CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO",
-      },
-      {
-        name: "brascubas",
-        url: require("../assets/images/brascubas.png"),
-        categoria: "Ficção",
-        desc: "CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO",
-        link: "/livro",
-      },
-      {
-        name: "casca-noz",
-        url: require("../assets/images/casca-noz.png"),
-        categoria: "Ficção",
-        desc: "CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO",
-        link: "/livro",
-      },
-      {
-        name: "emalta",
-        url: require("../assets/images/emalta.png"),
-        categoria: "Ficção",
-        desc: "CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO",
-        link: "/livro",
+        autor: "George Orwell",
+        numPaginas: 150,
+        isbn: 152300458,
+        edicaoLivro: "1ª edição (10 janeiro 2007)",
+        idiomaLivro: "Portugues",
+        descLivro: "1 CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO",
       },
     ],
     categorias: [
       {
-        title: "Sugestoes",
+        nomeCategoria: "Sugestoes",
         link: "/livro",
-        slogan: "Para você",
-        desc: "genero textual que tem como caracteristica...",
+        sloganCategoria: "Para você",
+        descCategoria: "genero textual que tem como caracteristica...",
       },
+    ],
+    autores: [
       {
-        title: "Romance",
-        link: "/livro",
-        slogan: "Os melhores romances",
-        desc: "genero textual que tem como caracteristica...",
+        nomeAutor: "",
+        dtnascAutor: new Date(2000,10,10),
+        dtfalecimentoAutor: new Date(),
+        localAutor: "Santa Catarina, Brasil",
+        obras: "",
       },
+    ],
+    editoras: [
       {
-        title: "Ficção",
-        link: "/livro",
-        slogan: "FICÇÕES PARA LER EM UM DIA",
-        desc: "genero textual que tem como caracteristica...",
-      },
-      {
-        title: "Drama",
-        link: "/livro",
-        slogan: "Dramas SUGERIDOS",
-        desc: "genero textual que tem como caracteristica...",
-      },
+        nomeEditora: "",
+        descEditora: "",
+        localEditora: "",
+      }
     ],
   }),
   methods: {
     irParaLivro(imagem) {
       this.$router.push({
         name: `livro`,
-        params: { livro: imagem, id: imagem.name },
+        params: { livro: imagem, id: imagem.nomeLivro },
       });
     },
   },

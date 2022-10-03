@@ -3,36 +3,23 @@
     <v-row>
       <v-col cols="4">
         <div class="pa-16 d-flex justify-center" style="">
-          <img width="" :src="livro.url" alt="" />
+          <img width="350" :src="livro.urlLivro" alt="" />
         </div>
       </v-col>
       <v-col class="" cols="8">
         <div class="ma-16" style="color: #114b5f">
           <h2 class="text-center font-weight-bold">
-            {{ livro.name }}
+            {{ livro.nomeLivro }}
           </h2>
           <div class="d-flex justify-center">
-            <router-link to="/autor" tag="button"
+            <router-link to="" tag="button"
               ><h3 class="text-center font-weight-light">
-                por George Orwell
+                {{ livro.autor }}
               </h3></router-link
             >
           </div>
           <h3 class="text-justify font-weight-regular ma-10">
-            {{ livro.desc }}
-            <!-- Escrita em plena Segunda Guerra Mundial e publicada em 1945 depois
-            de ter sido rejeitada por várias editoras, essa pequena narrativa
-            causou desconforto ao satirizar ferozmente a ditadura stalinista
-            numa época em que os soviéticos ainda eram aliados do Ocidente na
-            luta contra o eixo nazifascista. De fato, são claras as referências:
-            o despótico Napoleão seria Stálin, o banido Bola-de-Neve seria
-            Trostsky, e os eventos políticos - expurgos, instituição de um
-            estado policial, deturpação tendenciosa da História - mimetizam os
-            que estavam em curso na União Soviética. Com o acirramento da Guerra
-            Fria, as mesmas razões que causaram constrangimento na época de sua
-            publicação levaram A revolução dos bichos a ser amplamente usada
-            pelo Ocidente nas décadas seguintes como arma ideológica contra o
-            comunismo. -->
+            {{ livro.descLivro }}
           </h3>
         </div>
         <div class="d-flex justify-center align-end" style="gap: 5%">
@@ -135,7 +122,7 @@
                   >
                   <router-link to="/autor" tag="button"
                     ><h3 class="font-weight-regular" style="color: #114b5f">
-                      George Orwell
+                      {{ livro.autor }}
                     </h3></router-link
                   >
                 </div>
@@ -144,25 +131,25 @@
                     >mdi-book-open-page-variant-outline</v-icon
                   >
                   <h3 class="font-weight-regular" style="color: #114b5f">
-                    156 páginas
+                    {{ livro.numPaginas }}
                   </h3>
                 </div>
                 <div class="d-flex flex-row align-center" style="gap: 1rem">
                   <v-icon large color="#114B5F">mdi-barcode</v-icon>
                   <h3 class="font-weight-regular" style="color: #114b5f">
-                    978-853590955
+                    {{ livro.isbn }}
                   </h3>
                 </div>
                 <div class="d-flex flex-row align-center" style="gap: 1rem">
                   <v-icon large color="#114B5F">mdi-calendar</v-icon>
                   <h3 class="font-weight-regular" style="color: #114b5f">
-                    1ª edição (10 janeiro 2007)
+                    {{ livro.edicaoLivro }}
                   </h3>
                 </div>
                 <div class="d-flex flex-row align-center" style="gap: 1rem">
                   <v-icon large color="#114B5F">mdi-translate</v-icon>
                   <h3 class="font-weight-regular" style="color: #114b5f">
-                    Português
+                    {{ livro.idiomaLivro }}
                   </h3>
                 </div>
               </div>
@@ -364,7 +351,7 @@
 
 <script>
 export default {
-  props: ["items", "livro"],
+  props: ["livros", "livro"],
   data: () => ({
     power: 75,
     dialog: false,

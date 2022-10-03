@@ -3,7 +3,6 @@
       <div class="" style="margin-left: 15rem;">
           <v-avatar elevation="8" color="#667372" size="200"></v-avatar>
           <h3 class="text-center mt-4 font-weight-bold" style="color: #114B5F;">Name LastName</h3>
-          <h3 class="text-center font-weight-light" style="color: #114B5F;">@user.name</h3>
           <p class="mt-4">Aqui uma pequena biografia</p>
           <div class="d-flex justify-center align-center"><v-icon color="#114B5F">mdi-star-outline</v-icon> 01/01/2020</div>
           <div class="d-flex justify-center align-center"><v-icon color="#114B5F">mdi-coffin</v-icon> -- </div>
