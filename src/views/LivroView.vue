@@ -3,7 +3,7 @@
     <v-row>
       <v-col cols="4">
         <div class="pa-16 d-flex justify-center" style="">
-          <img width="350" :src="livro.urlLivro" alt="" />
+          <img width="350" :src="livro.imagemLivro" alt="" />
         </div>
       </v-col>
       <v-col class="" cols="8">
@@ -32,8 +32,7 @@
           >
           <v-divider vertical color="#114B5F"></v-divider>
           <v-btn icon large color="#114B5F">
-            <v-icon large>mdi-cart-arrow-down</v-icon></v-btn
-          >
+            <v-icon large>mdi-cart-arrow-down</v-icon></v-btn>
           <v-divider vertical color="#114B5F"></v-divider>
           <v-dialog v-model="dialog" persistent max-width="500">
             <template v-slot:activator="{ on, attrs }">
@@ -311,13 +310,13 @@
                 elevation="4"
                 color="#114B5F"
                 style="width: 35rem"
-                v-for="(comentario, index) in resenha"
+                v-for="(comentario, index) in livro.resenha"
                 :key="index"
               >
                 <v-col class="d-flex align-center">
                   <v-avatar class="mr-5" color="#FFF" size="50">GA</v-avatar>
                   <h4 class="font-weight-light" style="color: #fff">
-                    {{ comentario.titulo }}
+                    {{ comentario.tituloResenha }}
                   </h4>
                   <v-spacer></v-spacer>
                   <v-rating
@@ -332,12 +331,12 @@
                     length="5"
                     readonly
                     size="25"
-                    :value="comentario.estrela"
+                    :value="comentario.estrelaResenha"
                   ></v-rating>
                 </v-col>
                 <v-col class="d-flex justify-center">
                   <v-card class="rounded-lg" style="width: 30rem">
-                    <p class="text-left ma-3">{{ comentario.descricao }}</p>
+                    <p class="text-left ma-3">{{ comentario.descResenha }}</p>
                   </v-card>
                 </v-col>
               </v-card>
@@ -351,19 +350,12 @@
 
 <script>
 export default {
-  props: ["livros", "livro"],
+  props: [ "livro"],
   data: () => ({
     power: 75,
     dialog: false,
     novoTitulo: "",
     novaResenha: "",
-    resenha: [
-      {
-        descricao: "livro muito bomlivro muito bomlivro muito bom",
-        titulo: "gostei do livro",
-        estrela: 3,
-      },
-    ],
   }),
   methods: {
     adicionarResenha() {

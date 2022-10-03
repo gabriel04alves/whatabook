@@ -1,13 +1,6 @@
 <template>
   <div style="">
-    <v-row
-      style="
-        background: linear-gradient(
-          180deg,
-          #114b5f 0%,
-          rgba(217, 217, 217, 0) 100%
-        );
-      "
+    <v-row style="background: linear-gradient( 180deg, #114b5f 25%, rgba(217, 217, 217, 0) 100% );"
       class="pa-16 pt-8 d-flex justify-center"
     >
       <v-col>
@@ -114,7 +107,7 @@
                     @click="irParaLivro(imagem)"
                     id="img"
                     class="ma-2"
-                    :src="imagem.urlLivro"
+                    :src="imagem.imagemLivro"
                     height="200"
                     width="140"
                   />
@@ -134,7 +127,8 @@ export default {
     livros: [
       {
         nomeLivro: "Buracos Negros",
-        urlLivro: require("../assets/images/buraco-negro.png"),
+        imagemLivro: require("../assets/images/buraco-negro.png"),
+        urlCompra: "https://www.amazon.com.br/Buracos-Negros-Stephen-Hawking/dp/8551000985/ref=sr_1_1_sspa?keywords=buracos+negros&qid=1664816964&qu=eyJxc2MiOiIyLjY0IiwicXNhIjoiMS44MCIsInFzcCI6IjEuMzUifQ%3D%3D&sprefix=buracos%2Caps%2C390&sr=8-1-spons&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUEyWElXSEFDVUpFMkM1JmVuY3J5cHRlZElkPUEwNDcwMzMwMktCWktVNjFHV1E1RSZlbmNyeXB0ZWRBZElkPUEwMzM1MDEwMVQ2RFVPOURWVUIySiZ3aWRnZXROYW1lPXNwX2F0ZiZhY3Rpb249Y2xpY2tSZWRpcmVjdCZkb05vdExvZ0NsaWNrPXRydWU=",
         categoria: "Sugestoes",
         link: "/livro",
         autor: "George Orwell",
@@ -143,6 +137,33 @@ export default {
         edicaoLivro: "1ª edição (10 janeiro 2007)",
         idiomaLivro: "Portugues",
         descLivro: "1 CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO",
+        resenha: [
+          {
+          descResenha: "bom livro",
+          tituloResenha: "gostei do livro",
+          estrelaResenha: 3, 
+          }
+        ],
+      },
+      {
+        nomeLivro: "1984",
+        imagemLivro: require("../assets/images/1984.png"),
+        urlCompra: "https://www.amazon.com.br/Buracos-Negros-Stephen-Hawking/dp/8551000985/ref=sr_1_1_sspa?keywords=buracos+negros&qid=1664816964&qu=eyJxc2MiOiIyLjY0IiwicXNhIjoiMS44MCIsInFzcCI6IjEuMzUifQ%3D%3D&sprefix=buracos%2Caps%2C390&sr=8-1-spons&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUEyWElXSEFDVUpFMkM1JmVuY3J5cHRlZElkPUEwNDcwMzMwMktCWktVNjFHV1E1RSZlbmNyeXB0ZWRBZElkPUEwMzM1MDEwMVQ2RFVPOURWVUIySiZ3aWRnZXROYW1lPXNwX2F0ZiZhY3Rpb249Y2xpY2tSZWRpcmVjdCZkb05vdExvZ0NsaWNrPXRydWU=",
+        categoria: "Sugestoes",
+        link: "/livro",
+        autor: "George Orwell",
+        numPaginas: 170,
+        isbn: 546454,
+        edicaoLivro: "1ª edição (10 janeiro 2007)",
+        idiomaLivro: "Portugues",
+        descLivro: "descrição descrição descrição descrição descrição descrição ",
+        resenha: [
+          {
+          descResenha: "excelente",
+          tituloResenha: "show de bola",
+          estrelaResenha: 4, 
+          }
+        ],
       },
     ],
     categorias: [
@@ -150,7 +171,7 @@ export default {
         nomeCategoria: "Sugestoes",
         link: "/livro",
         sloganCategoria: "Para você",
-        descCategoria: "genero textual que tem como caracteristica...",
+        descCategoria: "genero genero.",
       },
     ],
     autores: [
