@@ -41,39 +41,13 @@
               </v-btn>
             </template>
             <v-card>
-              <h3
-                class="text-uppercase text-center text-decoration-underline pt-3 pb-3"
-                style="color: #114b5f"
-              >
+              <h3 class="text-uppercase text-center text-decoration-underline pt-3 pb-3" style="color: #114b5f">
                 Publique uma resenha:
               </h3>
               <div class="ma-5">
-                <v-text-field
-                  label="Título"
-                  outlined
-                  color="#114B5F"
-                  v-model="novoTitulo"
-                ></v-text-field>
-                <v-textarea
-                  color="#114B5F"
-                  outlined
-                  name="input-7-4"
-                  label="Resenha"
-                  v-model="novaResenha"
-                ></v-textarea>
-                <v-rating
-                  class=""
-                  style=""
-                  background-color="#F1C40F"
-                  color="#F1C40F"
-                  empty-icon="mdi-star-outline"
-                  full-icon="mdi-star"
-                  half-icon="mdi-star-half-full"
-                  hover
-                  length="5"
-                  size="25"
-                  v-model="rating"
-                  ref="rating"
+                <v-text-field label="Título" outlined color="#114B5F" v-model="novoTitulo" ></v-text-field>
+                <v-textarea color="#114B5F" outlined name="input-7-4" label="Resenha" v-model="novaResenha" ></v-textarea>
+                <v-rating background-color="#F1C40F" color="#F1C40F" empty-icon="mdi-star-outline" full-icon="mdi-star"  half-icon="mdi-star-half-full" hover length="5"  size="25" v-model="rating" ref="rating"
                 ></v-rating>
               </div>
 
@@ -82,11 +56,7 @@
                 <v-btn color="#FF0000" text @click="dialog = false">
                   Cancelar
                 </v-btn>
-                <v-btn
-                  style="color: #114b5f"
-                  color="#CAF1FF"
-                  text
-                  @click="adicionarResenha"
+                <v-btn style="color: #114b5f"  color="#CAF1FF" text @click="adicionarResenha"
                 >
                   Enviar
                 </v-btn>
