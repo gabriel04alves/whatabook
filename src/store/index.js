@@ -4,7 +4,7 @@ import VuexPersist from 'vuex-persist'
 
 import {
     auth
-} from './auth/index.js'
+} from './auth'
 
 Vue.use(Vuex)
 
