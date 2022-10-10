@@ -10,10 +10,10 @@
             <h2 class="text-decoration-underline mt-10 font-weight-light" style="color: #114B5F">BEM VINDO</h2> 
             <p class="font-weight-bold mt-2" style="color: #114B5F">Faça seu login</p>
             <v-form class="">
-              <v-text-field color="#114B5F" label="Email" v-model="user.email" style="" required outlined></v-text-field>
-              <v-text-field color="#114B5F" class="" label="Senha" v-model="user.password" :type="show ? 'text' : 'password'" :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'" @click:append="show = !show" required outlined></v-text-field>  
+              <v-text-field color="#114B5F" label="Email" v-model="usuario.username" style="" required outlined></v-text-field>
+              <v-text-field color="#114B5F" class="" label="Senha" v-model="usuario.password" :type="show ? 'text' : 'password'" :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'" @click:append="show = !show" required outlined></v-text-field>  
               <v-row class="d-flex justify-center">
-                <v-btn class="rounded-lg" color="#FFF" style="color: #114B5F;" @click="login">Entrar</v-btn>
+                <v-btn class="rounded-lg" color="#FFF" style="color: #114B5F;" @click="submitLogin">Entrar</v-btn>
               </v-row>
               <v-row class="d-flex justify-center mt-6">
                 <v-btn text small><h5 class="text-decoration-underline text-uppercase" style="color: #114B5F">esqueceu sua senha?</h5></v-btn> 
@@ -37,25 +37,21 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
   data() {
     return {
-      user: {},
       show: false,
-      errorLogin: false,
+      usuario: {},
     };
   },
   methods: {
-    reset() {
-      this.user = {};
-    },
-    login() {
-      if (this.user.email === "gabriel52.alves@gmail.com" && this.user.password === "gabriel") {
-        this.$router.push({ name: "home" });
-      } else {
-        this.errorLogin = true;
-      }
-    },
+    ...mapActions('auth', ['login']),
+    submitLogin() {
+      this.login(this.usuario),
+      this.$router.push({ name: 'home'})
+    }
   },
 };
 </script>

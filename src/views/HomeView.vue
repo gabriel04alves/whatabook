@@ -1,5 +1,6 @@
 <template>
   <div style="">
+    <div>principal - {{ $store.auth.state.loggedIn }} </div>
     <v-row style="background: linear-gradient( 180deg, #114b5f 25%, rgba(217, 217, 217, 0) 100% );" class="pa-16 pt-8 d-flex justify-center">
       <v-col>
         <div data-aos="zoom-in-up" class="d-flex justify-end pt-5 pr-16" style="">
@@ -64,7 +65,15 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
+  computed: {
+    ...mapState('auth', ['loggedIn'])
+  },
+  mounted() {
+    console.log(this)
+  },
   data: () => ({
     livros: [
       {
