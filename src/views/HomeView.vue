@@ -1,7 +1,8 @@
 <template>
   <div style="">
-    <div>principal - {{ loggedIn }} </div>
-    <v-row style="background: linear-gradient( 180deg, #114b5f 25%, rgba(217, 217, 217, 0) 100% );" class="pa-16 pt-8 d-flex justify-center">
+    <div>principal - {{ loggedIn }} - {{user.access}} </div>
+    <v-btn @click='logout'>sair</v-btn>
+    <!-- <v-row style="background: linear-gradient( 180deg, #114b5f 25%, rgba(217, 217, 217, 0) 100% );" class="pa-16 pt-8 d-flex justify-center">
       <v-col>
         <div data-aos="zoom-in-up" class="d-flex justify-end pt-5 pr-16" style="">
           <v-img src="../assets/images/emalta.png" @click="irParaLivro(items[4])" max-width="270px"></v-img>
@@ -60,16 +61,16 @@
           </v-slide-group>
         </v-sheet>
       </v-row>
-    </v-row>
+    </v-row> -->
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapActions, mapState } from 'vuex'
 
 export default {
   computed: {
-    ...mapState('auth', ['loggedIn'])
+    ...mapState('auth', ['loggedIn', 'user'])
   },
   mounted() {
     console.log(this)
@@ -156,6 +157,7 @@ export default {
         params: { livro: imagem, id: imagem.nomeLivro },
       });
     },
+    ...mapActions('auth', ['logout'])
   },
 };
 </script>

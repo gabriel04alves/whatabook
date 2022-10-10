@@ -1,3 +1,4 @@
+import store from '@/store'
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
@@ -7,6 +8,9 @@ Vue.use(VueRouter)
 const routes = [{
     path: '/',
     component: () => import('@/layouts/todo-default'),
+    meta: {
+      auth: true
+    },
     children: [{
         path: '/',
         name: 'home',
@@ -63,6 +67,9 @@ const routes = [{
   {
     path: '/',
     component: () => import('@/layouts/todo-blank'),
+    meta: {
+      auth: false,
+    },
     children: [{
         path: '/Login',
         name: 'login',
@@ -96,6 +103,20 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.auth)) {
+    if(!store.state.auth.loggedIn) {
+      next({
+        name: 'login'
+      })
+    } else {
+      next()
+    }
+  } else {
+    next()
+  }
 })
 
 export default router

@@ -32,6 +32,8 @@
               </div>
             </v-form>
           </v-card>
+          <v-snackbar v-model="loginMessage" timeout="2000">{{ loginText }}</v-snackbar>
+          <!-- <template v-slot:action="{attrs}"></template> -->
         </div>
     </div>
 </template>
@@ -48,9 +50,13 @@ export default {
   },
   methods: {
     ...mapActions('auth', ['login']),
-    submitLogin() {
-      this.login(this.usuario),
-      this.$router.push({ name: 'home'})
+    async submitLogin() {
+      try {
+        await this.login(this.usuario),
+        this.$router.push({ name: 'home'})
+      } catch (e) {
+        alert("erro...")
+      }
     }
   },
 };

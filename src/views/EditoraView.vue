@@ -20,6 +20,7 @@
                     <v-col class="d-flex justify-space-around">
                         <v-card class="rounded-lg" style="width: 25rem;">
                             <p class="text-left ma-3"> SinopseSinopseSinopseSinopseSinopseSinopseSinopseSinopseSinopseSinopse </p>
+                            <p class="text-left ma-3"> {{ livros }} </p>
                         </v-card>      
                         <v-card class="rounded-lg" style="width: 12rem">
                             <v-img src="../assets/images/emalta.png" class="rounded-lg"> </v-img>
@@ -32,8 +33,18 @@
   </template>
   
   <script>
+  import LivroApi from '@/api/livro'
+  const livroApi =  new LivroApi()
+
   export default {
-  
+    data() {
+        return {
+            livros: '222'
+        }
+    },
+    async created() {
+        this.livros = await livroApi.getLivros();
+    }
   }
   </script>
   

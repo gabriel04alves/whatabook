@@ -1,3 +1,5 @@
+import AuthApi from '@/api/auth'
+const authApi = new AuthApi()
 export const auth = {
     namespaced: true,
     state: {
@@ -15,10 +17,14 @@ export const auth = {
         }
     },
     actions: {
-        login({
-            commit
-        }, user) {
-            commit('setLoginInfo', user)
+        async login({commit}, user) {
+            try {
+                const userData = await authApi.login(user)
+                commit('setLoginInfo', userData)
+                return Promise.resolve(userData)
+            } catch (e) {
+                return Promise.reject(e)
+            }
         },
         logout({
             commit
