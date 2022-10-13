@@ -57,11 +57,11 @@ const routes = [{
         name: 'publicar',
         component: () => import( /* webpackChunkName: "about" */ '../views/PublicarView.vue')
       },
-      {
-        path: '/Configuracoes',
-        name: 'configuracoes',
-        component: () => import( /* webpackChunkName: "about" */ '../views/ConfigView.vue')
-      },
+      // {
+      //   path: '/Configuracoes',
+      //   name: 'configuracoes',
+      //   component: () => import( /* webpackChunkName: "about" */ '../views/ConfigView.vue')
+      // },
     ],
   },
   {
@@ -75,11 +75,11 @@ const routes = [{
         name: 'login',
         component: () => import( /* webpackChunkName: "about" */ '../views/LoginView.vue')
       },
-      {
-        path: '/LoginEditora',
-        name: 'logineditora',
-        component: () => import( /* webpackChunkName: "about" */ '../views/LoginEditView.vue')
-      },
+      // {
+      //   path: '/LoginEditora',
+      //   name: 'logineditora',
+      //   component: () => import( /* webpackChunkName: "about" */ '../views/LoginEditView.vue')
+      // },
       {
         path: '/Cadastro',
         name: 'cadastro',
@@ -90,11 +90,11 @@ const routes = [{
         name: 'cadastroedit',
         component: () => import( /* webpackChunkName: "about" */ '../views/CadastroeditoraView.vue')
       },
-      {
-        path: '/Admin',
-        name: 'admin',
-        component: () => import( /* webpackChunkName: "about" */ '../views/LoginAdminView.vue')
-      },
+      // {
+      //   path: '/Admin',
+      //   name: 'admin',
+      //   component: () => import( /* webpackChunkName: "about" */ '../views/LoginAdminView.vue')
+      // },
     ],
   },
 ]

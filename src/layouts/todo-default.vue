@@ -41,17 +41,14 @@
               link :to= "item.to"
             >
               
-              <v-list-item-title> <v-icon> {{item.icon}} </v-icon> {{ item.title}} </v-list-item-title>
+              <v-list-item-title> <v-icon> {{item.icon}} </v-icon> {{ user.access}} </v-list-item-title>
             </v-list-item>
           </v-list>
           <v-divider></v-divider>
           <v-list>
-            <v-list-item
-              v-for="item in itemsz"
-              :key="item.title"
-              link :to = "item.to"
+            <v-list-item @click='logout'
             >
-              <v-list-item-title> <v-icon> {{item.icon}} </v-icon> {{item.title}}</v-list-item-title>
+              <v-list-item-title> <v-icon> mdi-exit </v-icon> Sair</v-list-item-title>
             </v-list-item>
           </v-list>
         </v-menu>
@@ -76,6 +73,8 @@
 </template>
 
 <script>
+import {mapActions, mapState} from 'vuex'
+
   export default {
     data: () => ({
       btns: [
@@ -84,16 +83,22 @@
       colors: [''],
       items: [
         { title: 'Meu Perfil', to:"/perfil", icon:"mdi-account-edit"}, 
-        { title: 'Configurações', to:"/configuracoes", icon:"mdi-cog"},
+        // { title: 'Configurações', to:"/configuracoes", icon:"mdi-cog"},
         ],
-      itemsz: [{ title:'Sair', to:"/login", icon: "mdi-logout" },],
+      // itemsz: [{ title:'Sair', to:"/login", icon: "mdi-logout" },],
       textos: [
         { title:'Inicio', to:"/" }, 
         { title:'Categorias', to:"/categorias"}, 
         { title:'Minha lista', to:"/minhalista"}
         ],
     }),
-  }
+    methods:{
+      ...mapActions('auth', ['logout'])
+    },
+    computed: {
+      ...mapState('auth', ['loggedIn', 'user'])
+    },
+  };
 </script>
 
 <style>
