@@ -10,7 +10,7 @@
             <h2 class="text-decoration-underline mt-10 font-weight-light" style="color: #114B5F">BEM VINDO</h2> 
             <p class="font-weight-bold mt-2" style="color: #114B5F">Faça seu login</p>
             <v-form class="">
-              <v-text-field color="#114B5F" label="Email" v-model="usuario.username" style="" required outlined></v-text-field>
+              <v-text-field color="#114B5F" label="Usuário" v-model="usuario.username" style="" required outlined></v-text-field>
               <v-text-field color="#114B5F" class="" label="Senha" v-model="usuario.password" :type="show ? 'text' : 'password'" :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'" @click:append="show = !show" required outlined></v-text-field>  
               <v-row class="d-flex justify-center">
                 <v-btn class="rounded-lg" color="#FFF" style="color: #114B5F;" @click="submitLogin">Entrar</v-btn>
@@ -32,8 +32,12 @@
               </div>
             </v-form>
           </v-card>
-          <v-snackbar v-model="loginMessage" timeout="2000">{{ loginText }}</v-snackbar>
-          <!-- <template v-slot:action="{attrs}"></template> -->
+          <v-snackbar v-model="loginMessage" timeout="25000">
+            {{ loginText }}
+            <template v-slot:action="{attrs}">
+              <v-btn color="black" text v-blind="attrs" @click="loginMessage=false">Fechar</v-btn>
+            </template>
+          </v-snackbar>
         </div>
     </div>
 </template>
@@ -46,6 +50,8 @@ export default {
     return {
       show: false,
       usuario: {},
+      loginMessage: false,
+      loginText: '',
     };
   },
   methods: {
@@ -53,9 +59,11 @@ export default {
     async submitLogin() {
       try {
         await this.login(this.usuario),
+        this.loginMessage = true;
+        this.loginText="Login realizado com sucesso",
         this.$router.push({ name: 'home'})
       } catch (e) {
-        alert("erro...")
+        alert("Erro de autenticação")
       }
     }
   },
