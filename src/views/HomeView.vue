@@ -2,7 +2,7 @@
   <div style="">
     <div>principal - {{ loggedIn }} - {{user.access}} </div>
     <v-btn @click='logout'>sair</v-btn>
-    <!-- <v-row style="background: linear-gradient( 180deg, #114b5f 25%, rgba(217, 217, 217, 0) 100% );" class="pa-16 pt-8 d-flex justify-center">
+    <v-row style="background: linear-gradient( 180deg, #114b5f 25%, rgba(217, 217, 217, 0) 100% );" class="pa-16 pt-8 d-flex justify-center">
       <v-col>
         <div data-aos="zoom-in-up" class="d-flex justify-end pt-5 pr-16" style="">
           <v-img src="../assets/images/emalta.png" @click="irParaLivro(items[4])" max-width="270px"></v-img>
@@ -51,7 +51,7 @@
             {{ item.sloganCategoria }}
           </h3>
           <v-slide-group class="pt-2 pb-4 pr-4 pl-4" show-arrows color="#114B5F" >
-            <v-slide-item v-for="(imagem, index) in livros" :key="index" v-show="imagem. categoria == item.nomeCategoria">
+            <v-slide-item v-for="(imagem, index) in livrosz" :key="index" v-show="imagem. categoria == item.nomeCategoria">
               <div class="ma-4" style="height: 100%; width: 8.1rem">
                 <v-row class="fill-height" justify="center">
                   <img @click="irParaLivro(imagem)" id="img" class="ma-2" :src="imagem.imagemLivro" height="200" width="140" />
@@ -61,22 +61,22 @@
           </v-slide-group>
         </v-sheet>
       </v-row>
-    </v-row> -->
+    </v-row>
   </div>
 </template>
 
 <script>
 import { mapActions, mapState } from 'vuex'
+import livros from '../api/livro'
 
 export default {
   computed: {
     ...mapState('auth', ['loggedIn', 'user'])
   },
-  mounted() {
-    console.log(this)
-  },
+
   data: () => ({
-    livros: [
+    livros: {},
+    livrosz: [
       {
         nomeLivro: "Buracos Negros",
         imagemLivro: require("../assets/images/buraco-negro.png"),
@@ -86,7 +86,7 @@ export default {
         autor: "Stephen Hawking",
         numPaginas: 150,
         isbn: 152300458,
-        edicaoLivro: "1ª edição (10 janeiro 2007)",
+        edicaoLivro: "10 janeiro 2007",
         idiomaLivro: "Portugues",
         descLivro: "1 CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO",
         resenha: [
@@ -106,7 +106,7 @@ export default {
         autor: "George Orwell",
         numPaginas: 170,
         isbn: 546454,
-        edicaoLivro: "1ª edição (10 janeiro 2007)",
+        edicaoLivro: "10 janeiro 2007",
         idiomaLivro: "Portugues",
         descLivro: "descrição descrição descrição descrição descrição descrição ",
         resenha: [
@@ -150,7 +150,13 @@ export default {
       }
     ],
   }),
+  created() {
+    this.getLivros();
+  },
   methods: {
+    async getLivros() {
+      this.livros = await livros.get('/api/livro')
+    },
     irParaLivro(imagem) {
       this.$router.push({
         name: `livro`,

@@ -68,19 +68,9 @@
     </v-row>
     <v-row>
       <v-col cols="4">
-        <div
-          elevation="10"
-          class="d-flex justify-center"
-          style="color: #114b5f"
-        >
-          <v-card
-            class=""
-            style="width: 30rem; height: 23rem; color: #114b5f"
-            color="#CAF1FF"
-          >
-            <h3
-              class="text-center text-uppercase text-decoration-underline pa-6"
-            >
+        <div elevation="10" class="d-flex justify-center" style="color: #114b5f" >
+          <v-card class="" style="width: 30rem; height: 23rem; color: #114b5f" color="#CAF1FF" >
+            <h3 class="text-center text-uppercase text-decoration-underline pa-6">
               Detalhes
             </h3>
             <div class="d-flex justify-center">
@@ -96,9 +86,7 @@
                   >
                 </div>
                 <div class="d-flex flex-row align-center" style="gap: 1rem">
-                  <v-icon large color="#114B5F"
-                    >mdi-book-open-page-variant-outline</v-icon
-                  >
+                  <v-icon large color="#114B5F">mdi-book-open-page-variant-outline</v-icon>
                   <h3 class="font-weight-regular" style="color: #114b5f">
                     {{ livro.numPaginas }}
                   </h3>
@@ -112,7 +100,7 @@
                 <div class="d-flex flex-row align-center" style="gap: 1rem">
                   <v-icon large color="#114B5F">mdi-calendar</v-icon>
                   <h3 class="font-weight-regular" style="color: #114b5f">
-                    {{ livro.edicaoLivro }}
+                    1ª Edição ({{ livro.edicaoLivro }})
                   </h3>
                 </div>
                 <div class="d-flex flex-row align-center" style="gap: 1rem">
@@ -142,123 +130,30 @@
             </h3>
             <div class="pa-5">
               <v-row class="d-flex align-center justify-space-around ms-2 me-2">
-                <v-rating
-                  class=""
-                  style=""
-                  background-color="#F1C40F"
-                  color="#F1C40F"
-                  empty-icon="mdi-star-outline"
-                  full-icon="mdi-star"
-                  half-icon="mdi-star-half-full"
-                  hover
-                  length="5"
-                  readonly
-                  size="25"
-                  value="1.5"
-                ></v-rating>
-                <v-progress-linear
-                  class="rounded"
-                  v-model="power"
-                  color="amber"
-                  height="15"
-                  style="width: 150px"
-                ></v-progress-linear>
+                <v-rating background-color="#F1C40F" color="#F1C40F" empty-icon="mdi-star-outline" full-icon="mdi-star" half-icon="mdi-star-half-full" hover length="5" readonly size="25" value="1.5"></v-rating>
+                <v-progress-linear class="rounded" v-model="power" color="amber" height="15" style="width: 150px" ></v-progress-linear>
                 <h4 class="text-center" style="color: #114b5f">75%</h4>
               </v-row>
               <v-row class="d-flex align-center justify-space-around ms-2 me-2">
-                <v-rating
-                  class=""
-                  style=""
-                  background-color="#F1C40F"
-                  color="#F1C40F"
-                  empty-icon="mdi-star-outline"
-                  full-icon="mdi-star"
-                  half-icon="mdi-star-half-full"
-                  hover
-                  length="5"
-                  readonly
-                  size="25"
-                  value="2.5"
-                ></v-rating>
-                <v-progress-linear
-                  class="rounded"
-                  v-model="power"
-                  color="amber"
-                  height="15"
-                  style="width: 150px"
-                ></v-progress-linear>
+                <v-rating background-color="#F1C40F" color="#F1C40F" empty-icon="mdi-star-outline" full-icon="mdi-star" half-icon="mdi-star-half-full" hover length="5" readonly size="25" value="2.5"></v-rating>
+                <v-progress-linear class="rounded" v-model="power" color="amber" height="15" style="width: 150px" ></v-progress-linear>
                 <h4 class="text-center" style="color: #114b5f">75%</h4>
               </v-row>
               <v-row class="d-flex align-center justify-space-around ms-2 me-2">
-                <v-rating
-                  class=""
-                  style=""
-                  background-color="#F1C40F"
-                  color="#F1C40F"
-                  empty-icon="mdi-star-outline"
-                  full-icon="mdi-star"
-                  half-icon="mdi-star-half-full"
-                  hover
-                  length="5"
-                  readonly
-                  size="25"
-                  value="3.5"
+                <v-rating background-color="#F1C40F" color="#F1C40F" empty-icon="mdi-star-outline" full-icon="mdi-star" half-icon="mdi-star-half-full" hover length="5" readonly size="25" value="3.5"
                 ></v-rating>
-                <v-progress-linear
-                  class="rounded"
-                  v-model="power"
-                  color="amber"
-                  height="15"
-                  style="width: 150px"
-                ></v-progress-linear>
+                <v-progress-linear class="rounded" v-model="power" color="amber" height="15" style="width: 150px" ></v-progress-linear>
                 <h4 class="text-center" style="color: #114b5f">75%</h4>
               </v-row>
               <v-row class="d-flex align-center justify-space-around ms-2 me-2">
-                <v-rating
-                  class=""
-                  style=""
-                  background-color="#F1C40F"
-                  color="#F1C40F"
-                  empty-icon="mdi-star-outline"
-                  full-icon="mdi-star"
-                  half-icon="mdi-star-half-full"
-                  hover
-                  length="5"
-                  readonly
-                  size="25"
-                  value="4.5"
+                <v-rating background-color="#F1C40F" color="#F1C40F" empty-icon="mdi-star-outline" full-icon="mdi-star" half-icon="mdi-star-half-full" hover length="5" readonly size="25" value="4.5"
                 ></v-rating>
-                <v-progress-linear
-                  class="rounded"
-                  v-model="power"
-                  color="amber"
-                  height="15"
-                  style="width: 150px"
-                ></v-progress-linear>
+                <v-progress-linear class="rounded" v-model="power" color="amber" height="15" style="width: 150px" ></v-progress-linear>
                 <h4 class="text-center" style="color: #114b5f">75%</h4>
               </v-row>
               <v-row class="d-flex align-center justify-space-around ms-2 me-2">
-                <v-rating
-                  class=""
-                  style=""
-                  background-color="#F1C40F"
-                  color="#F1C40F"
-                  empty-icon="mdi-star-outline"
-                  full-icon="mdi-star"
-                  half-icon="mdi-star-half-full"
-                  hover
-                  length="5"
-                  readonly
-                  size="25"
-                  value="5.5"
-                ></v-rating>
-                <v-progress-linear
-                  class="rounded"
-                  v-model="power"
-                  color="amber"
-                  height="15"
-                  style="width: 150px"
-                ></v-progress-linear>
+                <v-rating background-color="#F1C40F" color="#F1C40F" empty-icon="mdi-star-outline" full-icon="mdi-star" half-icon="mdi-star-half-full" hover length="5" readonly size="25" value="5.5"></v-rating>
+                <v-progress-linear class="rounded" v-model="power" color="amber" height="15" style="width: 150px" ></v-progress-linear>
                 <h4 class="text-center" style="color: #114b5f">75%</h4>
               </v-row>
             </div>
@@ -267,45 +162,24 @@
       </v-col>
       <v-col cols="8">
         <div class="justify-center" style="">
-          <h3
-            class="text-center text-uppercase text-decoration-undersline mb-0"
-            style="color: #114b5f"
-          >
+          <h3 class="text-center text-uppercase text-decoration-undersline mb-0"
+            style="color: #114b5f">
             Resenhas da comunidade
           </h3>
           <div class="d-flex justify-center">
             <div data-aos="zoom-up" class="d-flex justify-center flex-column">
-              <v-card
-                class="rounded-lg ma-5"
-                elevation="4"
-                color="#114B5F"
-                style="width: 35rem"
-                v-for="(comentario, index) in livro.resenha"
-                :key="index"
-              >
+              <v-card class="rounded-lg ma-5" elevation="4" color="#114B5F" style="width: 35rem" v-for="(comentario, index) in livro.resenha" :key="index">
                 <v-col class="d-flex align-center">
                   <v-avatar class="mr-5" color="#FFF" size="50">GA</v-avatar>
                   <h4 class="font-weight-light" style="color: #fff">
-                    {{ comentario.tituloResenha }}
+                    username
                   </h4>
                   <v-spacer></v-spacer>
-                  <v-rating
-                    class=""
-                    style=""
-                    background-color="#F1C40F"
-                    color="#F1C40F"
-                    empty-icon="mdi-star-outline"
-                    full-icon="mdi-star"
-                    half-icon="mdi-star-half-full"
-                    hover
-                    length="5"
-                    readonly
-                    size="25"
-                    :value="comentario.estrelaResenha"
-                  ></v-rating>
+                  <v-rating background-color="#F1C40F" color="#F1C40F" empty-icon="mdi-star-outline" full-icon="mdi-star" half-icon="mdi-star-half-full" hover length="5" readonly size="25" :value="comentario.estrelaResenha"></v-rating>
                 </v-col>
                 <v-col class="d-flex justify-center">
                   <v-card class="rounded-lg" style="width: 30rem">
+                    <p class="text-left font-weight-bold ma-3"> {{ comentario.tituloResenha }} </p>
                     <p class="text-left ma-3">{{ comentario.descResenha }}</p>
                   </v-card>
                 </v-col>

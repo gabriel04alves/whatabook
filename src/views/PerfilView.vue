@@ -19,13 +19,14 @@
                         <v-card class="rounded-lg mt-5" elevation="4" color="#114B5F" style="width: 35rem;">
                             <v-col class=" d-flex align-center">
                                 <v-avatar class="mr-5" color="#FFF" size="50">GA</v-avatar>
-                                <h4 class="font-weight-light" style="color: #FFF;">revolução dos bichos</h4>
+                                <h4 class="font-weight-light" style="color: #FFF;">username</h4>
                                 <v-spacer></v-spacer>
                                 <v-rating class="" style="" background-color="#F1C40F" color="#F1C40F" empty-icon="mdi-star-outline" full-icon="mdi-star" half-icon="mdi-star-half-full" 
                                 hover length="5" readonly size="25" :value="4"></v-rating> 
                             </v-col>
                             <v-col class="d-flex justify-center">
                                 <v-card class="rounded-lg" style="width: 30rem;">
+                                    <p class="text-left font-weight-bold ma-3">Titulo</p>
                                     <p class="text-left ma-3"> muito bommuito bommuito bommuito bommuito bommuito bom  </p>
                                 </v-card>                        
                             </v-col>

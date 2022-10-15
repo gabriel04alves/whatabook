@@ -46,9 +46,8 @@
           </v-list>
           <v-divider></v-divider>
           <v-list>
-            <v-list-item @click='logout'
-            >
-              <v-list-item-title> <v-icon> mdi-exit </v-icon> Sair</v-list-item-title>
+            <v-list-item to="/login" @click='logout'>
+              <v-list-item-title> <v-icon> mdi-exit </v-icon>Sair</v-list-item-title>
             </v-list-item>
           </v-list>
         </v-menu>
@@ -76,6 +75,15 @@
 import {mapActions, mapState} from 'vuex'
 
   export default {
+    methods:{
+      ...mapActions('auth', ['logout'])
+    },
+    computed: {
+      ...mapState('auth', ['loggedIn', 'user'])
+    },
+    mounted() {
+      console.log(this)
+    },
     data: () => ({
       btns: [
         ['Large', 'lg'],
@@ -92,12 +100,7 @@ import {mapActions, mapState} from 'vuex'
         { title:'Minha lista', to:"/minhalista"}
         ],
     }),
-    methods:{
-      ...mapActions('auth', ['logout'])
-    },
-    computed: {
-      ...mapState('auth', ['loggedIn', 'user'])
-    },
+
   };
 </script>
 
