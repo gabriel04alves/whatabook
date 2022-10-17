@@ -1,6 +1,6 @@
 <template>
   <div style="">
-    <div class="d-flex justify-end ma-5 flex-row" style="position: fixed;" color="#fff">
+    <div class="d-flex justify-end ma-5 flex-row" style="position: fixed; " color="#fff">
       <p> Login: {{ loggedIn }} <br> ID:{{ user.access }} </p>
     </div>
     <v-row style="background: linear-gradient( 180deg, #114b5f 25%, rgba(217, 217, 217, 0) 100% );" class="pa-16 pt-8 d-flex justify-center">

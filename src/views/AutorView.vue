@@ -1,12 +1,14 @@
 <template>
     <div class="d-flex justify-space-around align-center ma-16" style="gap: 5rem;">
       <div class="" style="margin-left: 15rem;">
-          <v-avatar elevation="8" color="#667372" size="200"></v-avatar>
+        <div class="d-flex justify-center">
+            <v-avatar elevation="8" color="#667372" size="200"> <v-img src="@/assets/images/georgeorwell.jpeg"></v-img> </v-avatar>
+        </div>
           <h3 class="text-center mt-4 font-weight-bold" style="color: #114B5F;">{{ autor.nomeAutor }}</h3>
           <p class="mt-4"> {{ autor.biografiaAutor }} </p>
-          <div class="d-flex justify-center align-center"><v-icon color="#114B5F">mdi-star-outline</v-icon> {{ autor.dtnascAutor }}</div>
-          <div class="d-flex justify-center align-center"><v-icon color="#114B5F">mdi-coffin</v-icon> -- </div>
-          <div class="d-flex justify-center align-center mt-1"><v-icon color="#114B5F">mdi-map-marker</v-icon> Santa Catarina, Brasil</div>
+          <div class="d-flex justify-center align-center"><v-icon color="#114B5F">mdi-star-outline</v-icon> {{ autor.dtnascAutor}}</div>
+          <div class="d-flex justify-center align-center"><v-icon color="#114B5F">mdi-coffin</v-icon> {{ autor.dtfalecimentoAutor }} </div>
+          <div class="d-flex justify-center align-center mt-1"><v-icon color="#114B5F">mdi-map-marker</v-icon> {{ autor.localAutor }} </div>
       </div>
       <v-divider vertical></v-divider>
       <div class="justify-center" style="">
