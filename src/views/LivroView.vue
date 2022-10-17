@@ -69,7 +69,7 @@
     <v-row>
       <v-col cols="4">
         <div elevation="10" class="d-flex justify-center" style="color: #114b5f" >
-          <v-card class="" style="width: 30rem; height: 23rem; color: #114b5f" color="#CAF1FF" >
+          <v-card class="" style="width: 30rem; height: 24rem; color: #114b5f" color="#CAF1FF" >
             <h3 class="text-center text-uppercase text-decoration-underline pa-6">
               Detalhes
             </h3>
@@ -96,6 +96,13 @@
                   <h3 class="font-weight-regular" style="color: #114b5f">
                     {{ livro.isbn }}
                   </h3>
+                </div>
+                <div class="d-flex flex-row align-center" style="gap: 1rem">
+                  <v-icon large color="#114B5F">mdi-bookshelf</v-icon>
+                  <router-link to="/editora" tag="button"
+                    ><h3 class="font-weight-regular" style="color: #114b5f">
+                      {{ livro.editora }}
+                    </h3></router-link>
                 </div>
                 <div class="d-flex flex-row align-center" style="gap: 1rem">
                   <v-icon large color="#114B5F">mdi-calendar</v-icon>

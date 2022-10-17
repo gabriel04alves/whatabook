@@ -51,7 +51,7 @@
             {{ item.sloganCategoria }}
           </h3>
           <v-slide-group class="pt-2 pb-4 pr-4 pl-4" show-arrows color="#114B5F" >
-            <v-slide-item v-for="(imagem, index) in livrosz" :key="index" v-show="imagem. categoria == item.nomeCategoria">
+            <v-slide-item v-for="(imagem, index) in livros" :key="index" v-show="imagem. categoria == item.nomeCategoria">
               <div class="ma-4" style="height: 100%; width: 8.1rem">
                 <v-row class="fill-height" justify="center">
                   <img @click="irParaLivro(imagem)" id="img" class="ma-2" :src="imagem.imagemLivro" height="200" width="140" />
@@ -75,8 +75,8 @@ export default {
   },
 
   data: () => ({
-    livros: {},
-    livrosz: [
+
+    livros: [
       {
         nomeLivro: "Buracos Negros",
         imagemLivro: require("../assets/images/buraco-negro.png"),
@@ -87,6 +87,7 @@ export default {
         numPaginas: 150,
         isbn: 152300458,
         edicaoLivro: "10 janeiro 2007",
+        editora: "Companhia das Letras",
         idiomaLivro: "Portugues",
         descLivro: "1 CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO",
         resenha: [
@@ -107,6 +108,7 @@ export default {
         numPaginas: 170,
         isbn: 546454,
         edicaoLivro: "10 janeiro 2007",
+        editora: "Companhia das Letras",
         idiomaLivro: "Portugues",
         descLivro: "descrição descrição descrição descrição descrição descrição ",
         resenha: [

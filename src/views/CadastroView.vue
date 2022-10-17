@@ -3,7 +3,7 @@
         <div class="d-flex justify-center align-center" id="conteudo" style="background-color: #114B5F; height: 62rem; width: 45%">
           <v-img data-aos="zoom-in" src="./images/logobranco.png" max-width="70%"></v-img>
         </div>
-        <div class="d-flex justify-center align-center" style="width: 55%;">
+        <div class="d-flex justify-center align-self-center" style="width: 95%; height: 100%;">
           <!-- <v-card class="d-flex flex-column justify-start align-center" style="background-color: #BCEEFF; width: 40%; height: 55%;"></v-card> -->
             <v-card data-aos="zoom-in-up" max-width="500" class="mx-auto pa-4" style="background-color: #BCEEFF; width: 40%; height: 55%;">
                 <v-card-title class=" justify-space-between">
@@ -28,19 +28,14 @@
                                     <v-btn text color="#114B5F" @click="$refs.menu.save(date)" > OK </v-btn>
                                 </v-date-picker>
                             </v-menu>
+                            <v-text-field class="mt-0" color="#114B5F" required outlined prepend-inner-icon="mdi-lock" label="Senha" v-model="password" :type="show ? 'text' : 'password'" :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'" @click:append="show = !show" ></v-text-field> 
+                            <v-text-field class="mt-0" color="#114B5F" required outlined prepend-inner-icon="mdi-lock-alert" label="Confirmar senha" v-model="passwordConfirm" :type="show ? 'text' : 'password'" :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'" @click:append="show = !show" ></v-text-field> 
                         </v-form>
                     </div>
                     
                 </v-window-item>
 
                 <v-window-item :value="2">
-                    <v-card-text>
-                        <v-text-field class="mt-0" color="#114B5F" required outlined prepend-inner-icon="mdi-lock" label="Senha" v-model="password" :type="show ? 'text' : 'password'" :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'" @click:append="show = !show" ></v-text-field> 
-                        <v-text-field class="mt-0" color="#114B5F" required outlined prepend-inner-icon="mdi-lock-alert" label="Confirmar senha" v-model="passwordConfirm" :type="show ? 'text' : 'password'" :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'" @click:append="show = !show" ></v-text-field> 
-                    </v-card-text>
-                </v-window-item>
-
-                <v-window-item :value="3">
                     <h3 class="ma-3 text-center font-weight-light" style="color:#114B5F">Sua conta foi criada, <b class="font-weight-bold">em breve você receberá um e-mail confirmando seu cadastro.</b> </h3>
                     <div class="d-flex justify-center">
                         <svg  width="120" height="120" viewBox="0 0 209 217" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -65,10 +60,10 @@
                 <v-divider class="mt-16"></v-divider>
 
                 <div class="d-flex justify-space-around align-end mt-5">
-                        <v-btn :disabled="step === 1 || step === 3" text @click="step--" >
+                        <v-btn :disabled="step === 1 || step === 2" text @click="step--" >
                             Voltar
                         </v-btn>
-                        <v-btn :disabled="step === 3" color="#114B5F" style="color: #FFF;" depressed @click="step++" >
+                        <v-btn :disabled="step === 2" color="#114B5F" style="color: #FFF;" depressed @click="step++" >
                             Continuar
                         </v-btn>                  
                 </div>
@@ -95,7 +90,6 @@
       currentTitle () {
         switch (this.step) {
           case 1: return 'Cadastro'
-          case 2: return 'Criar uma senha'
           default: return 'Sucesso!'
         }
       },

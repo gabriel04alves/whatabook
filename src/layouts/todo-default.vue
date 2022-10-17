@@ -46,7 +46,7 @@
           </v-list>
           <v-divider></v-divider>
           <v-list>
-            <v-list-item to="/login" @click='logout'>
+            <v-list-item @click='logout'>
               <v-list-item-title> <v-icon> mdi-exit </v-icon>Sair</v-list-item-title>
             </v-list-item>
           </v-list>
