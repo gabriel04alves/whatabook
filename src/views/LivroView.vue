@@ -78,12 +78,9 @@
                 <div class="d-flex flex-row align-center" style="gap: 1rem">
                   <v-icon large color="#114B5F"
                     >mdi-account-edit-outline</v-icon
-                  >
-                  <router-link to="/autor" tag="button"
-                    ><h3 class="font-weight-regular" style="color: #114b5f">
+                  ><h3 class="font-weight-regular" style="color: #114b5f" @click="irParaAutor(livro.autor)">
                       {{ livro.autor }}
-                    </h3></router-link
-                  >
+                    </h3>
                 </div>
                 <div class="d-flex flex-row align-center" style="gap: 1rem">
                   <v-icon large color="#114B5F">mdi-book-open-page-variant-outline</v-icon>
@@ -200,6 +197,8 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
+
 export default {
   props: [ "livro"],
   data: () => ({
@@ -208,6 +207,9 @@ export default {
     novoTitulo: "",
     novaResenha: "",
   }),
+  computed: {
+    ...mapState(["autores"]),
+  },
   methods: {
     adicionarResenha() {
       this.resenha.push({
@@ -217,6 +219,11 @@ export default {
       });
       this.dialog = false;
     },
+    irParaAutor(nomeAutor) {
+      const autor = this.autores.find((autor) => autor.nomeAutor == nomeAutor)
+
+      this.$router.push({ name: "autor", params: { autor } })
+    }
   },
 };
 </script>

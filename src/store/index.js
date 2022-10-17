@@ -18,7 +18,25 @@ const modules = {
 }
 
 export default new Vuex.Store({
-    state: {},
+    state: {
+        autores: [
+                {
+                    nomeAutor: "Stephen Hawking",
+                    biografiaAutor: "teste teste teste teste teste ",
+                    dtnascAutor: new Date("2000,10,10"),
+                    dtfalecimentoAutor: new Date(),
+                    localAutor: "Santa Catarina, Brasil",
+                    obras: "",
+                },
+                {
+                    nomeAutor: "George Orwell",
+                    dtnascAutor: new Date('1903,06,25'),
+                    dtfalecimentoAutor: new Date('1950,01,21'),
+                    localAutor: "Londres, UK",
+                    obras: "",
+                },
+            ],
+    },
     mutations: {},
     actions: {},
     modules,

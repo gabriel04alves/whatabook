@@ -1,7 +1,8 @@
 <template>
   <div style="">
-    <div>principal - {{ loggedIn }} - {{user.access}} </div>
-    <v-btn @click='logout'>sair</v-btn>
+    <div class="d-flex justify-end ma-5 flex-row" style="position: fixed;" color="#fff">
+      <p> Login: {{ loggedIn }} <br> ID:{{ user.access }} </p>
+    </div>
     <v-row style="background: linear-gradient( 180deg, #114b5f 25%, rgba(217, 217, 217, 0) 100% );" class="pa-16 pt-8 d-flex justify-center">
       <v-col>
         <div data-aos="zoom-in-up" class="d-flex justify-end pt-5 pr-16" style="">
@@ -126,22 +127,6 @@ export default {
         link: "/livro",
         sloganCategoria: "Para você",
         descCategoria: "genero genero.",
-      },
-    ],
-    autores: [
-      {
-        nomeAutor: "",
-        dtnascAutor: new Date("2000,10,10"),
-        dtfalecimentoAutor: new Date(),
-        localAutor: "Santa Catarina, Brasil",
-        obras: "",
-      },
-      {
-        nomeAutor: "George Orwell",
-        dtnascAutor: new Date('1903,06,25'),
-        dtfalecimentoAutor: new Date('1950,01,21'),
-        localAutor: "Londres, UK",
-        obras: "",
       },
     ],
     editoras: [

@@ -13,7 +13,7 @@
               <v-text-field color="#114B5F" label="Usuário" v-model="usuario.username" style="" required outlined></v-text-field>
               <v-text-field color="#114B5F" class="" label="Senha" v-model="usuario.password" :type="show ? 'text' : 'password'" :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'" @click:append="show = !show" required outlined></v-text-field>  
               <div class="d-flex justify-center ">
-                <v-btn class="rounded-lg" color="#FFF" style="color: #114B5F;" @click="submitLogin">Entrar</v-btn>
+                <v-btn tag="button" class="rounded-lg" color="#FFF" style="color: #114B5F;" @click="submitLogin">Entrar</v-btn>
               </div>
               <v-row class="d-flex justify-center mt-6">
                 <v-btn text small><h5 class="text-decoration-underline text-uppercase" style="color: #114B5F">esqueceu sua senha?</h5></v-btn> 
@@ -26,13 +26,13 @@
                 <v-btn class="text-uppercase rounded-lg font-weight-medium" color="#FFF" style="color: #114B5F;" link to="/cadastro">cadastre-se</v-btn>
               </v-row>
               <div class="d-flex justify-center mt-6">
-                <router-link to="/cadastroeditora" tag="button">
-                  <p class="font-italic text-center text-decoration-underline" style="color: #114B5F;">Editora? Acesse aqui</p>
-                </router-link>                  
+                <v-btn class="font-italic text-center text-decoration-underline" color="#BCEEFF" text style="color: #114B5F;" to="/cadastroeditora" tag="button">
+                  Editora? Acesse aqui
+                </v-btn>                  
               </div>
             </v-form>
           </v-card>
-          <v-snackbar v-model="loginMessage" timeout="25000">
+          <v-snackbar v-model="loginMessage" timeout="2000">
             {{ loginText }}
             <template v-slot:action="{attrs}">
               <v-btn color="black" text v-blind="attrs" @click="loginMessage=false">Fechar</v-btn>
