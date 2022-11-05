@@ -1,12 +1,11 @@
 <template>
   <div style="">
-    <div class="d-flex justify-end ma-5 flex-row" style="position: fixed; " color="#fff">
-      <p> Login: {{ loggedIn }} <br> ID:{{ user.access }} </p>
+    <div class="d-flex justify-end ma-5 flex-row" style="position: fixed; " color="#fff"> 
     </div>
     <v-row style="background: linear-gradient( 180deg, #114b5f 25%, rgba(217, 217, 217, 0) 100% );" class="pa-16 pt-8 d-flex justify-center">
       <v-col>
         <div data-aos="zoom-in-up" class="d-flex justify-end pt-5 pr-16" style="">
-          <v-img src="../assets/images/emalta.png" @click="irParaLivro(items[4])" max-width="270px"></v-img>
+          <v-img class="rounded" elevation="9" src="../assets/images/emalta.png" @click="irParaLivro(items[4])" max-width="270px"></v-img>
         </div>
       </v-col>
       <v-col class="col-8 d-flex align-self-center" color="primary" style="color: #fff">
@@ -55,7 +54,7 @@
             <v-slide-item v-for="(imagem, index) in livros" :key="index" v-show="imagem. categoria == item.nomeCategoria">
               <div class="ma-4" style="height: 100%; width: 8.1rem">
                 <v-row class="fill-height" justify="center">
-                  <img @click="irParaLivro(imagem)" id="img" class="ma-2" :src="imagem.imagemLivro" height="200" width="140" />
+                  <img @click="irParaLivro(imagem)" id="img" class="rounded ma-2" :src="imagem.imagemLivro" height="200" width="140" />
                 </v-row>
               </div>
             </v-slide-item>

@@ -9,7 +9,7 @@ const routes = [{
     path: '/',
     component: () => import('@/layouts/todo-default'),
     meta: {
-      auth: true
+      auth: false
     },
     children: [{
         path: '/',
