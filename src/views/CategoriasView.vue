@@ -16,7 +16,7 @@
       </v-carousel-item>
     </v-carousel>
     <v-row class="pt-8">
-      <v-row data-aos="flip-down" v-for="item in categorias" :key="item" class="pt-0 pb-3">
+      <v-row data-aos="flip-down" v-for="item,index in categorias" :key="index" class="pt-0 pb-3">
         <v-sheet width="calc(135rem - 200px)" color="#FFF" style="color: #114B5F">
           <h3 class="pt-5 text-uppercase font-weight-light" style="padding-left: 5%;">{{ item.slogan }}</h3>
           <v-slide-group  class="pt-2 pb-4 pr-4 pl-4" show-arrows>

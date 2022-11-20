@@ -134,29 +134,29 @@
             </h3>
             <div class="pa-5">
               <v-row class="d-flex align-center justify-space-around ms-2 me-2">
-                <v-rating background-color="#F1C40F" color="#F1C40F" empty-icon="mdi-star-outline" full-icon="mdi-star" half-icon="mdi-star-half-full" hover length="5" readonly size="25" value="1.5"></v-rating>
+                <v-rating background-color="#F1C40F" color="#F1C40F" empty-icon="mdi-star-outline" full-icon="mdi-star" half-icon="mdi-star-half-full" hover length="5" readonly size="25" :value="1.5"></v-rating>
                 <v-progress-linear class="rounded" v-model="power" color="amber" height="15" style="width: 150px" ></v-progress-linear>
                 <h4 class="text-center" style="color: #114b5f">75%</h4>
               </v-row>
               <v-row class="d-flex align-center justify-space-around ms-2 me-2">
-                <v-rating background-color="#F1C40F" color="#F1C40F" empty-icon="mdi-star-outline" full-icon="mdi-star" half-icon="mdi-star-half-full" hover length="5" readonly size="25" value="2.5"></v-rating>
+                <v-rating background-color="#F1C40F" color="#F1C40F" empty-icon="mdi-star-outline" full-icon="mdi-star" half-icon="mdi-star-half-full" hover length="5" readonly size="25" :value="2.5"></v-rating>
                 <v-progress-linear class="rounded" v-model="power" color="amber" height="15" style="width: 150px" ></v-progress-linear>
                 <h4 class="text-center" style="color: #114b5f">75%</h4>
               </v-row>
               <v-row class="d-flex align-center justify-space-around ms-2 me-2">
-                <v-rating background-color="#F1C40F" color="#F1C40F" empty-icon="mdi-star-outline" full-icon="mdi-star" half-icon="mdi-star-half-full" hover length="5" readonly size="25" value="3.5"
+                <v-rating background-color="#F1C40F" color="#F1C40F" empty-icon="mdi-star-outline" full-icon="mdi-star" half-icon="mdi-star-half-full" hover length="5" readonly size="25" :value="3.5"
                 ></v-rating>
                 <v-progress-linear class="rounded" v-model="power" color="amber" height="15" style="width: 150px" ></v-progress-linear>
                 <h4 class="text-center" style="color: #114b5f">75%</h4>
               </v-row>
               <v-row class="d-flex align-center justify-space-around ms-2 me-2">
-                <v-rating background-color="#F1C40F" color="#F1C40F" empty-icon="mdi-star-outline" full-icon="mdi-star" half-icon="mdi-star-half-full" hover length="5" readonly size="25" value="4.5"
+                <v-rating background-color="#F1C40F" color="#F1C40F" empty-icon="mdi-star-outline" full-icon="mdi-star" half-icon="mdi-star-half-full" hover length="5" readonly size="25" :value="4.5"
                 ></v-rating>
                 <v-progress-linear class="rounded" v-model="power" color="amber" height="15" style="width: 150px" ></v-progress-linear>
                 <h4 class="text-center" style="color: #114b5f">75%</h4>
               </v-row>
               <v-row class="d-flex align-center justify-space-around ms-2 me-2">
-                <v-rating background-color="#F1C40F" color="#F1C40F" empty-icon="mdi-star-outline" full-icon="mdi-star" half-icon="mdi-star-half-full" hover length="5" readonly size="25" value="5.5"></v-rating>
+                <v-rating background-color="#F1C40F" color="#F1C40F" empty-icon="mdi-star-outline" full-icon="mdi-star" half-icon="mdi-star-half-full" hover length="5" readonly size="25" :value="5.5"></v-rating>
                 <v-progress-linear class="rounded" v-model="power" color="amber" height="15" style="width: 150px" ></v-progress-linear>
                 <h4 class="text-center" style="color: #114b5f">75%</h4>
               </v-row>
@@ -206,6 +206,7 @@ export default {
     dialog: false,
     novoTitulo: "",
     novaResenha: "",
+    rating: 1,
   }),
   computed: {
     ...mapState(["autores"]),
