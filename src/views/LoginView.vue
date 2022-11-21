@@ -35,7 +35,7 @@
           <v-snackbar v-model="loginMessage" timeout="2000">
             {{ loginText }}
             <template v-slot:action="{attrs}">
-              <v-btn color="black" text v-blind="attrs" @click="loginMessage=false">Fechar</v-btn>
+              <v-btn color="black" text v-bind="attrs" @click="loginMessage=false">Fechar</v-btn>
             </template>
           </v-snackbar>
         </div>
@@ -56,9 +56,9 @@ export default {
   },
   methods: {
     ...mapActions('auth', ['login']),
-    async submitLogin() {
+    submitLogin() {
       try {
-        await this.login(this.usuario),
+        this.login(this.usuario),
         this.loginMessage = true;
         this.loginText="Login realizado com sucesso",
         this.$router.push({ name: 'home'})

@@ -1,5 +1,5 @@
-import AuthApi from '@/api/auth'
-const authApi = new AuthApi()
+import AuthService from '@/api/auth'
+import { cleanToken, tokenChange } from '@/plugins/axios'
 export const auth = {
     namespaced: true,
     state: {
@@ -18,18 +18,21 @@ export const auth = {
     },
     actions: {
         async login({commit}, user) {
-            try {
-                const userData = await authApi.login(user)
+            try{
+                const userData = await AuthService.login(user)
                 commit('setLoginInfo', userData)
+                tokenChange(userData.access)
                 return Promise.resolve(userData)
-            } catch (e) {
+            }
+            catch (e){
+                commit('setLogout')
+                cleanToken()
                 return Promise.reject(e)
             }
         },
-        logout({
-            commit
-        }) {
+        logout({commit}) {
             commit('setLogout')
+            cleanToken()
         }
     }
 }

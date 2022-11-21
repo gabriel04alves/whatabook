@@ -5,8 +5,11 @@
 </template>
 
 <script>
+import {tokenChange} from "@/plugins/axios"
 export default {
-
+  mounted(){
+    tokenChange()
+  }
 }
 </script>
 

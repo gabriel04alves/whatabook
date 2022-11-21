@@ -1,12 +1,17 @@
 import axios from 'axios'
 import store from '../store'
 
-axios.defaults.baseURL = ''
+axios.defaults.baseURL = 'http://127.0.0.1:8000/'
 
-axios.interceptors.request.use((config) => {
-    const access = store.state.auth.user.access
-    if (access) {
-        config.headers.Authorization = `Bearer ${access}`
+const tokenChange = (token = store.state.auth.user.access) => {
+    if (token){
+        axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
     }
-    return config
-})
+    console.log(axios.defaults.headers.common["Authorization"])
+}
+
+const cleanToken = () =>{
+    axios.defaults.headers.common["Authorization"] = ''
+}
+
+export {tokenChange, cleanToken}

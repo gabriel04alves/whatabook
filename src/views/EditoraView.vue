@@ -33,18 +33,13 @@
   </template>
   
   <script>
-  import LivroApi from '@/api/livro'
-  const livroApi =  new LivroApi()
-
   export default {
     data() {
         return {
             livros: '222'
         }
     },
-    async created() {
-        this.livros = await livroApi.getLivros();
-    }
+
   }
   </script>
   

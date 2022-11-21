@@ -67,7 +67,6 @@
 
 <script>
 import { mapActions, mapState } from 'vuex'
-import livros from '../api/livro'
 
 export default {
   computed: {
@@ -140,9 +139,6 @@ export default {
     this.getLivros();
   },
   methods: {
-    async getLivros() {
-      this.livros = await livros.get('/api/livro')
-    },
     irParaLivro(imagem) {
       this.$router.push({
         name: `livro`,

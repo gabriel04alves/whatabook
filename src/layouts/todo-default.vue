@@ -31,7 +31,7 @@
         >
           <template v-slot:activator="{ attrs, on }">
             <v-btn :color="colors[index]" class="white--text ma-5" v-bind="attrs" v-on="on" icon>
-              <v-icon>mdi-account</v-icon>
+              <v-icon @click="verificaLogin">mdi-account</v-icon>
             </v-btn>
           </template>
           <v-list>
@@ -76,7 +76,12 @@ import {mapActions, mapState} from 'vuex'
 
   export default {
     methods:{
-      ...mapActions('auth', ['logout'])
+      ...mapActions('auth', ['logout']),
+      verificaLogin(){
+        if (!this.loggedIn){
+          this.$router.push({path: '/login'})
+        }
+      }
     },
     computed: {
       ...mapState('auth', ['loggedIn', 'user'])
