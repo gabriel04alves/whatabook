@@ -135,9 +135,6 @@ export default {
       }
     ],
   }),
-  created() {
-    this.getLivros();
-  },
   methods: {
     irParaLivro(imagem) {
       this.$router.push({

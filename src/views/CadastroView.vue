@@ -16,19 +16,20 @@
                 <v-window-item :value="1">
                     <div>
                         <v-form ref="form" lazy-validation class="ma-5"> 
-                            <v-text-field color="#114B5F" prepend-inner-icon="mdi-email" v-model="email" label="E-mail" required outlined></v-text-field> 
-                            <v-text-field color="#114B5F" prepend-inner-icon="mdi-account" v-model="nome" :counter="100" label="Nome" required outlined style=""></v-text-field>
-                            <v-menu ref="menu" v-model="menu" :close-on-content-click="false" :return-value.sync="date" transition="scale-transition" offset-y min-width="auto" outlined >
+                            <v-text-field color="#114B5F" prepend-inner-icon="mdi-email" v-model="usuario.email" label="E-mail" required outlined></v-text-field> 
+                            <v-text-field color="#114B5F" prepend-inner-icon="mdi-account" v-model="usuario.username" :counter="100" label="Nome" required outlined style="">
+                            </v-text-field>
+                            <v-menu ref="menu" v-model="menu" :close-on-content-click="false" :return-value.sync="usuario.data_nascimento" transition="scale-transition" offset-y min-width="auto" outlined >
                                 <template v-slot:activator="{ on, attrs }">
-                                    <v-text-field v-model="date" label="Data de aniversário" prepend-inner-icon="mdi-cake-variant-outline" readonly v-bind="attrs" v-on="on" color="#114B5F" outlined ></v-text-field>
+                                    <v-text-field v-model="usuario.data_nascimento" label="Data de aniversário" prepend-inner-icon="mdi-cake-variant-outline" readonly v-bind="attrs" v-on="on" color="#114B5F" outlined ></v-text-field>
                                 </template>
-                                <v-date-picker v-model="date" no-title scrollable>
+                                <v-date-picker v-model="usuario.data_nascimento" no-title scrollable>
                                     <v-spacer></v-spacer>
                                     <v-btn text color="#114B5F" @click="menu = false" > Cancel </v-btn>
-                                    <v-btn text color="#114B5F" @click="$refs.menu.save(date)" > OK </v-btn>
+                                    <v-btn text color="#114B5F" @click="$refs.menu.save(usuario.data_nascimento)" > OK </v-btn>
                                 </v-date-picker>
                             </v-menu>
-                            <v-text-field class="mt-0" color="#114B5F" required outlined prepend-inner-icon="mdi-lock" label="Senha" v-model="password" :type="show ? 'text' : 'password'" :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'" @click:append="show = !show" ></v-text-field> 
+                            <v-text-field class="mt-0" color="#114B5F" required outlined prepend-inner-icon="mdi-lock" label="Senha" v-model="usuario.password" :type="show ? 'text' : 'password'" :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'" @click:append="show = !show" ></v-text-field> 
                             <v-text-field class="mt-0" color="#114B5F" required outlined prepend-inner-icon="mdi-lock-alert" label="Confirmar senha" v-model="passwordConfirm" :type="show ? 'text' : 'password'" :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'" @click:append="show = !show" ></v-text-field> 
                         </v-form>
                     </div>
@@ -60,10 +61,10 @@
                 <v-divider class="mt-16"></v-divider>
 
                 <div class="d-flex justify-space-around align-end mt-5">
-                        <v-btn :disabled="step === 1 || step === 2" text @click="step--" >
+                        <v-btn :disabled="step === 1" text @click="step--" >
                             Voltar
                         </v-btn>
-                        <v-btn :disabled="step === 2" color="#114B5F" style="color: #FFF;" depressed @click="step++" >
+                        <v-btn :disabled="step === 2" color="#114B5F" style="color: #FFF;" depressed @click="cadastrar" >
                             Continuar
                         </v-btn>                  
                 </div>
@@ -73,15 +74,14 @@
 </template>
 
 <script>
-  export default {
+import axios from "axios"
+import {mapActions} from "vuex"
+export default {
     data(){
         return{
-            nome: '',
-            date: '',
-            menu: '',
-            email: '',
-            password: '',
+            usuario: {},
             passwordConfirm: '',
+            menu: '',
             step: 1,
             show: false,
         }
@@ -94,6 +94,19 @@
         }
       },
     },
+    methods:{
+        ...mapActions('auth', ['login']),
+        async cadastrar(){
+            try{
+                await axios.post('/api/user/', this.usuario)
+                this.login({username: this.usuario.username, password: this.usuario.password})
+                this.step++
+            }
+            catch (e){
+                console.log(e)
+            }
+        }
+    }
   }
 </script>
 
