@@ -3,23 +3,23 @@
     <v-row>
       <v-col cols="4">
         <div class="pa-16 d-flex justify-center" style="">
-          <img width="350" :src="livro.imagemLivro" alt="" />
+          <img width="350" :src="livro.capa_livro" alt="" />
         </div>
       </v-col>
       <v-col class="" cols="8">
         <div class="ma-16" style="color: #114b5f">
           <h2 class="text-center font-weight-bold">
-            {{ livro.nomeLivro }}
+            {{ livro.titulo_livro }}
           </h2>
           <div class="d-flex justify-center">
             <router-link to="" tag="button"
               ><h3 class="text-center font-weight-light">
-                {{ livro.autor }}
+                {{ livro.autor_livros[0].nome_autor }}
               </h3></router-link
             >
           </div>
           <h3 class="text-justify font-weight-regular ma-10">
-            {{ livro.descLivro }}
+            {{ livro.sinopse_livro }}
           </h3>
         </div>
         <div class="d-flex justify-center align-end" style="gap: 5%">
@@ -79,38 +79,38 @@
                   <v-icon large color="#114B5F"
                     >mdi-account-edit-outline</v-icon
                   ><h3 class="font-weight-regular" style="color: #114b5f" @click="irParaAutor(livro.autor)">
-                      {{ livro.autor }}
+                      {{ livro.autor_livros[0].nome_autor }}
                     </h3>
                 </div>
                 <div class="d-flex flex-row align-center" style="gap: 1rem">
                   <v-icon large color="#114B5F">mdi-book-open-page-variant-outline</v-icon>
                   <h3 class="font-weight-regular" style="color: #114b5f">
-                    {{ livro.numPaginas }}
+                    {{ livro.qtd_paginas }}
                   </h3>
                 </div>
                 <div class="d-flex flex-row align-center" style="gap: 1rem">
                   <v-icon large color="#114B5F">mdi-barcode</v-icon>
                   <h3 class="font-weight-regular" style="color: #114b5f">
-                    {{ livro.isbn }}
+                    978-3-16-148410-0
                   </h3>
                 </div>
                 <div class="d-flex flex-row align-center" style="gap: 1rem">
                   <v-icon large color="#114B5F">mdi-bookshelf</v-icon>
                   <router-link to="/editora" tag="button"
                     ><h3 class="font-weight-regular" style="color: #114b5f">
-                      {{ livro.editora }}
+                      {{ livro.editora_livro.nome_editora }}
                     </h3></router-link>
                 </div>
                 <div class="d-flex flex-row align-center" style="gap: 1rem">
                   <v-icon large color="#114B5F">mdi-calendar</v-icon>
                   <h3 class="font-weight-regular" style="color: #114b5f">
-                    1ª Edição ({{ livro.edicaoLivro }})
+                    1ª Edição
                   </h3>
                 </div>
                 <div class="d-flex flex-row align-center" style="gap: 1rem">
                   <v-icon large color="#114B5F">mdi-translate</v-icon>
                   <h3 class="font-weight-regular" style="color: #114b5f">
-                    {{ livro.idiomaLivro }}
+                    Português
                   </h3>
                 </div>
               </div>
@@ -135,30 +135,30 @@
             <div class="pa-5">
               <v-row class="d-flex align-center justify-space-around ms-2 me-2">
                 <v-rating background-color="#F1C40F" color="#F1C40F" empty-icon="mdi-star-outline" full-icon="mdi-star" half-icon="mdi-star-half-full" hover length="5" readonly size="25" :value="1.5"></v-rating>
-                <v-progress-linear class="rounded" v-model="power" color="amber" height="15" style="width: 150px" ></v-progress-linear>
-                <h4 class="text-center" style="color: #114b5f">75%</h4>
+                <v-progress-linear class="rounded" :value="power1" color="amber" height="15" style="width: 150px" ></v-progress-linear>
+                <h4 class="text-center" style="color: #114b5f">{{power1}}%</h4>
               </v-row>
               <v-row class="d-flex align-center justify-space-around ms-2 me-2">
                 <v-rating background-color="#F1C40F" color="#F1C40F" empty-icon="mdi-star-outline" full-icon="mdi-star" half-icon="mdi-star-half-full" hover length="5" readonly size="25" :value="2.5"></v-rating>
-                <v-progress-linear class="rounded" v-model="power" color="amber" height="15" style="width: 150px" ></v-progress-linear>
-                <h4 class="text-center" style="color: #114b5f">75%</h4>
+                <v-progress-linear class="rounded" :value="power2" color="amber" height="15" style="width: 150px" ></v-progress-linear>
+                <h4 class="text-center" style="color: #114b5f">{{power2}}%</h4>
               </v-row>
               <v-row class="d-flex align-center justify-space-around ms-2 me-2">
                 <v-rating background-color="#F1C40F" color="#F1C40F" empty-icon="mdi-star-outline" full-icon="mdi-star" half-icon="mdi-star-half-full" hover length="5" readonly size="25" :value="3.5"
                 ></v-rating>
-                <v-progress-linear class="rounded" v-model="power" color="amber" height="15" style="width: 150px" ></v-progress-linear>
-                <h4 class="text-center" style="color: #114b5f">75%</h4>
+                <v-progress-linear class="rounded" :value="power3" color="amber" height="15" style="width: 150px" ></v-progress-linear>
+                <h4 class="text-center" style="color: #114b5f">{{power3}}%</h4>
               </v-row>
               <v-row class="d-flex align-center justify-space-around ms-2 me-2">
                 <v-rating background-color="#F1C40F" color="#F1C40F" empty-icon="mdi-star-outline" full-icon="mdi-star" half-icon="mdi-star-half-full" hover length="5" readonly size="25" :value="4.5"
                 ></v-rating>
-                <v-progress-linear class="rounded" v-model="power" color="amber" height="15" style="width: 150px" ></v-progress-linear>
-                <h4 class="text-center" style="color: #114b5f">75%</h4>
+                <v-progress-linear class="rounded" :value="power4" color="amber" height="15" style="width: 150px" ></v-progress-linear>
+                <h4 class="text-center" style="color: #114b5f">{{power4}}%</h4>
               </v-row>
               <v-row class="d-flex align-center justify-space-around ms-2 me-2">
                 <v-rating background-color="#F1C40F" color="#F1C40F" empty-icon="mdi-star-outline" full-icon="mdi-star" half-icon="mdi-star-half-full" hover length="5" readonly size="25" :value="5.5"></v-rating>
-                <v-progress-linear class="rounded" v-model="power" color="amber" height="15" style="width: 150px" ></v-progress-linear>
-                <h4 class="text-center" style="color: #114b5f">75%</h4>
+                <v-progress-linear class="rounded" :value="power5" color="amber" height="15" style="width: 150px" ></v-progress-linear>
+                <h4 class="text-center" style="color: #114b5f">{{power5}}%</h4>
               </v-row>
             </div>
           </v-card>
@@ -172,19 +172,22 @@
           </h3>
           <div class="d-flex justify-center">
             <div data-aos="zoom-up" class="d-flex justify-center flex-column">
-              <v-card class="rounded-lg ma-5" elevation="4" color="#114B5F" style="width: 35rem" v-for="(comentario, index) in livro.resenha" :key="index">
+              <v-card class="rounded-lg ma-5" elevation="4" color="#114B5F" style="width: 35rem" v-for="(resenha, index) in livro.resenha" :key="index">
                 <v-col class="d-flex align-center">
-                  <v-avatar class="mr-5" color="#FFF" size="50">GA</v-avatar>
+                  <v-avatar v-if="!resenha.user_resenha.midia" class="mr-5" color="#FFF" size="50">GA</v-avatar>
+                  <v-avatar v-else class="mr-5" color="#FFF" size="50">
+                    <img :src="resenha.user_resenha.midia ? resenha.user_resenha.midia.imagem : '' " alt="">
+                  </v-avatar>
                   <h4 class="font-weight-light" style="color: #fff">
-                    username
+                    {{resenha.user_resenha.username}}
                   </h4>
                   <v-spacer></v-spacer>
-                  <v-rating background-color="#F1C40F" color="#F1C40F" empty-icon="mdi-star-outline" full-icon="mdi-star" half-icon="mdi-star-half-full" hover length="5" readonly size="25" :value="comentario.estrelaResenha"></v-rating>
+                  <v-rating background-color="#F1C40F" color="#F1C40F" empty-icon="mdi-star-outline" full-icon="mdi-star" half-icon="mdi-star-half-full" hover length="5" readonly size="25" :value="resenha.nota_resenha"></v-rating>
                 </v-col>
                 <v-col class="d-flex justify-center">
                   <v-card class="rounded-lg" style="width: 30rem">
-                    <p class="text-left font-weight-bold ma-3"> {{ comentario.tituloResenha }} </p>
-                    <p class="text-left ma-3">{{ comentario.descResenha }}</p>
+                    <p class="text-left font-weight-bold ma-3"> {{ resenha.titulo_resenha }} </p>
+                    <p class="text-left ma-3">{{ resenha.desc_resenha }}</p>
                   </v-card>
                 </v-col>
               </v-card>
@@ -198,15 +201,19 @@
 
 <script>
 import { mapState } from "vuex";
-
+import axios from "axios"
 export default {
-  props: [ "livro"],
   data: () => ({
-    power: 75,
+    power1: 0,
+    power2: 0,
+    power3: 0,
+    power4: 0,
+    power5: 0,
     dialog: false,
     novoTitulo: "",
     novaResenha: "",
     rating: 1,
+    livro: {},
   }),
   computed: {
     ...mapState(["autores"]),
@@ -224,8 +231,38 @@ export default {
       const autor = this.autores.find((autor) => autor.nomeAutor == nomeAutor)
 
       this.$router.push({ name: "autor", params: { autor } })
+    },
+    async getLivro(){
+      const {data} = await axios.get(`/api/livro/${this.$route.params.id}/`)
+      this.livro = data
+      console.log(this.livro)
+    },
+    porcentagens(){
+      let notas = {
+        1: 0,
+        2: 0,
+        3: 0,
+        4: 0,
+        5: 0,
+      }
+      for(let resenha of this.livro.resenha){
+        notas[resenha.nota_resenha]++
+      }
+      let soma = notas[1] + notas[2] + notas[3] + notas[4] + notas[5]
+      if(soma){
+        this.power1 = ((notas[1]/soma) * 100).toFixed(0)
+        this.power2 = ((notas[2]/soma) * 100).toFixed(0)
+        this.power3 = ((notas[3]/soma) * 100).toFixed(0)
+        this.power4 = ((notas[4]/soma) * 100).toFixed(0)
+        this.power5 = ((notas[5]/soma) * 100).toFixed(0)
+      }
     }
   },
+  mounted(){
+    this.getLivro().then(()=>{
+      this.porcentagens()
+    })
+  }
 };
 </script>
 

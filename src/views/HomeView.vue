@@ -45,16 +45,16 @@
       </v-col>
     </v-row>
     <v-row>
-      <v-row data-aos="zoom-in-up" v-for="(item, index) in categorias" :key="index" class="pt-5 pb-5" >
+      <v-row data-aos="zoom-in-up" class="pt-5 pb-5" >
         <v-sheet elevation="9" width="calc(135rem - 200px)" dark color="#114B5F">
           <h3 class="pt-5 text-uppercase font-weight-light" style="padding-left: 5%">
-            {{ item.sloganCategoria }}
+            Livros
           </h3>
           <v-slide-group class="pt-2 pb-4 pr-4 pl-4" show-arrows color="#114B5F" >
-            <v-slide-item v-for="(imagem, index) in livros" :key="index" v-show="imagem. categoria == item.nomeCategoria">
+            <v-slide-item v-for="(livro, index) in livros" :key="index">
               <div class="ma-4" style="height: 100%; width: 8.1rem">
                 <v-row class="fill-height" justify="center">
-                  <img @click="irParaLivro(imagem)" id="img" class="rounded ma-2" :src="imagem.imagemLivro" height="200" width="140" />
+                  <img @click="irParaLivro(livro)" id="img" class="rounded ma-2" :src="livro.capa_livro" height="200" width="140" />
                 </v-row>
               </div>
             </v-slide-item>
@@ -67,80 +67,36 @@
 
 <script>
 import { mapActions, mapState } from 'vuex'
-
+import axios from "axios"
 export default {
   computed: {
     ...mapState('auth', ['loggedIn', 'user'])
   },
-
-  data: () => ({
-
-    livros: [
-      {
-        nomeLivro: "Buracos Negros",
-        imagemLivro: require("../assets/images/buraco-negro.png"),
-        urlCompra: "https://www.amazon.com.br/Buracos-Negros-Stephen-Hawking/dp/8551000985/ref=sr_1_1_sspa?keywords=buracos+negros&qid=1664816964&qu=eyJxc2MiOiIyLjY0IiwicXNhIjoiMS44MCIsInFzcCI6IjEuMzUifQ%3D%3D&sprefix=buracos%2Caps%2C390&sr=8-1-spons&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUEyWElXSEFDVUpFMkM1JmVuY3J5cHRlZElkPUEwNDcwMzMwMktCWktVNjFHV1E1RSZlbmNyeXB0ZWRBZElkPUEwMzM1MDEwMVQ2RFVPOURWVUIySiZ3aWRnZXROYW1lPXNwX2F0ZiZhY3Rpb249Y2xpY2tSZWRpcmVjdCZkb05vdExvZ0NsaWNrPXRydWU=",
-        categoria: "Sugestoes",
-        link: "/livro",
-        autor: "Stephen Hawking",
-        numPaginas: 150,
-        isbn: 152300458,
-        edicaoLivro: "10 janeiro 2007",
-        editora: "Companhia das Letras",
-        idiomaLivro: "Portugues",
-        descLivro: "1 CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO CONTEUDO",
-        resenha: [
-          {
-          descResenha: "bom livro",
-          tituloResenha: "gostei do livro",
-          estrelaResenha: 3, 
-          }
-        ],
-      },
-      {
-        nomeLivro: "1984",
-        imagemLivro: require("../assets/images/1984.png"),
-        urlCompra: "https://www.amazon.com.br/Buracos-Negros-Stephen-Hawking/dp/8551000985/ref=sr_1_1_sspa?keywords=buracos+negros&qid=1664816964&qu=eyJxc2MiOiIyLjY0IiwicXNhIjoiMS44MCIsInFzcCI6IjEuMzUifQ%3D%3D&sprefix=buracos%2Caps%2C390&sr=8-1-spons&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUEyWElXSEFDVUpFMkM1JmVuY3J5cHRlZElkPUEwNDcwMzMwMktCWktVNjFHV1E1RSZlbmNyeXB0ZWRBZElkPUEwMzM1MDEwMVQ2RFVPOURWVUIySiZ3aWRnZXROYW1lPXNwX2F0ZiZhY3Rpb249Y2xpY2tSZWRpcmVjdCZkb05vdExvZ0NsaWNrPXRydWU=",
-        categoria: "Sugestoes",
-        link: "/livro",
-        autor: "George Orwell",
-        numPaginas: 170,
-        isbn: 546454,
-        edicaoLivro: "10 janeiro 2007",
-        editora: "Companhia das Letras",
-        idiomaLivro: "Portugues",
-        descLivro: "descrição descrição descrição descrição descrição descrição ",
-        resenha: [
-          {
-          descResenha: "excelente",
-          tituloResenha: "show de bola",
-          estrelaResenha: 4, 
-          }
-        ],
-      },
-    ],
-    categorias: [
-      {
-        nomeCategoria: "Sugestoes",
-        link: "/livro",
-        sloganCategoria: "Para você",
-        descCategoria: "genero genero.",
-      },
-    ],
-    editoras: [
-      {
-        nomeEditora: "",
-        descEditora: "",
-        localEditora: "",
-      }
-    ],
-  }),
+  mounted(){
+    this.getCategorias()
+    this.getLivros()
+  },
+  data(){
+    return{
+      categorias: [],
+      livros:[]
+    }
+  },
   methods: {
-    irParaLivro(imagem) {
+    irParaLivro(livro) {
       this.$router.push({
         name: `livro`,
-        params: { livro: imagem, id: imagem.nomeLivro },
+        params: {id: livro.id },
       });
+    },
+    async getLivros(){
+      const {data} = await axios.get('api/livro/')
+      this.livros = data
+      console.log(this.livros)
+    },
+    async getCategorias(){
+      const {data} = await axios.get('api/categorias/')
+      this.categorias = data
     },
     ...mapActions('auth', ['logout'])
   },
