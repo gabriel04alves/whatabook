@@ -2,9 +2,9 @@
   <div class="d-flex justify-space-around align-center ma-16" style="gap: 5rem;">
     <div class="" style="margin-left: 15rem;">
         <v-avatar elevation="8" color="#667372" size="200"></v-avatar>
-        <h3 class="text-center mt-4 font-weight-bold" style="color: #114B5F;">Name LastName</h3>
-        <h3 class="text-center font-weight-light" style="color: #114B5F;">@user.name</h3>
-        <p class="mt-4">Aqui uma pequena biografia</p>
+        <h3 class="text-center mt-4 font-weight-bold" style="color: #114B5F;">{{usuarioLogado.username}}</h3>
+        <p v-if="usuarioLogado.biografia" class="mt-4">{{usuarioLogado.biografia}}</p>
+        <p v-else class="mt-4">Aqui uma pequena biografia</p>
         <div class="d-flex justify-center align-center"><v-icon color="#114B5F">mdi-cake-variant-outline</v-icon> 11/12/2004</div>
         <div class="d-flex justify-center align-center mt-1"><v-icon color="#114B5F">mdi-map-marker</v-icon> Joinville, SC</div>
         <v-row class="d-flex justify-center mt-5">
@@ -38,8 +38,11 @@
 </template>
 
 <script>
+import {mapState} from "vuex"
 export default {
-
+  computed:{
+    ...mapState('usuarioLogado', ['usuarioLogado'])
+  },
 }
 </script>
 

@@ -2,9 +2,8 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import VuexPersist from 'vuex-persist'
 
-import {
-    auth
-} from './auth'
+import {auth} from './auth'
+import {usuarioLogado} from './usuarioLogado'
 
 Vue.use(Vuex)
 
@@ -14,7 +13,8 @@ const vuexLocal = new VuexPersist({
 })
 
 const modules = {
-    auth
+    auth,
+    usuarioLogado
 }
 
 export default new Vuex.Store({

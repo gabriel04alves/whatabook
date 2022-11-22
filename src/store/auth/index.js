@@ -17,21 +17,24 @@ export const auth = {
         }
     },
     actions: {
-        async login({commit}, user) {
+        async login({commit, dispatch}, user) {
             try{
                 const userData = await AuthService.login(user)
                 commit('setLoginInfo', userData)
                 tokenChange(userData.access)
+                dispatch('usuarioLogado/getDadosUser', {}, {root: true})
                 return Promise.resolve(userData)
             }
             catch (e){
                 commit('setLogout')
                 cleanToken()
+                dispatch('usuarioLogado/limparDadosUser', {}, {root: true})
                 return Promise.reject(e)
             }
         },
-        logout({commit}) {
+        logout({commit, dispatch}) {
             commit('setLogout')
+            dispatch('usuarioLogado/limparDadosUser', {}, {root: true})
             cleanToken()
         }
     }

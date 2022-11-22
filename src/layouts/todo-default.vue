@@ -41,7 +41,7 @@
               link :to= "item.to"
             >
               
-              <v-list-item-title> <v-icon> {{item.icon}} </v-icon> {{ user.access}} </v-list-item-title>
+              <v-list-item-title> <v-icon> {{item.icon}} </v-icon> {{ usuarioLogado.username }} </v-list-item-title>
             </v-list-item>
           </v-list>
           <v-divider></v-divider>
@@ -84,7 +84,8 @@ import {mapActions, mapState} from 'vuex'
       }
     },
     computed: {
-      ...mapState('auth', ['loggedIn', 'user'])
+      ...mapState('auth', ['loggedIn', 'user']),
+      ...mapState('usuarioLogado',['usuarioLogado'])
     },
     mounted() {
       console.log(this)
