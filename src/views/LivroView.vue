@@ -45,13 +45,14 @@
                 Publique uma resenha:
               </h3>
               <div class="ma-5">
-                <v-text-field label="Título" outlined color="#114B5F" v-model="novoTitulo" ></v-text-field>
-                <v-textarea color="#114B5F" outlined name="input-7-4" label="Resenha" v-model="novaResenha" ></v-textarea>
-                <v-rating background-color="#F1C40F" color="#F1C40F" empty-icon="mdi-star-outline" full-icon="mdi-star"  half-icon="mdi-star-half-full" hover length="5"  size="25" v-model="rating" ref="rating"
+                <v-text-field label="Título" outlined color="#114B5F" v-model="resenha.titulo_resenha" ></v-text-field>
+                <v-textarea color="#114B5F" outlined name="input-7-4" label="Resenha" v-model="resenha.desc_resenha" ></v-textarea>
+                <v-rating background-color="#F1C40F" color="#F1C40F" empty-icon="mdi-star-outline" full-icon="mdi-star"  half-icon="mdi-star-half-full" hover length="5"  size="25" v-model="resenha.nota_resenha" ref="rating"
                 ></v-rating>
               </div>
 
               <v-card-actions>
+                <div v-if="erro" style="color: #FF0000">Ocorreu um erro</div>
                 <v-spacer></v-spacer>
                 <v-btn color="#FF0000" text @click="dialog = false">
                   Cancelar
@@ -172,7 +173,7 @@
           </h3>
           <div class="d-flex justify-center">
             <div data-aos="zoom-up" class="d-flex justify-center flex-column">
-              <v-card class="rounded-lg ma-5" elevation="4" color="#114B5F" style="width: 35rem" v-for="(resenha, index) in livro.resenha" :key="index">
+              <v-card class="rounded-lg ma-5" elevation="4" color="#114B5F" style="width: 35rem" v-for="(resenha, index) in resenhas.results" :key="index">
                 <v-col class="d-flex align-center">
                   <v-avatar v-if="!resenha.user_resenha.midia" class="mr-5" color="#FFF" size="50">GA</v-avatar>
                   <v-avatar v-else class="mr-5" color="#FFF" size="50">
@@ -191,6 +192,11 @@
                   </v-card>
                 </v-col>
               </v-card>
+              <div class="d-flex justify-center" style="gap: 10px">
+                <v-btn color="#caf1ff" v-if="resenhas.previous" @click="page--">Anterior</v-btn>
+                <v-card v-if="resenhas.count > 3" width="30px" class="d-flex align-center justify-center" style="background-color: #114b5f; color: white; font-size: 20px;">{{page}}</v-card>
+                <v-btn color="#caf1ff" v-if="resenhas.next" @click="page++">Próximo</v-btn>
+              </div>
             </div>
           </div>
         </div>
@@ -210,22 +216,35 @@ export default {
     power4: 0,
     power5: 0,
     dialog: false,
-    novoTitulo: "",
-    novaResenha: "",
-    rating: 1,
+    resenha: {},
     livro: {},
+    erro: false,
+    resenhas: [],
+    page: 1,
   }),
   computed: {
     ...mapState(["autores"]),
+    ...mapState('usuarioLogado', ['usuarioLogado'])
+  },
+  watch:{
+    page(){
+      this.getResenhas()
+    }
   },
   methods: {
-    adicionarResenha() {
-      this.resenha.push({
-        descricao: this.novaResenha,
-        titulo: this.novoTitulo,
-        estrela: this.rating,
-      });
-      this.dialog = false;
+    async adicionarResenha() {
+      try{
+        await axios.post('/api/resenha/', this.resenha)
+        this.resenha.user_resenha = this.usuarioLogado.id
+        this.resenha.livro_resenha = this.livro.id
+        this.dialog = false;
+        this.getLivro().then(()=>{
+          this.porcentagens()
+        })
+      }catch(e){
+        console.log(e)
+        this.erro = true
+      }
     },
     irParaAutor(nomeAutor) {
       const autor = this.autores.find((autor) => autor.nomeAutor == nomeAutor)
@@ -235,6 +254,7 @@ export default {
     async getLivro(){
       const {data} = await axios.get(`/api/livro/${this.$route.params.id}/`)
       this.livro = data
+      this.getResenhas()
       console.log(this.livro)
     },
     porcentagens(){
@@ -256,11 +276,17 @@ export default {
         this.power4 = ((notas[4]/soma) * 100).toFixed(0)
         this.power5 = ((notas[5]/soma) * 100).toFixed(0)
       }
+    },
+    async getResenhas(){
+      const {data} = await axios.get(`/api/resenha/?livro=${this.livro.id}&page=${this.page}`)
+      this.resenhas = data
     }
   },
   mounted(){
     this.getLivro().then(()=>{
       this.porcentagens()
+      this.resenha.user_resenha = this.usuarioLogado.id
+      this.resenha.livro_resenha = this.livro.id
     })
   }
 };
