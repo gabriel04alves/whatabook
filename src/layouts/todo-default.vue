@@ -46,7 +46,7 @@
           </v-list>
           <v-divider></v-divider>
           <v-list>
-            <v-list-item @click='logout'>
+            <v-list-item @click='logoutLogin'>
               <v-list-item-title> <v-icon> mdi-exit </v-icon>Sair</v-list-item-title>
             </v-list-item>
           </v-list>
@@ -81,6 +81,10 @@ import {mapActions, mapState} from 'vuex'
         if (!this.loggedIn){
           this.$router.push({path: '/login'})
         }
+      },
+      logoutLogin(){
+        this.logout()
+        this.$router.push({path: "/login"})
       }
     },
     computed: {
