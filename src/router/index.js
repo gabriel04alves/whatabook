@@ -43,8 +43,9 @@ const routes = [{
         component: () => import( /* webpackChunkName: "about" */ '../views/EditarPerfilView.vue')
       },
       {
-        path: '/Autor',
+        path: '/Autor/:id',
         name: 'autor',
+        props: true,
         component: () => import( /* webpackChunkName: "about" */ '../views/AutorView.vue')
       },
       {

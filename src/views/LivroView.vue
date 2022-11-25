@@ -79,7 +79,7 @@
                 <div class="d-flex flex-row align-center" style="gap: 1rem">
                   <v-icon large color="#114B5F"
                     >mdi-account-edit-outline</v-icon
-                  ><h3 class="font-weight-regular" style="color: #114b5f" @click="irParaAutor(livro.autor)">
+                  ><h3 class="font-weight-regular" style="color: #114b5f; cursor: pointer" @click="irParaAutor(livro.autor_livros[0].id)">
                       {{ livro.autor_livros[0].nome_autor }}
                     </h3>
                 </div>
@@ -246,10 +246,8 @@ export default {
         this.erro = true
       }
     },
-    irParaAutor(nomeAutor) {
-      const autor = this.autores.find((autor) => autor.nomeAutor == nomeAutor)
-
-      this.$router.push({ name: "autor", params: { autor } })
+    irParaAutor(idAutor) {
+      this.$router.push({ name: "autor", params: { id: idAutor } })
     },
     async getLivro(){
       const {data} = await axios.get(`/api/livro/${this.$route.params.id}/`)
