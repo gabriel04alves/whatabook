@@ -5,38 +5,26 @@
     <v-row style="background: linear-gradient( 180deg, #114b5f 25%, rgba(217, 217, 217, 0) 100% );" class="pa-16 pt-8 d-flex justify-center">
       <v-col>
         <div data-aos="zoom-in-up" class="d-flex justify-end pt-5 pr-16" style="">
-          <v-img class="rounded" elevation="9" src="../assets/images/emalta.png" @click="irParaLivro(items[4])" max-width="270px"></v-img>
+          <v-img class="rounded" style="cursor: pointer" elevation="9" :src="ultimolivro.capa_livro" @click="$router.push({name: 'livro', params: {id: ultimolivro.id}})" max-width="270px"></v-img>
         </div>
       </v-col>
       <v-col class="col-8 d-flex align-self-center" color="primary" style="color: #fff">
         <div style="padding-right: 10%">
           <v-row data-aos="fade-down" class="d-flex justify-center mb-3">
             <h3 class="text-center font-weight-black pt-2" style="color: #fff">
-              A revolução dos bichos: Um conto de fadas
+              {{ultimolivro.titulo_livro}}
             </h3>
           </v-row>
           <v-row data-aos="zoom-in" class="text-justify">
-            Escrita em plena Segunda Guerra Mundial e publicada em 1945 depois
-            de ter sido rejeitada por várias editoras, essa pequena narrativa
-            causou desconforto ao satirizar ferozmente a ditadura stalinista
-            numa época em que os soviéticos ainda eram aliados do Ocidente na
-            luta contra o eixo nazifascista. De fato, são claras as referências:
-            o despótico Napoleão seria Stálin, o banido Bola-de-Neve seria
-            Trotsky, e os eventos políticos - expurgos, instituição de um estado
-            policial, deturpação tendenciosa da História - mimetizam os que
-            estavam em curso na União Soviética. Com o acirramento da Guerra
-            Fria, as mesmas razões que causaram constrangimento na época de sua
-            publicação levaram A revolução dos bichos a ser amplamente usada
-            pelo Ocidente nas décadas seguintes como arma ideológica contra o
-            comunismo.
+            {{ultimolivro.sinopse_livro}}
           </v-row>
           <v-row class="ma-5" style="display: flex; justify-content: center">
-            <a data-aos="fade-right" href="/autor" class="" style="color: #fff; text-decoration: none" ><h4 class="text-end">Autor</h4></a>
+            <a data-aos="fade-right" @click="$router.push({name: 'autor', params: {id: ultimolivro.autor_livros[0].id}})" class="" style="color: #fff; text-decoration: none" ><h4 class="text-end">Autor</h4></a>
             <v-divider class="ma-2" vertical color="#FFF"></v-divider>
             <a data-aos="fade-left" href="/editora" class="" style="color: #fff; text-decoration: none"><h4 class="text-end">Editora</h4></a>
           </v-row>
           <v-row data-aos="fade-up" class="" style="display: flex; justify-content: center">
-            <v-btn plain small dark link to="/livro">
+            <v-btn @click="$router.push({name: 'livro', params: {id: ultimolivro.id}})" plain small dark link>
               <v-icon>mdi-information-outline</v-icon>
               mais
             </v-btn>
@@ -74,12 +62,16 @@ export default {
   },
   mounted(){
     this.getCategorias()
-    this.getLivros()
+    this.getLivros().then(()=>{
+      this.ultimolivro = this.livros[this.livros.length -1]
+      console.log(this.ultimolivro)
+    })
   },
   data(){
     return{
       categorias: [],
-      livros:[]
+      livros:[],
+      ultimolivro: {}
     }
   },
   methods: {
@@ -92,7 +84,6 @@ export default {
     async getLivros(){
       const {data} = await axios.get('api/livro/')
       this.livros = data
-      console.log(this.livros)
     },
     async getCategorias(){
       const {data} = await axios.get('api/categorias/')

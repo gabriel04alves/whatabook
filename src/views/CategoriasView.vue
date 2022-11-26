@@ -43,8 +43,8 @@ export default {
       ],
       categorias: [],
       imagens: [
-        require("../assets/categorias/image.png"),
         require("../assets/categorias/image1.png"),
+        require("../assets/categorias/image.png"),
         require("../assets/categorias/image2.png"),
         require("../assets/categorias/image3.png"),
       ]
