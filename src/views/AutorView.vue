@@ -15,9 +15,9 @@
             <h3 class="text-center text-uppercase text-decoration-underline mb-0" style="color: #114B5F;">Obras mais populares</h3>
             <div class="d-flex justify-center" >
                 <div class="d-flex justify-center flex-column ">
-                    <v-card class="rounded-lg mt-5" elevation="4" color="#114B5F" style="width: 45rem;" v-for="livro, index in livros" :key="index">
+                    <v-card class="rounded-lg mt-5" elevation="4" color="#114B5F" style="width: 45rem;" v-for="livro, index in livros.results" :key="index">
                         <v-col class="d-flex align-center mt-2">
-                                <h4 class="font-weight-bold text-center ml-6" style="color: #FFF;">{{livro.titulo_livro}}</h4>
+                                <h4 class="font-weight-bold text-center ml-6" @click="$router.push({name: 'livro', params: {id: livro.id}})" style="color: #FFF; cursor: pointer">{{livro.titulo_livro}}</h4>
                             <v-spacer></v-spacer>
                             <v-rating class="" style="" background-color="#F1C40F" color="#F1C40F" empty-icon="mdi-star-outline" full-icon="mdi-star" half-icon="mdi-star-half-full" 
                             hover length="5" readonly size="25" :value="livro.medianota"></v-rating> 
@@ -27,12 +27,17 @@
                                 <p class="text-left ma-3"> {{livro.sinopse_livro | truncate(350)}} </p>
                             </v-card>      
                             <v-card class="rounded-lg" style="width: 12rem">
-                                <v-img :src="livro.capa_livro" class="rounded-lg"> </v-img>
+                                <v-img @click="$router.push({name: 'livro', params: {id: livro.id}})" style="cursor: pointer" :src="livro.capa_livro" class="rounded-lg"> </v-img>
                             </v-card>                        
                         </v-col>
                     </v-card>                        
                 </div>
             </div>
+                <div class="d-flex justify-center mt-6" style="gap: 10px">
+                    <v-btn color="#caf1ff" v-if="livros.previous" @click="page--">Anterior</v-btn>
+                    <v-card v-if="livros.count > 3" width="30px" class="d-flex align-center justify-center" style="background-color: #114b5f; color: white; font-size: 20px;">{{page}}</v-card>
+                    <v-btn color="#caf1ff" v-if="livros.next" @click="page++">Próximo</v-btn>
+                </div>
         </div>
     </div>
 </template>
@@ -43,7 +48,8 @@ export default {
     data() {
         return {
             autor: {},
-            livros: []
+            livros: [],
+            page: 1,
         }
     },
     mounted() {
@@ -51,13 +57,18 @@ export default {
             this.getLivrosAutor()
         })
     },
+    watch:{
+        page(){
+            this.getLivrosAutor()
+        }
+    },
     methods:{
         async getAutor(){
             const {data} = await axios.get(`/api/autor/${this.$route.params.id}/`)
             this.autor = data
         },
         async getLivrosAutor(){
-            const {data} = await axios.get(`/api/livro/?autor=${this.$route.params.id}`)
+            const {data} = await axios.get(`/api/livros-autor/?autor=${this.$route.params.id}&page=${this.page}`)
             this.livros = data
             console.log(this.livros)
         }
