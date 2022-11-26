@@ -24,22 +24,41 @@
         </div>
         <div class="d-flex justify-center align-end" style="gap: 5%">
           <v-btn icon large color="#114B5F">
-            <v-icon large>mdi-share-variant-outline</v-icon></v-btn
-          >
+            <v-icon large>mdi-share-variant-outline</v-icon></v-btn>
           <v-divider vertical color="#114B5F"></v-divider>
           <v-btn icon large color="#114B5F">
-            <v-icon large>mdi-bookmark</v-icon></v-btn
-          >
+            <v-icon @click="dialog1 = true" large>mdi-bookmark</v-icon></v-btn>
+            <v-dialog v-model="dialog1" persistent max-width="500">
+            <v-card>
+              <h3 class="text-uppercase text-center text-decoration-underline pt-3 pb-3" style="color: #114b5f">
+                Salve o livro em uma lista:
+              </h3>
+              <div class="ma-5">
+                <v-card-title v-if="listas.length == 0">Não possue listas? Crie uma&#160;
+                  <router-link to="/minhalista">aqui</router-link>
+                </v-card-title>
+                <v-row v-for="lista,index in listas" class="d-flex align-center" :key="index">
+                  <v-card-title>{{lista.titulo_lista}}</v-card-title>
+                  <v-btn @click="atualizarLista(lista, 'adicionar')" color="success" small style="font-size: 30px" :disabled="lista.livros_lista.includes(livro.id)">+</v-btn>
+                  <v-btn @click="atualizarLista(lista, 'remover')" color="error" small style="font-size: 30px" :disabled="!lista.livros_lista.includes(livro.id)">-</v-btn>
+                </v-row>
+              </div>
+              <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn style="color: #114b5f" @click="dialog1 = false" color="#CAF1FF" text >
+                  Pronto
+                </v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-dialog>
           <v-divider vertical color="#114B5F"></v-divider>
           <v-btn icon large color="#114B5F">
             <v-icon large>mdi-cart-arrow-down</v-icon></v-btn>
           <v-divider vertical color="#114B5F"></v-divider>
+          <v-btn @click="dialog = true" icon large color="#114B5F">
+            <v-icon large>mdi-comment-edit</v-icon>
+          </v-btn>
           <v-dialog v-model="dialog" persistent max-width="500">
-            <template v-slot:activator="{ on, attrs }">
-              <v-btn v-bind="attrs" v-on="on" icon large color="#114B5F">
-                <v-icon large>mdi-comment-edit</v-icon>
-              </v-btn>
-            </template>
             <v-card>
               <h3 class="text-uppercase text-center text-decoration-underline pt-3 pb-3" style="color: #114b5f">
                 Publique uma resenha:
@@ -216,11 +235,13 @@ export default {
     power4: 0,
     power5: 0,
     dialog: false,
+    dialog1: false,
     resenha: {},
     livro: {},
     erro: false,
     resenhas: [],
     page: 1,
+    listas: []
   }),
   computed: {
     ...mapState(["autores"]),
@@ -253,7 +274,10 @@ export default {
       const {data} = await axios.get(`/api/livro/${this.$route.params.id}/`)
       this.livro = data
       this.getResenhas()
-      console.log(this.livro)
+    },
+    async getListas(){
+      const {data} = await axios.get('/api/listafavPK/')
+      this.listas = data
     },
     porcentagens(){
       let notas = {
@@ -278,6 +302,19 @@ export default {
     async getResenhas(){
       const {data} = await axios.get(`/api/resenha/?livro=${this.livro.id}&page=${this.page}`)
       this.resenhas = data
+    },
+    async atualizarLista(lista, action){
+      let livros = []
+      for(let i of lista.livros_lista){
+        livros.push(i)
+      }
+      if(action == "remover"){
+        livros.splice(livros.indexOf(this.livro.id),1)
+      }else{
+        livros.push(this.livro.id)
+      }
+      await axios.patch(`/api/listafav/${lista.id}/`, {livros_lista: livros})
+      this.getListas()
     }
   },
   mounted(){
@@ -286,6 +323,7 @@ export default {
       this.resenha.user_resenha = this.usuarioLogado.id
       this.resenha.livro_resenha = this.livro.id
     })
+    this.getListas()
   }
 };
 </script>

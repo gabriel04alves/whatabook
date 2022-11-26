@@ -35,7 +35,7 @@
             </div>
                 <div class="d-flex justify-center mt-6" style="gap: 10px">
                     <v-btn color="#caf1ff" v-if="livros.previous" @click="page--">Anterior</v-btn>
-                    <v-card v-if="livros.count > 3" width="30px" class="d-flex align-center justify-center" style="background-color: #114b5f; color: white; font-size: 20px;">{{page}}</v-card>
+                    <v-card v-if="livros.count > 2" width="30px" class="d-flex align-center justify-center" style="background-color: #114b5f; color: white; font-size: 20px;">{{page}}</v-card>
                     <v-btn color="#caf1ff" v-if="livros.next" @click="page++">Próximo</v-btn>
                 </div>
         </div>
