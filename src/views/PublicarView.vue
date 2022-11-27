@@ -5,8 +5,9 @@
     </div>
     <div class="d-flex justify-space-around mt-10">
         <div class="d-flex flex-column justify-center" style="width: 45rem;">
-           <div ><h2 class="text-center font-weight-light" style="color: #114B5F">Inserir uma imagem da capa do livro</h2></div>
-           <div class="d-flex justify-center mt-5"><v-img src="./images/1984.png" class="" style="max-width: 300px;"></v-img></div>
+           <div><h2 class="text-center font-weight-light" style="color: #114B5F">Inserir uma imagem da capa do livro</h2></div>
+           <div class="d-flex justify-center mt-5"><v-img :src="livro.capa_livro" class="" style="max-width: 300px; background-color:#d9d9d9"></v-img></div>
+
            <div>
            </div>
            <v-dialog v-model="dialog" persistent max-width="400">
@@ -21,8 +22,8 @@
                 <v-card-title class="text-h5">
                     Selecionar arquivo
                 </v-card-title>
-                <v-card-text v-card-text>Escolha apenas uma imagem - de preferencia a capa do livro - no formato jpeg, jpg ou png.</v-card-text>
-                <v-file-input color="#114B5F" label="Escolha um arquivo" class="" style="width: 95%" counter outlined truncate-length="1"></v-file-input>
+                <v-card-text>Escolha apenas uma imagem - de preferencia a capa do livro - no formato jpeg, jpg ou png.</v-card-text>
+                <v-file-input color="#114B5F" @change="convert64" id="inputfile" label="Escolha um arquivo" class="" style="width: 95%" counter outlined truncate-length="1"></v-file-input>
                 <v-card-actions>
                     <v-spacer></v-spacer>
                     <div class="justify-end">
@@ -40,48 +41,92 @@
             </div>
             <div class="d-flex justify-center mt-5 ">
               <div class="d-flex flex-column" style="gap: 4.8rem"> 
-                <v-text-field style="width: 400px; height: 5px;" class="" color="#114B5F" prepend-inner-icon="mdi-book-open" :counter="100" label="Título" required outlined></v-text-field>
-                <v-text-field style="width: 400px; height: 5px;" class="" color="#114B5F" prepend-inner-icon="mdi-account-edit" :counter="100" label="Autor" required outlined></v-text-field>
-                <v-autocomplete style="width: 400px; height: 5px;" class="" color="#114B5F" prepend-inner-icon="mdi-bookshelf" persistent-hint v-model="select" :items="items" label="Categorias" required outlined hide-selected></v-autocomplete>
-                <v-textarea class="" rows="3" prepend-inner-icon="mdi-pencil" color="#114B5F" outlined style="width: 400px; height: 5px;" label="Sinopse"></v-textarea>
-                <v-text-field style="width: 400px; height: 5px;" class="mt-8" color="#114B5F" prepend-inner-icon="mdi-numeric" :counter="5" label="N de páginas" required outlined></v-text-field>
-                <v-text-field style="width: 400px; height: 5px;" class="" color="#114B5F" prepend-inner-icon="mdi-barcode" :counter="10" label="ISBN" required outlined></v-text-field>
+                <v-text-field style="width: 400px; height: 5px;" class="" color="#114B5F" prepend-inner-icon="mdi-book-open" :counter="100" label="Título" v-model="livro.titulo_livro" required outlined></v-text-field>
+                <v-autocomplete style="width: 400px; height: 5px;" class="" color="#114B5F" prepend-inner-icon="mdi-account-edit" persistent-hint  v-model="livro.autor_livros" :items="autores" item-text="nome_autor" item-value="id" label="Autor" required outlined hide-selected></v-autocomplete>
+                <v-autocomplete style="width: 400px; height: 5px;" class="" color="#114B5F" prepend-inner-icon="mdi-bookshelf" persistent-hint v-model="livro.categoria_livro" :items="categorias" item-text="nome_categoria" item-value="id" label="Categorias" required outlined hide-selected></v-autocomplete>
+                <v-textarea class="" rows="3" prepend-inner-icon="mdi-pencil" color="#114B5F" outlined style="width: 400px; height: 5px;" label="Sinopse" v-model="livro.sinopse_livro"></v-textarea>
+                <v-text-field style="width: 400px; height: 5px;" class="mt-8" color="#114B5F" prepend-inner-icon="mdi-numeric" :counter="5" label="N de páginas" v-model="livro.qtd_paginas" required outlined></v-text-field>
+                <v-text-field style="width: 400px; height: 5px;" class="" color="#114B5F" prepend-inner-icon="mdi-barcode" :counter="10" label="ISBN" required v-model="livro.isbn" outlined></v-text-field>
                 <v-menu class="" ref="menu" v-model="menu" :close-on-content-click="false" :return-value.sync="date" transition="scale-transition" offset-y min-width="auto" outlined >
                   <template v-slot:activator="{ on, attrs }">
-                    <v-text-field style="width: 400px; height: 5px;" v-model="date" label="Data de lançamento" prepend-inner-icon="mdi-calendar" readonly v-bind="attrs" v-on="on" color="#114B5F" outlined ></v-text-field>
+                    <v-text-field style="width: 400px; height: 5px;" v-model="livro.ano_lancamento" label="Data de lançamento" prepend-inner-icon="mdi-calendar" readonly v-bind="attrs" v-on="on" color="#114B5F" outlined ></v-text-field>
                   </template>
-                  <v-date-picker v-model="date" no-title scrollable>
+                  <v-date-picker v-model="livro.ano_lancamento" no-title scrollable>
                     <v-spacer></v-spacer>
                     <v-btn text color="#FF0000" @click="menu = false" > Cancel </v-btn>
                     <v-btn text color="primary" @click="$refs.menu.save(date)" > OK </v-btn>
                   </v-date-picker>
                 </v-menu>
-                <v-text-field style="width: 400px; height: 5px;" class="" color="#114B5F" prepend-inner-icon="mdi-link" :counter="2000" label="URL para comprar livro" required outlined></v-text-field>
+                <v-text-field style="width: 400px; height: 5px;" class="" color="#114B5F" prepend-inner-icon="mdi-link" :counter="2000" label="URL para comprar livro" v-model="livro.url_compra" required outlined></v-text-field>
               </div>              
             </div>
         </div>
     </div>
     <div class="d-flex justify-center" style="margin-top: 110px;">
-      <v-btn dark color="#114B5F" style="width: 200px"><v-icon>mdi-send</v-icon> Publicar</v-btn>  
+      <v-btn @click="publicar" dark color="#114B5F" style="width: 200px"><v-icon>mdi-send</v-icon> Publicar</v-btn>  
     </div>
   </div>
 </template>
 
 <script>
-  export default {
-    data () {
-      return {
-        dialog: false,
-        select: null,
-        items: [
-        'Ficção',
-        'Drama',
-        'Suspense',
-        'Contos',
-      ],
+import axios from "axios"
+export default {
+  data () {
+    return {
+      date: '',
+      menu: '',
+      dialog: false,
+      select: null,
+      items: [
+      'Ficção',
+      'Drama',
+      'Suspense',
+      'Contos',
+    ],
+    livro:{},
+    autores: [],
+    categorias: []
+    }
+  },
+  mounted(){
+    this.getAutores()
+    this.getCategorias()
+  },
+  methods:{
+    async getAutores(){
+      const {data} = await axios.get('/api/autor/')
+      this.autores = data
+    },
+    async getCategorias(){
+      const {data} = await axios.get('/api/categorias/')
+      this.categorias = data
+    },
+    async publicar(){
+      console.log(this.livro)
+      await axios.post('/api/livro/',
+      {
+        ano_lancamento: this.livro.ano_lancamento,
+        autor_livros: [this.livro.autor_livros],
+        categoria_livro: [this.livro.categoria_livro],
+        capa_livro: this.livro.capa_livro,
+        isbn: this.livro.isbn,
+        qtd_paginas: this.livro.qtd_paginas,
+        sinopse_livro: this.livro.sinopse_livro,
+        titulo_livro: this.livro.titulo_livro,
+        url_compra: this.livro.url_compra,
+      })
+    },
+    convert64(){
+      let file = document.getElementById('inputfile').files[0]
+      let _this = this
+      var reader = new FileReader()
+      reader.onload = () =>{
+        _this.livro.capa_livro = reader.result  
       }
+      reader.readAsDataURL(file);
     },
   }
+}
 </script>
 
 <style>

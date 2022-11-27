@@ -17,11 +17,11 @@
                         <h2 class="text-center text-uppercase text-decoration-underline font-weight-regular" style="color: #114B5F;">Vamos começar!</h2>
                         <h4 class="text-center" style="color:#114B5F;"> Preencha as informações solicitadas para cadastrar sua editora!</h4>
                         <v-form ref="form" lazy-validation class="ma-10">  
-                            <v-text-field color="#114B5F" prepend-inner-icon="mdi-briefcase-outline" v-model="nome" :counter="100" label="Nome" required outlined style=""></v-text-field>
-                            <v-text-field color="#114B5F" prepend-inner-icon="mdi-card-account-details-outline" :counter="14" label="CNPJ" required outlined></v-text-field>
-                            <v-text-field color="#114B5F" prepend-inner-icon="mdi-email" v-model="email" label="E-mail" required outlined></v-text-field>
-                            <v-text-field color="#114B5F" prepend-inner-icon="mdi-map-marker" label="Localização" required outlined></v-text-field>
-                            <v-text-field class="mt-0" color="#114B5F" required outlined prepend-inner-icon="mdi-lock" label="Senha" v-model="password" :type="show ? 'text' : 'password'" :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'" @click:append="show = !show" ></v-text-field> 
+                            <v-text-field color="#114B5F" prepend-inner-icon="mdi-briefcase-outline" v-model="editora.username" :counter="100" label="Nome" required outlined style=""></v-text-field>
+                            <v-text-field color="#114B5F" prepend-inner-icon="mdi-card-account-details-outline" :counter="14" v-model="editora.cnpj" label="CNPJ" required outlined></v-text-field>
+                            <v-text-field color="#114B5F" prepend-inner-icon="mdi-email" v-model="editora.email" label="E-mail" required outlined></v-text-field>
+                            <v-text-field color="#114B5F" prepend-inner-icon="mdi-map-marker" label="Localização" required v-model="editora.localizacao" outlined></v-text-field>
+                            <v-text-field class="mt-0" color="#114B5F" required outlined prepend-inner-icon="mdi-lock" label="Senha" v-model="editora.password" :type="show ? 'text' : 'password'" :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'" @click:append="show = !show" ></v-text-field> 
                             <v-text-field class="mt-0" color="#114B5F" required outlined prepend-inner-icon="mdi-lock-alert" label="Confirmar senha" v-model="passwordConfirm" :type="show ? 'text' : 'password'" :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'" @click:append="show = !show" ></v-text-field> 
                         </v-form>
                     </div>
@@ -56,7 +56,7 @@
                         <v-btn :disabled="step === 1 || step === 2" text @click="step--" >
                             Voltar
                         </v-btn>
-                        <v-btn :disabled="step === 2" color="#114B5F" style="color: #FFF;" depressed @click="step++" >
+                        <v-btn :disabled="step === 2" color="#114B5F" style="color: #FFF;" depressed @click="cadastrar" >
                             Continuar
                         </v-btn>                  
                 </div>
@@ -66,7 +66,17 @@
 </template>
 
 <script>
+import axios from "axios"
+import {mapActions} from "vuex"
   export default {
+    methods:{
+      ...mapActions('auth', ['login']),
+      async cadastrar(){
+        await axios.post('/api/user/', this.editora)
+        this.step++
+        this.login({username: this.editora.username, password: this.editora.password})
+      },
+    },
     data(){
         return{
             nome: '',
@@ -77,6 +87,9 @@
             passwordConfirm: '',
             step: 1,
             show: false,
+            editora: {
+              is_editora: true
+            }
         }
     },
     computed: {

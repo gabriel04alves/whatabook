@@ -8,7 +8,7 @@
         <h3 class="text-center mt-4 font-weight-bold" style="color: #114B5F;">{{usuarioLogado.username}}</h3>
         <p v-if="usuarioLogado.biografia" class="mt-4">{{usuarioLogado.biografia}}</p>
         <p v-else class="mt-4">Aqui uma pequena biografia</p>
-        <div class="d-flex justify-center align-center"><v-icon color="#114B5F">mdi-cake-variant-outline</v-icon> {{usuarioLogado.data_nascimento.split('-').reverse().join('/')}}</div>
+        <div class="d-flex justify-center align-center"><v-icon color="#114B5F">mdi-cake-variant-outline</v-icon> {{usuarioLogado.data_nascimento ? usuarioLogado.data_nascimento.split('-').reverse().join('/') : 'Não informado'}}</div>
         <div class="d-flex justify-center align-center mt-1"><v-icon color="#114B5F">mdi-map-marker</v-icon> {{usuarioLogado.localizacao ? usuarioLogado.localizacao : 'Não informado'}}</div>
         <v-row class="d-flex justify-center mt-5">
             <v-btn link to="/editarperfil" dark color="#114B5F"><v-icon>mdi-pencil</v-icon>Editar perfil</v-btn>
