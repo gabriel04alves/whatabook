@@ -49,8 +49,9 @@ const routes = [{
         component: () => import( /* webpackChunkName: "about" */ '../views/AutorView.vue')
       },
       {
-        path: '/Editora',
+        path: '/Editora/:id',
         name: 'editora',
+        props: true,
         component: () => import( /* webpackChunkName: "about" */ '../views/EditoraView.vue')
       },
       {

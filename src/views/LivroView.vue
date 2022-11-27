@@ -111,15 +111,14 @@
                 <div class="d-flex flex-row align-center" style="gap: 1rem">
                   <v-icon large color="#114B5F">mdi-barcode</v-icon>
                   <h3 class="font-weight-regular" style="color: #114b5f">
-                    978-3-16-148410-0
+                    {{livro.isbn}}
                   </h3>
                 </div>
-                <div class="d-flex flex-row align-center" style="gap: 1rem">
+                <div style="cursor: pointer; gap: 1rem" class="d-flex flex-row align-center" @click="$router.push({name: 'editora', params:{id: livro.editora_livro.id}})">
                   <v-icon large color="#114B5F">mdi-bookshelf</v-icon>
-                  <router-link to="/editora" tag="button"
-                    ><h3 class="font-weight-regular" style="color: #114b5f">
-                      {{ livro.editora_livro.nome_editora }}
-                    </h3></router-link>
+                    <h3 class="font-weight-regular" style="color: #114b5f">
+                      {{livro.editora_livro.username}}
+                    </h3>
                 </div>
                 <div class="d-flex flex-row align-center" style="gap: 1rem">
                   <v-icon large color="#114B5F">mdi-calendar</v-icon>

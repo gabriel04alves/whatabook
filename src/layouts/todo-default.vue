@@ -21,6 +21,9 @@
         <v-spacer></v-spacer>
       </div>
       <v-spacer></v-spacer>
+      <v-btn small class="white--text" text link v-if="this.usuarioLogado && this.usuarioLogado.is_editora"  @click="$router.push({name: 'publicar'})">
+        <v-list-item-title >Publicar livro</v-list-item-title> 
+      </v-btn>
       <div class="pa-2 mr-auto d-flex" >
         <v-row>
         <v-menu
