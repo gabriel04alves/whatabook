@@ -19,9 +19,9 @@
             {{ultimolivro.sinopse_livro}}
           </v-row>
           <v-row class="ma-5" style="display: flex; justify-content: center">
-            <a data-aos="fade-right" @click="$router.push({name: 'autor', params: {id: ultimolivro.autor_livros[0].id}})" class="" style="color: #fff; text-decoration: none" ><h4 class="text-end">Autor</h4></a>
+            <a data-aos="fade-right" @click="$router.push({name: 'autor', params: {id: ultimolivro.autor_livros[0].id}})" class="" style="color: #fff; text-decoration: none" ><h4 class="text-end">{{ultimolivro.autor_livros[0].nome_autor}}</h4></a>
             <v-divider class="ma-2" vertical color="#FFF"></v-divider>
-            <a data-aos="fade-left" @click="$router.push({name: 'editora', params: {id: ultimolivro.editora_livro.id}})" class="" style="color: #fff; text-decoration: none"><h4 class="text-end">Editora</h4></a>
+            <a data-aos="fade-left" @click="$router.push({name: 'editora', params: {id: ultimolivro.editora_livro.id}})" class="" style="color: #fff; text-decoration: none"><h4 class="text-end">{{ultimolivro.editora_livro.username}}</h4></a>
           </v-row>
           <v-row data-aos="fade-up" class="" style="display: flex; justify-content: center">
             <v-btn @click="$router.push({name: 'livro', params: {id: ultimolivro.id}})" plain small dark link>

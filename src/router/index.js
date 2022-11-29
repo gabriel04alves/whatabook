@@ -30,6 +30,9 @@ const routes = [{
       {
         path: '/MinhaLista',
         name: 'minhalista',
+        meta: {
+          auth: true
+        },
         component: () => import( /* webpackChunkName: "about" */ '../views/MinhalistaView.vue')
       },
       {
