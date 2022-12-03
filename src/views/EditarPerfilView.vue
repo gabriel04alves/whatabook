@@ -163,15 +163,19 @@ export default {
       reader.readAsDataURL(file);
     },
     async patchUser() {
+      this.getDadosUser();
+      
       await axios.patch(
         `/api/user/${this.usuarioLogado.id}/`,
         this.usuarioAlterado
       );
       if (this.usuarioLogado.midia) {
-        await axios.patch(
-          `/api/midia/${this.usuarioLogado.midia.id}/`,
-          this.midia
-        );
+        if(this.usuarioLogado.midia.imagem != this.midia.imagem){
+          await axios.patch(
+            `/api/midia/${this.usuarioLogado.midia.id}/`,
+            this.midia
+          );
+        }
       } else {
         await axios.post(`/api/midia/`, {
           imagem: this.midia.imagem,
