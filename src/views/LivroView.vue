@@ -12,11 +12,11 @@
             {{ livro.titulo_livro }}
           </h2>
           <div class="d-flex justify-center">
-            <router-link to="" tag="button"
+            <button @click="irParaAutor(livro.autor_livros[0].id)" 
               ><h3 class="text-center font-weight-light">
                 {{ livro.autor_livros[0].nome_autor }}
-              </h3></router-link
-            >
+              </h3>
+            </button>
           </div>
           <h3 class="text-justify font-weight-regular ma-10">
             {{ livro.sinopse_livro }}
@@ -24,7 +24,7 @@
         </div>
         <div class="d-flex justify-center align-end" style="gap: 5%">
           <v-btn icon large color="#114B5F">
-            <v-icon large>mdi-share-variant-outline</v-icon></v-btn>
+            <v-icon large>mdi-content-copy</v-icon></v-btn>
           <v-divider vertical color="#114B5F"></v-divider>
           <v-btn icon large color="#114B5F">
             <v-icon @click="dialog1 = true" large>mdi-bookmark</v-icon></v-btn>
@@ -53,7 +53,8 @@
           </v-dialog>
           <v-divider vertical color="#114B5F"></v-divider>
           <v-btn icon large color="#114B5F">
-            <v-icon large>mdi-cart-arrow-down</v-icon></v-btn>
+            <v-icon large>mdi-cart-arrow-down</v-icon>
+          </v-btn>
           <v-divider vertical color="#114B5F"></v-divider>
           <v-btn @click="dialog = true" icon large color="#114B5F">
             <v-icon large>mdi-comment-edit</v-icon>
