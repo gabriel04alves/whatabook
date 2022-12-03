@@ -36,7 +36,7 @@
       <v-row data-aos="zoom-in-up" class="pt-5 pb-5" >
         <v-sheet elevation="9" width="calc(135rem - 200px)" dark color="#114B5F">
           <h3 class="pt-5 text-uppercase font-weight-light" style="padding-left: 5%">
-            Livros
+            Todos os livros
           </h3>
           <v-slide-group class="pt-2 pb-4 pr-4 pl-4" show-arrows color="#114B5F" >
             <v-slide-item v-for="(livro, index) in livros" :key="index">

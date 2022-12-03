@@ -2,23 +2,15 @@
   <v-app>
     <v-app-bar app color="#114B5F" dark elevation="1" class="">
       <div class="d-flex" style="">
-        <router-link to="/" tag="button"
-          ><v-img
-            data-aos="zoom-in"
-            class=""
-            src="./images/logobranco.png"
-            max-width="100"
-          ></v-img>
+        <router-link to="/" tag="button">
+          <v-img data-aos="zoom-in" class="" src="./images/logobranco.png" max-width="102"></v-img>
         </router-link>
         <v-divider class="mt-9 mb-9" color="#FFF" vertical inset></v-divider>
-        <div
-          class="d-flex flex-row justify-space-around ml-9 align-self-center"
-          style="margin-top: -12%; font-size: 7px"
-        >
+        <div class="d-flex flex-row justify-space-around ml-9 align-self-center" style="margin-top: -12%; font-size: 7px" >
           <v-row>
             <v-col v-for="item in textos" :key="item.title">
               <v-item>
-                <v-btn small class="white--text mt-16" text link :to="item.to">
+                <v-btn small plain class="white--text mt-16" text link :to="item.to">
                   <v-list-item-title>{{ item.title }}</v-list-item-title>
                 </v-btn>
               </v-item>
@@ -28,54 +20,30 @@
         <v-spacer></v-spacer>
       </div>
       <v-spacer></v-spacer>
-      <v-btn
-        small
-        class="white--text"
-        text
-        link
-        v-if="this.usuarioLogado && this.usuarioLogado.is_editora"
-        @click="$router.push({ name: 'publicar' })"
-      >
-        <v-list-item-title>Publicar livro</v-list-item-title>
+      <v-btn small plain text class="white--text" link v-if="this.usuarioLogado && this.usuarioLogado.is_editora" @click="$router.push({ name: 'publicar' })">
+        <v-list-item-title class="d-flex justify-space-beetween align-center"> <v-icon>mdi-plus</v-icon> Publicar livro</v-list-item-title>
       </v-btn>
       <div class="pa-2 mr-auto d-flex">
         <v-row>
-          <v-menu
-            v-for="([text, rounded], index) in btns"
-            :key="text"
-            :rounded="rounded"
-            offset-y
-          >
+          <v-menu v-for="([text, rounded], index) in btns" :key="text" :rounded="rounded" transition="slide-y-transition" offset-y>
             <template v-slot:activator="{ attrs, on }">
-              <v-btn
-                :color="colors[index]"
-                class="white--text ma-5"
-                v-bind="attrs"
-                v-on="on"
-                icon
-              >
+              <v-btn :color="colors[index]" class="white--text ma-5" v-bind="attrs" v-on="on" icon>
                 <v-icon @click="verificaLogin">mdi-account</v-icon>
               </v-btn>
             </template>
-            <v-list>
-              <v-list-item
-                v-for="item in items"
-                :key="item.title"
-                link
-                :to="item.to"
-              >
+            <v-list class="pt-2 px-2">
+              <v-list-item v-for="item in items" :key="item.title" link :to="item.to">
                 <v-list-item-title>
-                  <v-icon> {{ item.icon }} </v-icon>
+                  <v-icon color="#114B5F"> {{ item.icon }} </v-icon>
                   {{ usuarioLogado.username }}
                 </v-list-item-title>
               </v-list-item>
             </v-list>
             <v-divider></v-divider>
-            <v-list>
+            <v-list class="pt-2 px-2">
               <v-list-item @click="logoutLogin">
-                <v-list-item-title>
-                  <v-icon> mdi-exit </v-icon>Sair</v-list-item-title
-                >
+                <v-list-item-title color="red">
+                  <v-icon color="red"> mdi-exit-to-app </v-icon> Sair </v-list-item-title>
               </v-list-item>
             </v-list>
           </v-menu>
