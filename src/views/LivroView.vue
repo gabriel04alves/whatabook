@@ -194,7 +194,7 @@
             <div data-aos="zoom-up" class="d-flex justify-center flex-column">
               <v-card class="rounded-lg ma-5" elevation="4" color="#114B5F" style="width: 35rem" v-for="(resenha, index) in resenhas.results" :key="index">
                 <v-col class="d-flex align-center">
-                  <v-avatar v-if="!resenha.user_resenha.midia" class="mr-5" color="#FFF" size="50">GA</v-avatar>
+                  <v-avatar v-if="!resenha.user_resenha.midia" class="mr-5" color="#FFF" size="50"></v-avatar>
                   <v-avatar v-else class="mr-5" color="#FFF" size="50">
                     <img :src="resenha.user_resenha.midia ? resenha.user_resenha.midia.imagem : '' " alt="">
                   </v-avatar>

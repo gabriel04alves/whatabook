@@ -33,7 +33,7 @@
             </template>
             <v-list class="pt-2 px-2">
               <v-list-item v-for="item in items" :key="item.title" link :to="item.to">
-                <v-list-item-title>
+                <v-list-item-title class="d-flex align-center" style="gap: 5px;">
                   <v-icon color="#114B5F"> {{ item.icon }} </v-icon>
                   {{ usuarioLogado.username }}
                 </v-list-item-title>
@@ -42,7 +42,7 @@
             <v-divider></v-divider>
             <v-list class="pt-2 px-2">
               <v-list-item @click="logoutLogin">
-                <v-list-item-title color="red">
+                <v-list-item-title color="red" class="d-flex align-center" style="gap: 5px;">
                   <v-icon color="red"> mdi-exit-to-app </v-icon> Sair </v-list-item-title>
               </v-list-item>
             </v-list>
@@ -52,7 +52,7 @@
     </v-app-bar>
     <v-main> <router-view></router-view> </v-main>
 
-    <div style="margin-top: 7%">
+    <div style="margin-top: 3%">
       <v-footer app dark color="#114B5F" style="position: absolute" class="">
         <h5 class="font-weight-regular">
           <a
