@@ -108,7 +108,7 @@ export default {
     },
     async publicar(){
       console.log(this.livro)
-      await axios.post('/api/livro/',
+      const {data} = await axios.post('/api/livro/',
       {
         ano_lancamento: this.livro.ano_lancamento,
         autor_livros: [this.livro.autor_livros],
@@ -120,6 +120,7 @@ export default {
         titulo_livro: this.livro.titulo_livro,
         url_compra: this.livro.url_compra,
       })
+        this.$router.push({name: 'livro', params: {id: data.id}})
     },
     convert64(){
       let file = document.getElementById('inputfile').files[0]
