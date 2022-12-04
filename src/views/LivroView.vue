@@ -22,7 +22,7 @@
           </h3>
         </div>
         <div class="d-flex justify-center align-end" style="gap: 5%">
-          <v-btn icon large color="#114B5F">
+          <v-btn icon large color="#114B5F" @click="copiar">
             <v-icon large>mdi-content-copy</v-icon></v-btn>
           <v-divider vertical color="#114B5F"></v-divider>
           <v-btn icon large color="#114B5F">
@@ -53,7 +53,7 @@
             </v-card>
           </v-dialog>
           <v-divider vertical color="#114B5F"></v-divider>
-          <v-btn icon large color="#114B5F">
+          <v-btn icon large color="#114B5F" :href="livro.url_compra" _blank="true">
             <v-icon large>mdi-cart-arrow-down</v-icon>
           </v-btn>
           <v-divider vertical color="#114B5F"></v-divider>
@@ -261,6 +261,10 @@ export default {
     async getListas(){
       const {data} = await axios.get('/api/listafavPK/')
       this.listas = data
+    },
+    copiar(){
+      const link = window.location.href
+      navigator.clipboard.writeText(link)
     },
     porcentagens(){
       let notas = {
