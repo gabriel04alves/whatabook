@@ -13,7 +13,7 @@
         >
           <img :src="midia ? midia.imagem : ''" draggable="false" alt="" />
         </v-avatar>
-        <p class="text-center">Foto de perfil</p>
+        <p class="text-center mt-3">Foto de perfil</p>
         <input
           id="inputfile"
           @change="convert64"
@@ -22,7 +22,7 @@
         />
       </v-col>
     </div>
-    <v-divider vertical class="ma-10"></v-divider>
+    <v-divider color="114B5F" vertical class="ma-10"></v-divider>
     <div>
       <v-form ref="form">
         <v-text-field
@@ -30,7 +30,7 @@
           color="#114B5F"
           prepend-inner-icon="mdi-account-edit"
           :counter="10"
-          label="Username"
+          label="Nome de usuário"
           required
           outlined
           v-model="usuarioAlterado.username"
@@ -96,7 +96,7 @@
         ></v-text-field>
         <v-text-field
           class=""
-          label="Senha"
+          label="Alterar senha"
           prepend-inner-icon="mdi-lock"
           v-model="usuarioAlterado.password"
           :type="show ? 'text' : 'password'"
