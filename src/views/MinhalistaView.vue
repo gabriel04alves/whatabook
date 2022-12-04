@@ -2,20 +2,20 @@
   <div>
     <v-row data-aos="fade-right" class="ma-10" >
       <v-icon x-large color="#114B5F">mdi-book-heart</v-icon>
-      <h1 class="ml-5 text-uppercase" style="color:#114B5F;">Minha lista</h1>
+      <h1 class="ml-5 text-uppercase" style="color:#114B5F;">Minhas listas</h1>
       <v-row align="center" class="ml-6 flex-start">
-        <v-btn tile color="#caf1ff" @click="dialog=true"><v-icon left>mdi-plus</v-icon>Nova lista</v-btn>
+        <v-btn class="font-weight-regular" tile raised color="#caf1ff" style="color: #114B5F;" @click="dialog=true"><v-icon color="#114B5F" left>mdi-plus</v-icon>Criar nova lista</v-btn>
       </v-row>
     </v-row>
-    <v-dialog v-model="dialog" persistent max-width="500">
-      <v-card>
-        <h3 class="text-uppercase text-center text-decoration-underline pt-3 pb-3" style="color: #114b5f">
-          Crie uma lista:
+    <v-dialog v-model="dialog" persistent max-width="400">
+      <v-card class="pa-3" height="270">
+        <h3 class="text-uppercase text-center pt-3 pb-3" style="color: #114b5f">
+          Personalize sua lista:
         </h3>
         <div class="ma-5">
           <v-text-field label="Nome da lista" outlined color="#114B5F" v-model="listanome" @keyup.enter="criarLista"></v-text-field>
         </div>
-        <v-card-actions>
+        <v-card-actions class="mt-5">
           <div v-if="erro" style="color: #FF0000">Ocorreu um erro</div>
           <v-spacer></v-spacer>
           <v-btn color="#FF0000" text @click="dialog = false">Cancelar</v-btn>
@@ -26,8 +26,8 @@
     <v-row class="pt-8">
       <v-row data-aos="flip-down" v-for="lista,index in listas" :key="index" class="pt-0 pb-3 d-flex flex-column">
         <div class="d-flex align-center">
-          <h3 class="pt-5 text-uppercase font-weight-light" style="padding-left: 5%;">{{ lista.titulo_lista }}</h3>
-          <v-btn outlined tile class="ml-3 mt-5" color="error" @click="escolherLista(lista)"><v-icon left>mdi-trash-can</v-icon>Excluir</v-btn>
+          <h2 class="pt-5 text-uppercase font-weight-light pl-15" style="color:#114B5F;"> <v-icon color="#114B5F">mdi-format-list-bulleted</v-icon> {{ lista.titulo_lista }}</h2>
+          <v-btn tile plain class="ml-3 mt-5" color="error" @click="escolherLista(lista)"><v-icon left>mdi-trash-can</v-icon>Excluir</v-btn>
         <v-dialog v-model="dialog1" persistent max-width="500">
           <v-card>
             <h3 class="text-uppercase text-center text-decoration-underline pt-3 pb-3" style="color: #114b5f">
@@ -43,7 +43,7 @@
         </v-dialog>
         </div>
         <v-sheet width="calc(135rem - 200px)" color="#FFF" style="color: #114B5F">
-          <v-slide-group  class="pt-2 pb-4 pr-4 pl-4" show-arrows>
+          <v-slide-group  class="mx-10 mb-5 mt-2" show-arrows>
               <v-slide-item v-for="livro,index in lista.livros_lista" :key="index">
                 <div class="ma-4" style="height: 100%; width: 8.1rem">
                 <v-row class="fill-height" justify="center">

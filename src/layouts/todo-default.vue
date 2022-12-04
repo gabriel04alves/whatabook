@@ -132,7 +132,7 @@ export default {
     textos: [
       { title: "Inicio", to: "/" },
       { title: "Categorias", to: "/categorias" },
-      { title: "Minha lista", to: "/minhalista" },
+      { title: "Minhas listas", to: "/minhalista" },
     ],
   }),
 };
