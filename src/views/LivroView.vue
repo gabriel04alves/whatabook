@@ -12,8 +12,7 @@
             {{ livro.titulo_livro }}
           </h2>
           <div class="d-flex justify-center">
-            <button @click="irParaAutor(livro.autor_livros[0].id)" 
-              ><h3 class="text-center font-weight-light">
+            <button @click="irParaAutor(livro.autor_livros[0].id)"><h3 class="text-center font-weight-light">
                 {{ livro.autor_livros[0].nome_autor }}
               </h3>
             </button>
@@ -28,24 +27,26 @@
           <v-divider vertical color="#114B5F"></v-divider>
           <v-btn icon large color="#114B5F">
             <v-icon @click="dialog1 = true" large>mdi-bookmark</v-icon></v-btn>
-            <v-dialog v-model="dialog1" persistent max-width="500">
-            <v-card>
-              <h3 class="text-uppercase text-center text-decoration-underline pt-3 pb-3" style="color: #114b5f">
-                Salve o livro em uma lista:
+            <v-dialog v-model="dialog1" persistent max-width="400">
+            <v-card class="d-flex flex-column pt-3" min-height="200">
+              <h3 class="d-flex align-self-center text-uppercase text-center pt-3 pb-3" style="color: #114b5f">
+                <v-icon color="#114B5F">mdi-bookmark</v-icon> Salvar em uma lista:
               </h3>
-              <div class="ma-5">
-                <v-card-title v-if="listas.length == 0">Não possue listas? Crie uma&#160;
-                  <router-link to="/minhalista">aqui</router-link>
-                </v-card-title>
-                <v-row v-for="lista,index in listas" class="d-flex align-center" :key="index">
-                  <v-card-title>{{lista.titulo_lista}}</v-card-title>
-                  <v-btn @click="atualizarLista(lista, 'adicionar')" color="success" small style="font-size: 30px" :disabled="lista.livros_lista.includes(livro.id)">+</v-btn>
-                  <v-btn @click="atualizarLista(lista, 'remover')" color="error" small style="font-size: 30px" :disabled="!lista.livros_lista.includes(livro.id)">-</v-btn>
-                </v-row>
+              <div class="d-flex align-self-center ma-5">
+                <h3 class="text-center font-weight-regular" v-if="listas.length == 0"><v-icon>mdi-alert-circle-outline</v-icon> Você ainda não possui listas! <br> Crie uma <router-link to="/minhalista">aqui</router-link>
+                </h3>
+                <div class="d-flex flex-column justify-center">
+                  <v-row v-for="lista,index in listas" class="my-5" :key="index">
+                    <div class="d-flex flex-row">
+                      <h3 class="font-weight-light mr-3"> <v-icon>mdi-playlist-plus</v-icon> {{lista.titulo_lista}}:</h3>
+                      <v-btn class="mr-1" @click="atualizarLista(lista, 'adicionar')" color="#114b5f" small  :disabled="lista.livros_lista.includes(livro.id)"><v-icon color="#FFF">mdi-bookmark-outline</v-icon></v-btn>
+                      <v-btn @click="atualizarLista(lista, 'remover')" color="error" small :disabled="!lista.livros_lista.includes(livro.id)"> <v-icon color="#FFF">mdi-delete</v-icon> </v-btn>
+                    </div>
+                  </v-row>                  
+                </div>
               </div>
-              <v-card-actions>
-                <v-spacer></v-spacer>
-                <v-btn style="color: #114b5f" @click="dialog1 = false" color="#CAF1FF" text >
+              <v-card-actions class="d-flex justify-end align-end mt-5">
+                <v-btn  style="color: #114b5f" @click="dialog1 = false" color="#CAF1FF" text >
                   Pronto
                 </v-btn>
               </v-card-actions>
@@ -61,24 +62,21 @@
           </v-btn>
           <v-dialog v-model="dialog" persistent max-width="500">
             <v-card>
-              <h3 class="text-uppercase text-center text-decoration-underline pt-3 pb-3" style="color: #114b5f">
-                Publique uma resenha:
+              <h3 class="text-uppercase text-center pt-5" style="color: #114b5f">
+                <v-icon color="#114B5F">mdi-pencil</v-icon> Escreva uma resenha:
               </h3>
               <div class="ma-5">
                 <v-text-field label="Título" outlined color="#114B5F" v-model="resenha.titulo_resenha" ></v-text-field>
-                <v-textarea color="#114B5F" outlined name="input-7-4" label="Resenha" v-model="resenha.desc_resenha" ></v-textarea>
-                <v-rating background-color="#F1C40F" color="#F1C40F" empty-icon="mdi-star-outline" full-icon="mdi-star"  half-icon="mdi-star-half-full" hover length="5"  size="25" v-model="resenha.nota_resenha" ref="rating"
-                ></v-rating>
+                <v-textarea color="#114B5F" outlined name="input-7-4" label="Conteúdo" v-model="resenha.desc_resenha" ></v-textarea>
+                <v-rating background-color="#F1C40F" color="#F1C40F" empty-icon="mdi-star-outline" full-icon="mdi-star"  half-icon="mdi-star-half-full" hover length="5"  size="25" v-model="resenha.nota_resenha" ref="rating"></v-rating>
               </div>
-
               <v-card-actions>
                 <div v-if="erro" style="color: #FF0000">Ocorreu um erro</div>
                 <v-spacer></v-spacer>
                 <v-btn color="#FF0000" text @click="dialog = false">
                   Cancelar
                 </v-btn>
-                <v-btn style="color: #114b5f"  color="#CAF1FF" text @click="adicionarResenha"
-                >
+                <v-btn style="color: #114b5f"  color="#CAF1FF" text @click="adicionarResenha">
                   Enviar
                 </v-btn>
               </v-card-actions>
@@ -137,19 +135,9 @@
             </div>
           </v-card>
         </div>
-        <div
-          elevation="10"
-          class="d-flex justify-center mt-10"
-          style="color: #114b5f"
-        >
-          <v-card
-            class=""
-            style="width: 30rem; height: 20rem; color: #114b5f"
-            color="#CAF1FF"
-          >
-            <h3
-              class="text-center text-uppercase text-decoration-underline pa-6"
-            >
+        <div elevation="10" class="d-flex justify-center mt-10" style="color: #114b5f">
+          <v-card class="" style="width: 30rem; height: 20rem; color: #114b5f" color="#CAF1FF">
+            <h3 class="text-center text-uppercase text-decoration-underline pa-6">
               Avaliações
             </h3>
             <div class="pa-5">
@@ -164,14 +152,12 @@
                 <h4 class="text-center" style="color: #114b5f">{{power2}}%</h4>
               </v-row>
               <v-row class="d-flex align-center justify-space-around ms-2 me-2">
-                <v-rating background-color="#F1C40F" color="#F1C40F" empty-icon="mdi-star-outline" full-icon="mdi-star" half-icon="mdi-star-half-full" hover length="5" readonly size="25" :value="3.5"
-                ></v-rating>
+                <v-rating background-color="#F1C40F" color="#F1C40F" empty-icon="mdi-star-outline" full-icon="mdi-star" half-icon="mdi-star-half-full" hover length="5" readonly size="25" :value="3.5"></v-rating>
                 <v-progress-linear class="rounded" :value="power3" color="amber" height="15" style="width: 150px" ></v-progress-linear>
                 <h4 class="text-center" style="color: #114b5f">{{power3}}%</h4>
               </v-row>
               <v-row class="d-flex align-center justify-space-around ms-2 me-2">
-                <v-rating background-color="#F1C40F" color="#F1C40F" empty-icon="mdi-star-outline" full-icon="mdi-star" half-icon="mdi-star-half-full" hover length="5" readonly size="25" :value="4.5"
-                ></v-rating>
+                <v-rating background-color="#F1C40F" color="#F1C40F" empty-icon="mdi-star-outline" full-icon="mdi-star" half-icon="mdi-star-half-full" hover length="5" readonly size="25" :value="4.5" ></v-rating>
                 <v-progress-linear class="rounded" :value="power4" color="amber" height="15" style="width: 150px" ></v-progress-linear>
                 <h4 class="text-center" style="color: #114b5f">{{power4}}%</h4>
               </v-row>
@@ -186,8 +172,7 @@
       </v-col>
       <v-col cols="8">
         <div class="justify-center" style="">
-          <h3 class="text-center text-uppercase text-decoration-undersline mb-0"
-            style="color: #114b5f">
+          <h3 class="text-center text-uppercase text-decoration-undersline mb-0" style="color: #114b5f">
             Resenhas da comunidade
           </h3>
           <div class="d-flex justify-center">
@@ -198,9 +183,7 @@
                   <v-avatar v-else class="mr-5" color="#FFF" size="50">
                     <img :src="resenha.user_resenha.midia ? resenha.user_resenha.midia.imagem : '' " alt="">
                   </v-avatar>
-                  <h4 class="font-weight-light" style="color: #fff">
-                    {{resenha.user_resenha.username}}
-                  </h4>
+                  <h4 class="font-weight-light" style="color: #fff"> {{resenha.user_resenha.username}} </h4>
                   <v-spacer></v-spacer>
                   <v-rating background-color="#F1C40F" color="#F1C40F" empty-icon="mdi-star-outline" full-icon="mdi-star" half-icon="mdi-star-half-full" hover length="5" readonly size="25" :value="resenha.nota_resenha"></v-rating>
                 </v-col>
@@ -328,4 +311,10 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Inter", sans-serif;
+}
+</style>
