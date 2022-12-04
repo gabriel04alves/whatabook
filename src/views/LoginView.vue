@@ -16,8 +16,16 @@
               <div class="ma-5">
                 <v-text-field class="pa-3"  color="#114B5F" style="width: 325px; height: 3px;" label="Senha" v-model="usuario.password" @keyup.enter="submitLogin" :type="show ? 'text' : 'password'" :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'" @click:append="show = !show" required outlined></v-text-field>  
               </div>
-                <v-btn class="rounded-lg mt-12" width="40%" color="#FFF" style="color: #114B5F; margin-left: 30%;" @click="submitLogin">Entrar</v-btn> 
-                <v-btn text small plain class="mt-4" width="60%" style=" margin-left: 20%;"><p class="text-decoration-underline text-uppercase" style="color: #114B5F">esqueceu sua senha?</p></v-btn> 
+                <div class="mt-10">
+                  <button class="learn-more" width="40%" style="color: #114B5F; margin-left: 30%;" @click="submitLogin">
+                    <span class="circle" aria-hidden="true">
+                    <span class="icon arrow"></span>
+                    </span>
+                    <span class="button-text">Entrar</span>
+                  </button>                
+                </div>
+                <!-- <v-btn class="rounded-lg mt-12" width="40%" color="#FFF" style="color: #114B5F; margin-left: 30%;" @click="submitLogin">Entrar <v-icon color="#114B5F">mdi-arrow-right-circle-outline</v-icon> </v-btn>  -->
+                <v-btn text small plain class="mt-4" width="60%" style=" margin-left: 21.7%;"><p class="text-decoration-underline text-uppercase text-center" style="color: #114B5F">esqueceu sua senha?</p></v-btn> 
             </div>
             <div class="d-flex justify-center flex-column" style="margin-top: 100px;">
                 <v-btn class="text-uppercase rounded-lg font-weight-medium" color="#FFF" style="color: #114B5F;" link to="/cadastro">criar uma conta</v-btn>
@@ -77,4 +85,96 @@ export default {
       font-family: 'Inter', sans-serif;
   }
   /* ............. */
+
+/* Botão de login */
+
+  button {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  outline: none;
+  border: 0;
+  vertical-align: middle;
+  text-decoration: none;
+  background: transparent;
+  padding: 0;
+  font-size: inherit;
+  font-family: inherit;
+  }
+
+  button.learn-more {
+  width: 10rem;
+  height: auto;
+  }
+
+  button.learn-more .circle {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  position: relative;
+  display: block;
+  margin: 0;
+  width: 3rem;
+  height: 2.8rem;
+  background: #114B5F;
+  border-radius: 1.625rem;
+  }
+
+  button.learn-more .circle .icon {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  background: #fff;
+  }
+
+  button.learn-more .circle .icon.arrow {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  left: 0.625rem;
+  width: 1.125rem;
+  height: 0.100rem;
+  background: none;
+  }
+
+  button.learn-more .circle .icon.arrow::before {
+  position: absolute;
+  content: "";
+  top: -0.29rem;
+  right: 0.0625rem;
+  width: 0.625rem;
+  height: 0.625rem;
+  border-top: 0.125rem solid #fff;
+  border-right: 0.125rem solid #fff;
+  transform: rotate(45deg);
+  }
+
+  button.learn-more .button-text {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0.75rem 0;
+  margin: 0 0 0 1.85rem;
+  color: #114B5F;
+  font-weight: 400;
+  line-height: 1.6;
+  text-align: center;
+  text-transform: uppercase;
+  }
+
+  button:hover .circle {
+  width: 100%;
+  }
+
+  button:hover .circle .icon.arrow {
+  background: #fff;
+  transform: translate(1rem, 0);
+  }
+
+  button:hover .button-text {
+  color: #fff;
+  }
+
+/* . */
 </style>

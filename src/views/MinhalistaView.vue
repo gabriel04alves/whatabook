@@ -28,13 +28,13 @@
         <div class="d-flex align-center">
           <h2 class="pt-5 text-uppercase font-weight-light pl-15" style="color:#114B5F;"> <v-icon color="#114B5F">mdi-format-list-bulleted</v-icon> {{ lista.titulo_lista }}</h2>
           <v-btn tile plain class="ml-3 mt-5" color="error" @click="escolherLista(lista)"><v-icon left>mdi-trash-can</v-icon>Excluir</v-btn>
-        <v-dialog v-model="dialog1" persistent max-width="500" :retain-focus="false">
-          <v-card>
-            <h3 class="text-uppercase text-center text-decoration-underline pt-3 pb-3" style="color: #114b5f">
-              Excluir lista?
+        <v-dialog v-model="dialog1" persistent max-width="350" :retain-focus="false">
+          <v-card class="pa-2" height="200">
+            <h3 class="text-uppercase text-center pt-3 pb-3" style="color: #FF0000;">
+              <v-icon color="#FF0000">mdi-alert-circle-outline</v-icon> Excluir lista
             </h3>
-            <v-card-title>Excluir "{{delLista.titulo_lista}}"?</v-card-title>
-            <v-card-actions>
+            <h3 class="font-weight-regular ma-5">Deseja apagar a lista: "{{delLista.titulo_lista}}"?</h3>
+            <v-card-actions class="">
               <v-spacer></v-spacer>
               <v-btn style="color: #114b5f"  color="#CAF1FF" text @click.stop="dialog1 = false">Cancelar</v-btn>
               <v-btn color="#FF0000" text @click.stop="excluirLista(delLista.id)">Excluir</v-btn>
