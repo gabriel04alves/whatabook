@@ -49,7 +49,7 @@
           </v-slide-group>
         </v-sheet>
       </v-row>
-      <v-row data-aos="zoom-in-up" v-for="categoria,index in categorias" :key="index" class="pt-5 pb-5" >
+      <v-row data-aos="zoom-in-up" v-for="categoria,index in categorias" v-show="(categoria.livros.length)" :key="index" class="pt-5 pb-5" >
         <v-sheet elevation="9" width="calc(135rem - 200px)" dark color="#114B5F">
           <h3 class="pt-5 text-uppercase font-weight-light" style="padding-left: 5%">
             {{ categoria.nome_categoria }}
