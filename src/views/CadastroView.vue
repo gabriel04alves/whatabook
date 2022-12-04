@@ -5,18 +5,16 @@
         </div>
         <div class="d-flex justify-center align-self-center" style="width: 95%; height: 100%;">
           <!-- <v-card class="d-flex flex-column justify-start align-center" style="background-color: #BCEEFF; width: 40%; height: 55%;"></v-card> -->
-            <v-card data-aos="zoom-in-up" max-width="500" class="mx-auto pa-4" style="background-color: #BCEEFF; width: 40%; height: 55%;">
+            <v-card data-aos="zoom-in-up" max-width="450" max-height="600" class="px-10 py-5" style="background-color: #BCEEFF; width: 55%; height: 55%;">
                 <v-card-title class=" justify-space-between">
                     <span class="text-h6 font-weight-bold text-decoration-underline" style="color:#114B5F;">{{ currentTitle }}</span>
                     <v-avatar color="#114B5F" class="subheading white--text" size="24" v-text="step" style=""></v-avatar>
                 </v-card-title>
-                
                 <v-window v-model="step">
-
                 <v-window-item :value="1">
                     <div>
-                        <v-form ref="form" lazy-validation class="ma-5"> 
-                            <v-text-field color="#114B5F" prepend-inner-icon="mdi-email" v-model="usuario.email" label="E-mail" required outlined></v-text-field> 
+                        <v-form ref="form" lazy-validation class="mx-5"> 
+                            <v-text-field class="mt-3" color="#114B5F" prepend-inner-icon="mdi-email" v-model="usuario.email" label="E-mail" required outlined></v-text-field> 
                             <v-text-field color="#114B5F" prepend-inner-icon="mdi-account" v-model="usuario.username" :counter="100" label="Nome" required outlined style="">
                             </v-text-field>
                             <v-menu ref="menu" v-model="menu" :close-on-content-click="false" :return-value.sync="usuario.data_nascimento" transition="scale-transition" offset-y min-width="auto" outlined >
@@ -29,15 +27,15 @@
                                     <v-btn text color="#114B5F" @click="$refs.menu.save(usuario.data_nascimento)" > OK </v-btn>
                                 </v-date-picker>
                             </v-menu>
-                            <v-text-field class="mt-0" color="#114B5F" required outlined prepend-inner-icon="mdi-lock" label="Senha" v-model="usuario.password" :type="show ? 'text' : 'password'" :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'" @click:append="show = !show" ></v-text-field> 
-                            <v-text-field class="mt-0" color="#114B5F" required outlined prepend-inner-icon="mdi-lock-alert" label="Confirmar senha" v-model="passwordConfirm" :type="show ? 'text' : 'password'" :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'" @click:append="show = !show" ></v-text-field> 
+                            <v-text-field color="#114B5F" required outlined prepend-inner-icon="mdi-lock" label="Senha" v-model="usuario.password" :type="show ? 'text' : 'password'" :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'" @click:append="show = !show" ></v-text-field> 
+                            <v-text-field color="#114B5F" required outlined prepend-inner-icon="mdi-lock-alert" label="Confirmar senha" v-model="passwordConfirm" :type="show ? 'text' : 'password'" :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'" @click:append="show = !show" ></v-text-field> 
                         </v-form>
                     </div>
                     
                 </v-window-item>
 
                 <v-window-item :value="2">
-                    <h3 class="ma-3 text-center font-weight-light" style="color:#114B5F">Sua conta foi criada, <b class="font-weight-bold">em breve você receberá um e-mail confirmando seu cadastro.</b> </h3>
+                    <h3 class="ma-3 text-center font-weight-light" style="color:#114B5F"><b class="font-weight-bold">Sua conta foi criada, </b>esperamos que você tenha boas experiências e aproveite todos os recursos em nosso site.</h3>
                     <div class="d-flex justify-center">
                         <svg  width="120" height="120" viewBox="0 0 209 217" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <rect width="209" height="217" fill="url(#pattern0)"/>
@@ -49,7 +47,7 @@
                             </defs>
                         </svg>                        
                     </div>
-                    <div class="mt-4 d-flex justify-center">
+                    <div class="mt-4 mb-5 d-flex justify-center">
                         <v-btn link to="/" style="color:#114B5F">
                                 Inicio
                         </v-btn>                        
@@ -58,9 +56,9 @@
                 </v-window-item>
                 </v-window>
 
-                <v-divider class="mt-16"></v-divider>
+                <v-divider></v-divider>
 
-                <div class="d-flex justify-space-around align-end mt-5">
+                <div class="d-flex justify-space-around align-end mt-3">
                         <v-btn :disabled="step === 1" text @click="step--" >
                             Voltar
                         </v-btn>

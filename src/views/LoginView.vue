@@ -17,7 +17,7 @@
                 <v-text-field class="pa-3"  color="#114B5F" style="width: 325px; height: 3px;" label="Senha" v-model="usuario.password" @keyup.enter="submitLogin" :type="show ? 'text' : 'password'" :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'" @click:append="show = !show" required outlined></v-text-field>  
               </div>
                 <v-btn class="rounded-lg mt-12" width="40%" color="#FFF" style="color: #114B5F; margin-left: 30%;" @click="submitLogin">Entrar</v-btn> 
-                <v-btn text small plain class="mt-3"><p class="text-decoration-underline text-uppercase" style="color: #114B5F">esqueceu sua senha?</p></v-btn> 
+                <v-btn text small plain class="mt-4" width="60%" style=" margin-left: 20%;"><p class="text-decoration-underline text-uppercase" style="color: #114B5F">esqueceu sua senha?</p></v-btn> 
             </div>
             <div class="d-flex justify-center flex-column" style="margin-top: 100px;">
                 <v-btn class="text-uppercase rounded-lg font-weight-medium" color="#FFF" style="color: #114B5F;" link to="/cadastro">criar uma conta</v-btn>

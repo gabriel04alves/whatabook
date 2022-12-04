@@ -3,9 +3,9 @@
         <div class="d-flex justify-center align-center" id="conteudo" style="background-color: #114B5F; height: 62rem; width: 45%">
           <v-img data-aos="zoom-in" src="./images/logobranco.png" max-width="70%"></v-img>
         </div>
-        <div class="d-flex justify-center align-self-center" style="width: 85%; height: 100%;">
+        <div class="d-flex justify-center align-self-center" style="width: 100%; height: 100%;">
           <!-- <v-card class="d-flex flex-column justify-start align-center" style="background-color: #BCEEFF; width: 40%; height: 55%;"></v-card> -->
-            <v-card data-aos="zoom-in-up" max-width="500" class="mx-auto pa-4" style="background-color: #BCEEFF; width: 60%; height: 65%;">
+            <v-card data-aos="zoom-in-up" min-width="350" max-height="760" class="mx-auto px-10 pb-5" style="background-color: #BCEEFF;">
                 <v-card-title class="justify-center">
                     <span class="text-h6 font-weight-bold text-decoration-underline" style="color:#114B5F;">{{ currentTitle }}</span>
                 </v-card-title>
@@ -15,8 +15,8 @@
                 <v-window-item :value="1">
                     <div>
                         <h2 class="text-center text-uppercase text-decoration-underline font-weight-regular" style="color: #114B5F;">Vamos começar!</h2>
-                        <h4 class="text-center" style="color:#114B5F;"> Preencha as informações solicitadas para cadastrar sua editora!</h4>
-                        <v-form ref="form" lazy-validation class="ma-10">  
+                        <h4 class="text-center mt-1" style="color:#114B5F;"> Preencha as informações solicitadas para cadastrar sua editora:</h4>
+                        <v-form ref="form" lazy-validation class="mx-10 mt-10">  
                             <v-text-field color="#114B5F" prepend-inner-icon="mdi-briefcase-outline" v-model="editora.username" :counter="100" label="Nome" required outlined style=""></v-text-field>
                             <v-text-field color="#114B5F" prepend-inner-icon="mdi-card-account-details-outline" :counter="14" v-model="editora.cnpj" label="CNPJ" required outlined></v-text-field>
                             <v-text-field color="#114B5F" prepend-inner-icon="mdi-email" v-model="editora.email" label="E-mail" required outlined></v-text-field>
@@ -29,7 +29,7 @@
                 </v-window-item>
 
                 <v-window-item :value="2">
-                    <h3 class="ma-3 text-center font-weight-light" style="color:#114B5F">Agora seus dados serão validados. Se tudo correr bem, <b class="font-weight-bold">em breve você receberá um e-mail confirmando o cadastro da sua editora.</b> </h3>
+                    <h3 class="ma-3 text-center font-weight-light" style="color:#114B5F"><b class="font-weight-bold">Cadastro realizado,</b> agora sua editora pode publicar livros em nosso site. </h3>
                     <div class="d-flex justify-center">
                         <svg width="120" height="120" viewBox="0 0 209 217" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <rect width="209" height="217" fill="url(#pattern0)"/>
@@ -50,7 +50,7 @@
                 </v-window-item>
                 </v-window>
 
-                <v-divider class="mt-0"></v-divider>
+                <v-divider></v-divider>
 
                 <div class="d-flex justify-space-around align-end mt-4">
                         <v-btn :disabled="step === 1 || step === 2" text @click="step--" >
