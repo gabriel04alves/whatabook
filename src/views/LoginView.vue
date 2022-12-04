@@ -6,31 +6,25 @@
           </div>
         </div>
         <div data-aos="flip-up" class="d-flex justify-center align-center" style="width: 55%;">
-          <v-card class="d-flex flex-column justify-start align-center" style="background-color: #BCEEFF; width: 40%; height: 58%;">
-            <h2 class="text-decoration-underline mt-10 font-weight-light" style="color: #114B5F">BEM VINDO</h2> 
+          <v-card class="d-flex flex-column justify-center align-center pa-10" style="background-color: #BCEEFF; width: 450px; height: 550px;">
+            <h2 class="text-decoration-underline font-weight-light mt-5" style="color: #114B5F">BEM VINDO</h2> 
             <p class="font-weight-bold mt-2" style="color: #114B5F">Faça seu login</p>
-            <v-form class="">
-              <v-text-field color="#114B5F" label="Usuário" v-model="usuario.username" style="" required outlined></v-text-field>
-              <v-text-field color="#114B5F" class="" label="Senha" v-model="usuario.password" @keyup.enter="submitLogin" :type="show ? 'text' : 'password'" :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'" @click:append="show = !show" required outlined></v-text-field>  
-              <div class="d-flex justify-center ">
-                <v-btn tag="button" class="rounded-lg" color="#FFF" style="color: #114B5F;" @click="submitLogin">Entrar</v-btn>
+            <div class="d-flex justify-center flex-column">
+              <div class="ma-5">
+                <v-text-field class="pa-3" color="#114B5F" style="width: 325px; height: 3px;" label="Usuário" v-model="usuario.username" required outlined></v-text-field>
               </div>
-              <v-row class="d-flex justify-center mt-6">
-                <v-btn text small><h5 class="text-decoration-underline text-uppercase" style="color: #114B5F">esqueceu sua senha?</h5></v-btn> 
-              </v-row>
-              <v-row class="d-flex justify-center mt-5 " style="gap: 5%;">
-                <v-btn color="#114B5F" icon small><v-icon>mdi-google</v-icon></v-btn>
-                <v-btn color="#114B5F" icon small><v-icon>mdi-facebook</v-icon></v-btn>
-              </v-row>
-              <v-row class="d-flex justify-center mt-16">
-                <v-btn class="text-uppercase rounded-lg font-weight-medium" color="#FFF" style="color: #114B5F;" link to="/cadastro">cadastre-se</v-btn>
-              </v-row>
-              <div class="d-flex justify-center mt-6">
-                <v-btn class="font-italic text-center text-decoration-underline" color="#BCEEFF" text style="color: #114B5F;" to="/cadastroeditora" tag="button">
+              <div class="ma-5">
+                <v-text-field class="pa-3"  color="#114B5F" style="width: 325px; height: 3px;" label="Senha" v-model="usuario.password" @keyup.enter="submitLogin" :type="show ? 'text' : 'password'" :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'" @click:append="show = !show" required outlined></v-text-field>  
+              </div>
+                <v-btn class="rounded-lg mt-12" width="40%" color="#FFF" style="color: #114B5F; margin-left: 30%;" @click="submitLogin">Entrar</v-btn> 
+                <v-btn text small plain class="mt-3"><p class="text-decoration-underline text-uppercase" style="color: #114B5F">esqueceu sua senha?</p></v-btn> 
+            </div>
+            <div class="d-flex justify-center flex-column" style="margin-top: 100px;">
+                <v-btn class="text-uppercase rounded-lg font-weight-medium" color="#FFF" style="color: #114B5F;" link to="/cadastro">criar uma conta</v-btn>
+                <v-btn text small plain class="font-italic text-center text-decoration-underline" color="#BCEEFF" style="color: #114B5F;" to="/cadastroeditora" tag="button">
                   Editora? Acesse aqui
                 </v-btn>                  
               </div>
-            </v-form>
           </v-card>
           <v-snackbar v-model="loginMessage" timeout="2000">
             {{ loginText }}
