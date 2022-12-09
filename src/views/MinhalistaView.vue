@@ -48,6 +48,7 @@
                 <div class="ma-4" style="height: 100%; width: 8.1rem">
                 <v-row class="fill-height" justify="center">
                   <img @click="$router.push({name: 'livro', params: {id: livro.id}})" style="cursor: pointer" id="img" class="ma-2" :src="livro.capa_livro" height="200" width="140" />
+                  <v-btn style="margin-top: -25px; margin-left: 120px; cursor: pointer" @click="atualizarLista(lista, 'remover')" color="error" small > <v-icon color="#FFF">mdi-trash-can</v-icon> </v-btn>
                 </v-row>
               </div>
               </v-slide-item>
@@ -93,7 +94,20 @@ import axios from "axios"
         this.delLista = {}
         this.delLista = lista
         this.dialog1 = true
+      },
+      async atualizarLista(lista, action){
+      let livros = []
+      for(let i of lista.livros_lista){
+        livros.push(i)
       }
+      if(action == "remover"){
+        livros.splice(livros.indexOf(this.livro.id),1)
+      }else{
+        livros.push(this.livro.id)
+      }
+      await axios.patch(`/api/listafav/${lista.id}/`, {livros_lista: livros})
+      this.getListas()
+    }
     }
   }
 </script>
