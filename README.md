@@ -1,4 +1,5 @@
-# whatabook
+# Whatabook | Projeto integrador - IFC campus Araquari, 2022 
+## Gabriel Alves, João Almeida e Yasmin Marcelino. (3info2)
 
 ## Project setup
 ```
